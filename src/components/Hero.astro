@@ -1,0 +1,89 @@
+---
+// Hero section component
+---
+
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Animated Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-dark-bg via-dark-card to-dark-bg">
+    <!-- Animated particles -->
+    <div class="absolute inset-0">
+      {Array.from({ length: 50 }).map((_, i) => (
+        <div
+          class="absolute w-1 h-1 bg-neon-cyan rounded-full animate-pulse-slow"
+          style={`
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation-delay: ${Math.random() * 3}s;
+            opacity: ${Math.random() * 0.5 + 0.1};
+          `}
+        ></div>
+      ))}
+    </div>
+    
+    <!-- Gradient orbs -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/20 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-cyan/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-neon-green/20 rounded-full blur-3xl animate-float" style="animation-delay: -1.5s;"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div class="animate-fade-in">
+      <!-- Welcome Message -->
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-light mb-6 text-text-secondary">
+        Welcome to my portfolio
+      </h1>
+      
+      <!-- Tagline -->
+      <p class="text-xl sm:text-2xl lg:text-3xl text-text-primary mb-8 font-medium">
+        Explore my work and passion for Full Stack Development
+      </p>
+      
+      <!-- Description -->
+      <p class="text-lg text-text-muted mb-12 max-w-2xl mx-auto leading-relaxed">
+        Discover my projects, skills, and journey in modern web development. 
+        Let's build something amazing together.
+      </p>
+      
+      <!-- CTA Button -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="#projects"
+          class="group relative px-8 py-4 bg-transparent border-2 border-neon-cyan text-neon-cyan rounded-lg font-semibold text-lg hover:bg-neon-cyan hover:text-dark-bg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-neon-cyan/25"
+        >
+          <span class="relative z-10">View My Work</span>
+          <div class="absolute inset-0 bg-neon-cyan rounded-lg transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+        </a>
+        
+        <a
+          href="#contact"
+          class="px-8 py-4 bg-dark-card border border-dark-border text-text-secondary rounded-lg font-semibold text-lg hover:border-neon-purple hover:text-neon-purple transition-all duration-300 transform hover:scale-105"
+        >
+          Get In Touch
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <div class="w-6 h-10 border-2 border-text-secondary rounded-full flex justify-center">
+      <div class="w-1 h-3 bg-neon-cyan rounded-full mt-2 animate-pulse"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+</style>

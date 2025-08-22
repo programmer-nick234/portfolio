@@ -1,0 +1,111 @@
+---
+// Skills section component
+const skills = [
+  {
+    category: "Frontend",
+    items: [
+      { name: "React", icon: "fab fa-react", color: "text-blue-400" },
+      { name: "Vue.js", icon: "fab fa-vuejs", color: "text-green-400" },
+      { name: "Angular", icon: "fab fa-angular", color: "text-red-400" },
+      { name: "TypeScript", icon: "fab fa-js-square", color: "text-blue-500" },
+      { name: "Tailwind CSS", icon: "fas fa-palette", color: "text-cyan-400" },
+      { name: "Next.js", icon: "fas fa-code", color: "text-white" },
+    ]
+  },
+  {
+    category: "Backend",
+    items: [
+      { name: "Node.js", icon: "fab fa-node-js", color: "text-green-500" },
+      { name: "Python", icon: "fab fa-python", color: "text-yellow-400" },
+      { name: "Java", icon: "fab fa-java", color: "text-red-500" },
+      { name: "PostgreSQL", icon: "fas fa-database", color: "text-blue-400" },
+      { name: "MongoDB", icon: "fas fa-leaf", color: "text-green-400" },
+      { name: "Redis", icon: "fas fa-memory", color: "text-red-400" },
+    ]
+  },
+  {
+    category: "Tools & Others",
+    items: [
+      { name: "Git", icon: "fab fa-git-alt", color: "text-orange-500" },
+      { name: "Docker", icon: "fab fa-docker", color: "text-blue-500" },
+      { name: "AWS", icon: "fab fa-aws", color: "text-yellow-500" },
+      { name: "Figma", icon: "fab fa-figma", color: "text-purple-400" },
+      { name: "Linux", icon: "fab fa-linux", color: "text-yellow-400" },
+      { name: "VSCode", icon: "fas fa-code", color: "text-blue-400" },
+    ]
+  }
+];
+---
+
+<section id="skills" class="py-20 bg-dark-bg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
+        Skills & <span class="text-neon-cyan">Technologies</span>
+      </h2>
+      <div class="w-24 h-1 bg-neon-cyan mx-auto mb-6"></div>
+      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+        I work with a variety of technologies to create robust and scalable applications
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      {skills.map((category) => (
+        <div class="animate-fade-in">
+          <h3 class="text-2xl font-semibold text-text-primary mb-8 text-center">
+            {category.category}
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            {category.items.map((skill) => (
+              <div class="group relative">
+                <div class="bg-dark-card border border-dark-border rounded-lg p-6 text-center hover:border-neon-cyan transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg hover:shadow-neon-cyan/20 cursor-pointer">
+                  <div class={`text-4xl mb-3 group-hover:scale-110 transition-transform duration-300 ${skill.color}`}>
+                    <i class={skill.icon}></i>
+                  </div>
+                  <h4 class="text-text-primary font-medium text-sm group-hover:text-neon-cyan transition-colors duration-300">
+                    {skill.name}
+                  </h4>
+                  
+                  <!-- Glow effect on hover -->
+                  <div class="absolute inset-0 rounded-lg bg-gradient-to-r from-neon-cyan/0 to-neon-purple/0 group-hover:from-neon-cyan/10 group-hover:to-neon-purple/10 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Experience Level -->
+    <div class="mt-16 text-center">
+      <h3 class="text-2xl font-semibold text-text-primary mb-8">
+        Experience Level
+      </h3>
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="bg-dark-card border border-dark-border rounded-lg p-6">
+          <div class="text-neon-cyan text-3xl mb-4">
+            <i class="fas fa-star"></i>
+          </div>
+          <h4 class="text-text-primary font-semibold mb-2">Expert</h4>
+          <p class="text-text-muted text-sm">React, TypeScript, Node.js</p>
+        </div>
+        
+        <div class="bg-dark-card border border-dark-border rounded-lg p-6">
+          <div class="text-neon-purple text-3xl mb-4">
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <h4 class="text-text-primary font-semibold mb-2">Advanced</h4>
+          <p class="text-text-muted text-sm">Vue.js, Python, AWS</p>
+        </div>
+        
+        <div class="bg-dark-card border border-dark-border rounded-lg p-6">
+          <div class="text-neon-green text-3xl mb-4">
+            <i class="fas fa-star"></i>
+          </div>
+          <h4 class="text-text-primary font-semibold mb-2">Intermediate</h4>
+          <p class="text-text-muted text-sm">Angular, Java, Docker</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

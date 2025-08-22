@@ -1,49 +1,41 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import About from '../components/About.astro';
-import Skills from '../components/Skills.astro';
-import Projects from '../components/Projects.astro';
-import Experience from '../components/Experience.astro';
-import Timeline from '../components/Timeline.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
+import TimelineComponent from '../components/Timeline.astro';
 
-// Timeline data
 const timelineData = [
   {
     title: "Community Involvement",
     items: [
       {
-        logo: "/logos/placeholder.svg",
+        logo: "/logos/tie-mangaluru.png",
         title: "TIE Mangaluru",
         organization: "TIE Mangaluru",
         startDate: "2024-06-01",
         isPresent: true
       },
       {
-        logo: "/logos/placeholder.svg",
+        logo: "/logos/ieee.png",
         title: "IEEE Mangalore Subsection",
         organization: "IEEE Mangalore Subsection",
         startDate: "2022-01-01",
         isPresent: true
       },
       {
-        logo: "/logos/placeholder.svg",
+        logo: "/logos/foss-united.png",
         title: "FOSS United",
         organization: "FOSS United",
         startDate: "2023-06-01",
         isPresent: true
       },
       {
-        logo: "/logos/placeholder.svg",
+        logo: "/logos/sosc.png",
         title: "Sahyadri Open Source Community",
         organization: "Sahyadri Open Source Community (SOSC)",
         startDate: "2023-01-01",
         endDate: "2024-12-01"
       },
       {
-        logo: "/logos/placeholder.svg",
+        logo: "/logos/postman.png",
         title: "Postman",
         organization: "Postman",
         startDate: "2022-06-01",
@@ -55,7 +47,7 @@ const timelineData = [
     title: "Education",
     items: [
       {
-        logo: "/logos/placeholder.svg",
+        logo: "/logos/sahyadri-college.png",
         title: "Sahyadri College of Engineering and Management",
         organization: "Sahyadri College of Engineering and Management",
         startDate: "2021-01-01",
@@ -66,15 +58,6 @@ const timelineData = [
 ];
 ---
 
-<Layout title="Deveesh Shetty - Frontend Developer">
-  <Navigation />
-  <main>
-    <About />
-    <Skills />
-    <Projects />
-    <Experience />
-    <Timeline sections={timelineData} />
-    <Contact />
-  </main>
-  <Footer />
+<Layout title="Experience Timeline">
+  <TimelineComponent sections={timelineData} />
 </Layout>

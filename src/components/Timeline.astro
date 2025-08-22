@@ -1,0 +1,212 @@
+---
+export interface TimelineItem {
+  logo: string;
+  title: string;
+  organization: string;
+  startDate: string;
+  endDate?: string;
+  isPresent?: boolean;
+}
+
+export interface TimelineSection {
+  title: string;
+  items: TimelineItem[];
+}
+
+export interface Props {
+  sections: TimelineSection[];
+}
+
+const { sections } = Astro.props;
+
+// Timeline calculation functions
+function getTimelinePosition(date: string): number {
+  const startDate = new Date('2021-01-01');
+  const currentDate = new Date(date);
+  const totalDuration = new Date('2025-12-31').getTime() - startDate.getTime();
+  const position = (currentDate.getTime() - startDate.getTime()) / totalDuration;
+  return Math.max(0, Math.min(100, position * 100));
+}
+
+function getTimelineWidth(startDate: string, endDate?: string): number {
+  const start = new Date(startDate);
+  const end = endDate ? new Date(endDate) : new Date();
+  const totalDuration = new Date('2025-12-31').getTime() - new Date('2021-01-01').getTime();
+  const duration = end.getTime() - start.getTime();
+  const width = (duration / totalDuration) * 100;
+  
+  // Ensure minimum width for visibility
+  return Math.max(8, Math.min(100, width));
+}
+
+// Calculate timeline positions for all items
+const sectionsWithTimeline = sections.map(section => ({
+  ...section,
+  items: section.items.map(item => ({
+    ...item,
+    timelinePosition: getTimelinePosition(item.startDate),
+    timelineWidth: getTimelineWidth(item.startDate, item.endDate)
+  }))
+}));
+---
+
+<section class="py-16 px-4">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-white text-center mb-16">Experience Timeline</h2>
+    
+    <div class="space-y-16">
+      {sectionsWithTimeline.map((section) => (
+        <div class="timeline-section">
+          <h3 class="text-2xl font-bold text-white mb-8">{section.title}</h3>
+          <div class="border-t border-gray-600 mb-8"></div>
+          
+          <div class="timeline-container relative">
+            {/* Timeline grid lines */}
+            <div class="timeline-grid absolute inset-0 pointer-events-none">
+              <div class="grid-line" style="left: 0%"></div>
+              <div class="grid-line" style="left: 25%"></div>
+              <div class="grid-line" style="left: 50%"></div>
+              <div class="grid-line" style="left: 75%"></div>
+              <div class="grid-line" style="left: 100%"></div>
+            </div>
+            
+            {/* Year labels */}
+            <div class="timeline-labels absolute -bottom-8 left-0 right-0 flex justify-between text-sm text-gray-400">
+              <span>2021</span>
+              <span>2022</span>
+              <span>2023</span>
+              <span>2024</span>
+              <span>2025</span>
+            </div>
+            
+            {/* Current date indicator */}
+            <div class="current-date-indicator absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+              <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                <span class="text-yellow-400 text-xs font-medium">Current Date</span>
+              </div>
+            </div>
+            
+            {/* Timeline items */}
+            <div class="space-y-6 relative z-10">
+              {section.items.map((item) => (
+                <div class="timeline-item flex items-center space-x-4">
+                  {/* Logo */}
+                  <div class="timeline-logo flex-shrink-0 w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center">
+                    <img src={item.logo} alt={item.organization} class="w-8 h-8 object-contain" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-2">
+                      <h4 class="text-white font-semibold truncate">{item.organization}</h4>
+                      {item.isPresent && (
+                        <span class="text-green-400 text-sm font-medium bg-green-400/10 px-2 py-1 rounded">
+                          Present
+                        </span>
+                      )}
+                    </div>
+                    
+                    {/* Timeline bar */}
+                    <div class="timeline-bar-container relative h-4 bg-gray-800 rounded-full overflow-hidden">
+                      <div 
+                        class={`timeline-bar h-full bg-gradient-to-r from-green-400 to-teal-400 rounded-full ${item.isPresent ? 'present-bar' : ''}`}
+                        style={`left: ${item.timelinePosition}%; width: ${item.timelineWidth}%`}
+                      ></div>
+                      {item.isPresent && (
+                        <div class="absolute top-0 right-0 w-2 h-full bg-yellow-400 rounded-r-full animate-pulse"></div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+<style>
+  .timeline-container {
+    padding-bottom: 3rem;
+  }
+  
+  .timeline-grid {
+    height: calc(100% - 2rem);
+  }
+  
+  .grid-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    border-left: 1px dashed rgba(75, 85, 99, 0.5);
+  }
+  
+  .timeline-bar-container {
+    position: relative;
+  }
+  
+  .timeline-bar {
+    position: absolute;
+    top: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+  }
+  
+  .timeline-item:hover .timeline-bar {
+    opacity: 0.9;
+    transform: scaleY(1.2);
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+  }
+  
+  .present-bar {
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+  
+  .present-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(45deg, #fbbf24, #f59e0b);
+    border-radius: 0 4px 4px 0;
+    animation: pulse 2s infinite;
+  }
+  
+  .timeline-logo {
+    border: 1px solid rgba(75, 85, 99, 0.3);
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scaleY(1.1);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .timeline-item {
+      flex-direction: column;
+      align-items: flex-start;
+      space-x: 0;
+      space-y: 2;
+    }
+    
+    .timeline-logo {
+      margin-bottom: 0.5rem;
+    }
+  }
+</style>

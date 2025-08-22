@@ -1,0 +1,186 @@
+---
+// Experience section component
+const experience = [
+  {
+    title: "Senior Full-Stack Developer",
+    company: "TechCorp Inc.",
+    period: "2022 - Present",
+    description: "Leading development of enterprise web applications using React, Node.js, and cloud technologies. Mentoring junior developers and implementing best practices.",
+    icon: "fas fa-code",
+    type: "work"
+  },
+  {
+    title: "Full-Stack Developer",
+    company: "StartupXYZ",
+    period: "2020 - 2022",
+    description: "Built scalable web applications and APIs. Collaborated with cross-functional teams to deliver high-quality products on time.",
+    icon: "fas fa-rocket",
+    type: "work"
+  },
+  {
+    title: "Frontend Developer",
+    company: "Digital Agency",
+    period: "2018 - 2020",
+    description: "Developed responsive websites and web applications using modern JavaScript frameworks. Worked closely with designers to implement pixel-perfect designs.",
+    icon: "fas fa-palette",
+    type: "work"
+  }
+];
+
+export const education = [
+  {
+    title: "Bachelor of Engineering - BE, Artificial Intelligence and Data Science",
+    company: "Srinivas Institute of Technology, Mangalore",
+    period: "Aug 2024 - Aug 2028",
+    description:
+      "Skills: Python (Programming Language), Team Building, Team Management, Research Skills, Team Leadership, Startup Development, AutoCAD",
+    icon: "fas fa-graduation-cap",
+    type: "education",
+  },
+  {
+    title: "High School",
+    company: "MGSK Gujarati Highschool",
+    period: "2023 - 2024",
+    description: "Completed higher secondary education with focus on science and mathematics.",
+    icon: "fas fa-school",
+    type: "education",
+  },
+];
+
+---
+
+<section id="experience" class="py-20 bg-dark-bg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
+        Experience & <span class="text-neon-cyan">Education</span>
+      </h2>
+      <div class="w-24 h-1 bg-neon-cyan mx-auto mb-6"></div>
+      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+        My professional journey and academic background
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <!-- Work Experience -->
+      <div>
+        <h3 class="text-2xl font-semibold text-text-primary mb-8 flex items-center">
+          <i class="fas fa-briefcase text-neon-cyan mr-3"></i>
+          Work Experience
+        </h3>
+        
+        <div class="space-y-8">
+          {experience.map((item, index) => (
+            <div class="relative">
+              <!-- Timeline line -->
+              {index < experience.length - 1 && (
+                <div class="absolute left-6 top-12 w-0.5 h-16 bg-dark-border"></div>
+              )}
+              
+              <div class="flex items-start space-x-4 group">
+                <!-- Icon -->
+                <div class="flex-shrink-0 w-12 h-12 bg-dark-card border border-dark-border rounded-full flex items-center justify-center group-hover:border-neon-cyan transition-all duration-300">
+                  <i class={`${item.icon} text-neon-cyan`}></i>
+                </div>
+                
+                <!-- Content -->
+                <div class="flex-1 bg-dark-card border border-dark-border rounded-lg p-6 group-hover:border-neon-cyan transition-all duration-300">
+                  <div class="flex justify-between items-start mb-2">
+                    <h4 class="text-lg font-semibold text-text-primary group-hover:text-neon-cyan transition-colors duration-300">
+                      {item.title}
+                    </h4>
+                    <span class="text-sm text-neon-cyan font-medium">
+                      {item.period}
+                    </span>
+                  </div>
+                  <p class="text-neon-purple font-medium mb-3">
+                    {item.company}
+                  </p>
+                  <p class="text-text-secondary text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div>
+        <h3 class="text-2xl font-semibold text-text-primary mb-8 flex items-center">
+          <i class="fas fa-graduation-cap text-neon-green mr-3"></i>
+          Education
+        </h3>
+        
+        <div class="space-y-8">
+          {education.map((item, index) => (
+            <div class="relative">
+              <!-- Timeline line -->
+              {index < education.length - 1 && (
+                <div class="absolute left-6 top-12 w-0.5 h-16 bg-dark-border"></div>
+              )}
+              
+              <div class="flex items-start space-x-4 group">
+                <!-- Icon -->
+                <div class="flex-shrink-0 w-12 h-12 bg-dark-card border border-dark-border rounded-full flex items-center justify-center group-hover:border-neon-green transition-all duration-300">
+                  <i class={`${item.icon} text-neon-green`}></i>
+                </div>
+                
+                <!-- Content -->
+                <div class="flex-1 bg-dark-card border border-dark-border rounded-lg p-6 group-hover:border-neon-green transition-all duration-300">
+                  <div class="flex justify-between items-start mb-2">
+                    <h4 class="text-lg font-semibold text-text-primary group-hover:text-neon-green transition-colors duration-300">
+                      {item.title}
+                    </h4>
+                    <span class="text-sm text-neon-green font-medium">
+                      {item.period}
+                    </span>
+                  </div>
+                  <p class="text-neon-purple font-medium mb-3">
+                    {item.company}
+                  </p>
+                  <p class="text-text-secondary text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="mt-16">
+      <h3 class="text-2xl font-semibold text-text-primary mb-8 text-center">
+        Certifications
+      </h3>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div class="bg-dark-card border border-dark-border rounded-lg p-6 text-center hover:border-neon-cyan transition-all duration-300">
+          <div class="text-neon-cyan text-3xl mb-4">
+            <i class="fab fa-aws"></i>
+          </div>
+          <h4 class="text-text-primary font-semibold mb-2">AWS Certified Developer</h4>
+          <p class="text-text-muted text-sm">2023</p>
+        </div>
+        
+        <div class="bg-dark-card border border-dark-border rounded-lg p-6 text-center hover:border-neon-purple transition-all duration-300">
+          <div class="text-neon-purple text-3xl mb-4">
+            <i class="fab fa-google"></i>
+          </div>
+          <h4 class="text-text-primary font-semibold mb-2">Google Cloud Professional</h4>
+          <p class="text-text-muted text-sm">2022</p>
+        </div>
+        
+        <div class="bg-dark-card border border-dark-border rounded-lg p-6 text-center hover:border-neon-green transition-all duration-300">
+          <div class="text-neon-green text-3xl mb-4">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h4 class="text-text-primary font-semibold mb-2">React Advanced Certification</h4>
+          <p class="text-text-muted text-sm">2021</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
