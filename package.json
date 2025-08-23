@@ -9,8 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/node": "^9.4.3",
     "@astrojs/tailwind": "^6.0.0",
+    "@astrojs/vercel": "^8.2.6",
     "@types/nodemailer": "^7.0.1",
     "astro": "^5.13.2",
     "autoprefixer": "^10.4.16",
