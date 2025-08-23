@@ -24,6 +24,14 @@
 			"dest": "_render"
 		},
 		{
+			"src": "^/api/contact-simple/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/api/debug-env/?$",
+			"dest": "_render"
+		},
+		{
 			"src": "^/api/mail/?$",
 			"dest": "_render"
 		},
