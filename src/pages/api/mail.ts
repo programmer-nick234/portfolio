@@ -34,6 +34,21 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
+    // Get environment variables
+    const gmailUser = import.meta.env.GMAIL_USER || 'nikhilbajantri86@gmail.com';
+    const gmailPassword = import.meta.env.GMAIL_APP_PASSWORD;
+
+    if (!gmailPassword) {
+      console.error('GMAIL_APP_PASSWORD environment variable is not set');
+      return new Response(JSON.stringify({ 
+        success: false, 
+        message: 'Email service is not configured. Please contact support.' 
+      }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
     // Email configuration - try multiple options
     const emailConfigs = [
       // Option 1: Gmail with App Password (Port 465)
@@ -42,8 +57,8 @@ export const POST: APIRoute = async ({ request }) => {
         config: {
           service: 'gmail',
           auth: {
-            user: 'nikhilbajantri86@gmail.com',
-            pass: 'ivzn dgjc qfsl uyka'
+            user: gmailUser,
+            pass: gmailPassword
           },
           secure: true,
           port: 465
@@ -55,8 +70,8 @@ export const POST: APIRoute = async ({ request }) => {
         config: {
           service: 'gmail',
           auth: {
-            user: 'nikhilbajantri86@gmail.com',
-            pass: 'ivzn dgjc qfsl uyka'
+            user: gmailUser,
+            pass: gmailPassword
           },
           secure: false,
           port: 587,
@@ -73,8 +88,8 @@ export const POST: APIRoute = async ({ request }) => {
           port: 587,
           secure: false,
           auth: {
-            user: 'nikhilbajantri86@gmail.com',
-            pass: 'ivzn dgjc qfsl uyka'
+            user: gmailUser,
+            pass: gmailPassword
           },
           tls: {
             rejectUnauthorized: false
@@ -141,8 +156,8 @@ Sent from your portfolio website contact form.
 
     // Email options
     const mailOptions = {
-      from: 'nikhilbajantri86@gmail.com',
-      to: 'nikhilbajantri86@gmail.com',
+      from: gmailUser,
+      to: gmailUser,
       subject: subject,
       text: emailContent,
       html: `

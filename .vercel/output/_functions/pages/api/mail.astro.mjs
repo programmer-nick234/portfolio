@@ -27,6 +27,18 @@ const POST = async ({ request }) => {
         headers: { "Content-Type": "application/json" }
       });
     }
+    const gmailUser = undefined                           || "nikhilbajantri86@gmail.com";
+    const gmailPassword = undefined                                  ;
+    if (!gmailPassword) {
+      console.error("GMAIL_APP_PASSWORD environment variable is not set");
+      return new Response(JSON.stringify({
+        success: false,
+        message: "Email service is not configured. Please contact support."
+      }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
     const emailConfigs = [
       // Option 1: Gmail with App Password (Port 465)
       {
@@ -34,8 +46,8 @@ const POST = async ({ request }) => {
         config: {
           service: "gmail",
           auth: {
-            user: "nikhilbajantri86@gmail.com",
-            pass: "ivzn dgjc qfsl uyka"
+            user: gmailUser,
+            pass: gmailPassword
           },
           secure: true,
           port: 465
@@ -47,8 +59,8 @@ const POST = async ({ request }) => {
         config: {
           service: "gmail",
           auth: {
-            user: "nikhilbajantri86@gmail.com",
-            pass: "ivzn dgjc qfsl uyka"
+            user: gmailUser,
+            pass: gmailPassword
           },
           secure: false,
           port: 587,
@@ -65,8 +77,8 @@ const POST = async ({ request }) => {
           port: 587,
           secure: false,
           auth: {
-            user: "nikhilbajantri86@gmail.com",
-            pass: "ivzn dgjc qfsl uyka"
+            user: gmailUser,
+            pass: gmailPassword
           },
           tls: {
             rejectUnauthorized: false
@@ -112,8 +124,8 @@ ${sanitizedMessage}
 Sent from your portfolio website contact form.
     `;
     const mailOptions = {
-      from: "nikhilbajantri86@gmail.com",
-      to: "nikhilbajantri86@gmail.com",
+      from: gmailUser,
+      to: gmailUser,
       subject,
       text: emailContent,
       html: `

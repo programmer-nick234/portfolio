@@ -5,14 +5,26 @@ const prerender = false;
 const GET = async () => {
   try {
     console.log("Testing email configuration...");
+    const gmailUser = undefined                           || "nikhilbajantri86@gmail.com";
+    const gmailPassword = undefined                                  ;
+    if (!gmailPassword) {
+      return new Response(JSON.stringify({
+        success: false,
+        error: "GMAIL_APP_PASSWORD environment variable is not set",
+        timestamp: (/* @__PURE__ */ new Date()).toISOString()
+      }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
     const configs = [
       {
         name: "Gmail with App Password (Port 465)",
         config: {
           service: "gmail",
           auth: {
-            user: "nikhilbajantri86@gmail.com",
-            pass: "ivzn dgjc qfsl uyka"
+            user: gmailUser,
+            pass: gmailPassword
           },
           secure: true,
           port: 465
@@ -23,8 +35,8 @@ const GET = async () => {
         config: {
           service: "gmail",
           auth: {
-            user: "nikhilbajantri86@gmail.com",
-            pass: "ivzn dgjc qfsl uyka"
+            user: gmailUser,
+            pass: gmailPassword
           },
           secure: false,
           port: 587,
@@ -40,8 +52,8 @@ const GET = async () => {
           port: 587,
           secure: false,
           auth: {
-            user: "nikhilbajantri86@gmail.com",
-            pass: "ivzn dgjc qfsl uyka"
+            user: gmailUser,
+            pass: gmailPassword
           },
           tls: {
             rejectUnauthorized: false

@@ -8,6 +8,21 @@ export const GET: APIRoute = async () => {
   try {
     console.log('Testing email configuration...');
     
+    // Get environment variables
+    const gmailUser = import.meta.env.GMAIL_USER || 'nikhilbajantri86@gmail.com';
+    const gmailPassword = import.meta.env.GMAIL_APP_PASSWORD;
+
+    if (!gmailPassword) {
+      return new Response(JSON.stringify({
+        success: false,
+        error: 'GMAIL_APP_PASSWORD environment variable is not set',
+        timestamp: new Date().toISOString()
+      }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    
     // Test different configurations
     const configs = [
       {
@@ -15,8 +30,8 @@ export const GET: APIRoute = async () => {
         config: {
           service: 'gmail',
           auth: {
-            user: 'nikhilbajantri86@gmail.com',
-            pass: 'ivzn dgjc qfsl uyka'
+            user: gmailUser,
+            pass: gmailPassword
           },
           secure: true,
           port: 465
@@ -27,8 +42,8 @@ export const GET: APIRoute = async () => {
         config: {
           service: 'gmail',
           auth: {
-            user: 'nikhilbajantri86@gmail.com',
-            pass: 'ivzn dgjc qfsl uyka'
+            user: gmailUser,
+            pass: gmailPassword
           },
           secure: false,
           port: 587,
@@ -44,8 +59,8 @@ export const GET: APIRoute = async () => {
           port: 587,
           secure: false,
           auth: {
-            user: 'nikhilbajantri86@gmail.com',
-            pass: 'ivzn dgjc qfsl uyka'
+            user: gmailUser,
+            pass: gmailPassword
           },
           tls: {
             rejectUnauthorized: false
