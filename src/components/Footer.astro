@@ -1,81 +1,28 @@
 ---
 // Footer component
-const quickLinks = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/now" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
-];
 ---
 
-<footer class="bg-dark-bg border-t border-dark-border py-12">
+<footer class="bg-dark-bg border-t border-dark-border py-6">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-3 gap-8 items-center">
-      <!-- Logo and Description -->
-      <div class="text-center md:text-left">
-        <h3 class="text-2xl font-bold text-neon-cyan mb-2">Nikhil Bajantri</h3>
-        <p class="text-text-secondary text-sm">
-          Developer | Innovator
-        </p>
+    <div class="flex flex-col sm:flex-row justify-between items-center">
+      <!-- Copyright -->
+      <div class="text-text-secondary text-sm">
+        © {new Date().getFullYear()} Nikhil Bajantri. All rights reserved.
       </div>
 
-      <!-- Quick Links -->
-      <div class="text-center">
-        <h4 class="text-text-primary font-semibold mb-4">Quick Links</h4>
-        <div class="flex flex-wrap justify-center gap-6">
-          {quickLinks.map((link) => (
-            <a
-              href={link.href}
-              class="text-text-secondary hover:text-neon-cyan transition-colors duration-300 text-sm"
-            >
-              {link.name}
-            </a>
-          ))}
-        </div>
+      <!-- Tech Stack Credits -->
+      <div class="text-text-secondary text-sm flex items-center space-x-2 mt-2 sm:mt-0">
+        <span>Built with</span>
+        <!-- Astro.js Logo -->
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 19h20L12 2zm0 3.84L19.5 19h-15L12 5.84z"/>
+        </svg>
+        <span>and hosted on</span>
+        <!-- Vercel Logo -->
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 22.525H0l12-21.05 12 21.05z"/>
+        </svg>
       </div>
-
-      <!-- Social Links -->
-      <div class="text-center md:text-right">
-        <h4 class="text-text-primary font-semibold mb-4">Connect</h4>
-        <div class="flex justify-center md:justify-end space-x-4">
-          <a
-            href="#"
-            class="text-text-secondary hover:text-neon-cyan transition-colors duration-300"
-            title="GitHub"
-          >
-            <i class="fab fa-github text-xl"></i>
-          </a>
-          <a
-            href="#"
-            class="text-text-secondary hover:text-neon-purple transition-colors duration-300"
-            title="LinkedIn"
-          >
-            <i class="fab fa-linkedin text-xl"></i>
-          </a>
-          <a
-            href="#"
-            class="text-text-secondary hover:text-blue-500 transition-colors duration-300"
-            title="Twitter"
-          >
-            <i class="fab fa-twitter text-xl"></i>
-          </a>
-          <a
-            href="mailto:nick@example.com"
-            class="text-text-secondary hover:text-red-400 transition-colors duration-300"
-            title="Email"
-          >
-            <i class="fas fa-envelope text-xl"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Copyright -->
-    <div class="border-t border-dark-border mt-8 pt-8 text-center">
-      <p class="text-text-muted text-sm">
-        © {new Date().getFullYear()} Nikhil Bajantri. All rights reserved. 
-        <span class="text-neon-cyan">Built with ❤️ and Astro</span>
-      </p>
     </div>
   </div>
 </footer>

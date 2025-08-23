@@ -2,36 +2,86 @@
 // Skills section component
 const skills = [
   {
-    category: "Frontend",
+    category: "Programming Languages",
+    description: "Core languages I use for building applications and solving problems",
     items: [
-      { name: "React", icon: "fab fa-react", color: "text-blue-400" },
-      { name: "Vue.js", icon: "fab fa-vuejs", color: "text-green-400" },
-      { name: "Angular", icon: "fab fa-angular", color: "text-red-400" },
-      { name: "TypeScript", icon: "fab fa-js-square", color: "text-blue-500" },
-      { name: "Tailwind CSS", icon: "fas fa-palette", color: "text-cyan-400" },
-      { name: "Next.js", icon: "fas fa-code", color: "text-white" },
+      { name: "Python", icon: "fab fa-python", color: "text-yellow-400", description: "Data science, ML, web development" },
+      { name: "JavaScript", icon: "fab fa-js-square", color: "text-yellow-300", description: "Frontend & backend development" },
+      { name: "Dart", icon: "fas fa-code", color: "text-blue-400", description: "Cross-platform mobile development" },
+      { name: "C", icon: "fas fa-microchip", color: "text-blue-500", description: "System programming & algorithms" },
+      { name: "HTML5", icon: "fab fa-html5", color: "text-orange-500", description: "Semantic web markup" },
+      { name: "CSS3", icon: "fab fa-css3-alt", color: "text-blue-400", description: "Modern styling & animations" },
     ]
   },
   {
-    category: "Backend",
+    category: "Web Technologies",
+    description: "Frameworks and tools for building modern web applications",
     items: [
-      { name: "Node.js", icon: "fab fa-node-js", color: "text-green-500" },
-      { name: "Python", icon: "fab fa-python", color: "text-yellow-400" },
-      { name: "Java", icon: "fab fa-java", color: "text-red-500" },
-      { name: "PostgreSQL", icon: "fas fa-database", color: "text-blue-400" },
-      { name: "MongoDB", icon: "fas fa-leaf", color: "text-green-400" },
-      { name: "Redis", icon: "fas fa-memory", color: "text-red-400" },
+      { name: "React.js", icon: "fab fa-react", color: "text-blue-400", description: "Component-based UI development" },
+      { name: "Next.js", icon: "fas fa-code", color: "text-white", description: "Full-stack React framework" },
+      { name: "Tailwind CSS", icon: "fas fa-palette", color: "text-cyan-400", description: "Utility-first CSS framework" },
+      { name: "Django", icon: "fab fa-python", color: "text-green-600", description: "Python web framework" },
+      { name: "Express.js", icon: "fab fa-node-js", color: "text-green-500", description: "Node.js web framework" },
+      { name: "RESTful APIs", icon: "fas fa-server", color: "text-purple-400", description: "API design & development" },
+      { name: "JWT Auth", icon: "fas fa-shield-alt", color: "text-red-400", description: "Secure authentication" },
     ]
   },
   {
-    category: "Tools & Others",
+    category: "Machine Learning",
+    description: "AI/ML tools and techniques for data analysis and prediction",
     items: [
-      { name: "Git", icon: "fab fa-git-alt", color: "text-orange-500" },
-      { name: "Docker", icon: "fab fa-docker", color: "text-blue-500" },
-      { name: "AWS", icon: "fab fa-aws", color: "text-yellow-500" },
-      { name: "Figma", icon: "fab fa-figma", color: "text-purple-400" },
-      { name: "Linux", icon: "fab fa-linux", color: "text-yellow-400" },
-      { name: "VSCode", icon: "fas fa-code", color: "text-blue-400" },
+      { name: "Supervised Learning", icon: "fas fa-brain", color: "text-purple-400", description: "Classification & regression" },
+      { name: "Unsupervised Learning", icon: "fas fa-network-wired", color: "text-blue-400", description: "Clustering & dimensionality" },
+      { name: "Scikit-learn", icon: "fas fa-chart-line", color: "text-orange-500", description: "ML algorithms library" },
+      { name: "Pandas", icon: "fas fa-table", color: "text-blue-500", description: "Data manipulation & analysis" },
+      { name: "NumPy", icon: "fas fa-calculator", color: "text-green-500", description: "Numerical computing" },
+      { name: "Matplotlib", icon: "fas fa-chart-bar", color: "text-blue-400", description: "Data visualization" },
+      { name: "Seaborn", icon: "fas fa-chart-pie", color: "text-red-400", description: "Statistical visualization" },
+    ]
+  },
+  {
+    category: "Databases",
+    description: "Data storage solutions for different application needs",
+    items: [
+      { name: "MongoDB", icon: "fas fa-leaf", color: "text-green-400", description: "NoSQL document database" },
+      { name: "Firebase", icon: "fas fa-fire", color: "text-orange-500", description: "Real-time database & auth" },
+      { name: "MySQL", icon: "fas fa-database", color: "text-blue-500", description: "Relational database" },
+      { name: "SQLite", icon: "fas fa-database", color: "text-blue-400", description: "Lightweight SQL database" },
+    ]
+  },
+  {
+    category: "Tools & Platforms",
+    description: "Development tools and platforms I use daily",
+    items: [
+      { name: "Git", icon: "fab fa-git-alt", color: "text-orange-500", description: "Version control system" },
+      { name: "GitHub", icon: "fab fa-github", color: "text-gray-400", description: "Code collaboration platform" },
+      { name: "Postman", icon: "fas fa-paper-plane", color: "text-orange-400", description: "API testing & documentation" },
+      { name: "Docker", icon: "fab fa-docker", color: "text-blue-500", description: "Containerization platform" },
+      { name: "VS Code", icon: "fas fa-code", color: "text-blue-400", description: "Primary code editor" },
+      { name: "Linux (Kali)", icon: "fab fa-linux", color: "text-yellow-400", description: "Security & development OS" },
+      { name: "Jupyter", icon: "fas fa-book", color: "text-orange-400", description: "Interactive data analysis" },
+    ]
+  },
+  {
+    category: "Cloud & DevOps",
+    description: "Cloud platforms and DevOps practices for scalable applications",
+    items: [
+      { name: "AWS", icon: "fab fa-aws", color: "text-yellow-500", description: "Cloud infrastructure & services" },
+      { name: "Google Cloud", icon: "fab fa-google", color: "text-blue-500", description: "Cloud computing platform" },
+      { name: "Docker", icon: "fab fa-docker", color: "text-blue-500", description: "Container orchestration" },
+      { name: "Prometheus", icon: "fas fa-chart-line", color: "text-red-400", description: "Monitoring & alerting" },
+      { name: "Grafana", icon: "fas fa-chart-area", color: "text-orange-400", description: "Data visualization & monitoring" },
+    ]
+  },
+  {
+    category: "Soft Skills",
+    description: "Professional skills that complement technical expertise",
+    items: [
+      { name: "Problem Solving", icon: "fas fa-puzzle-piece", color: "text-green-400", description: "Analytical thinking & solutions" },
+      { name: "Critical Thinking", icon: "fas fa-lightbulb", color: "text-yellow-400", description: "Logical analysis & evaluation" },
+      { name: "Leadership", icon: "fas fa-users", color: "text-blue-400", description: "Team management & guidance" },
+      { name: "Time Management", icon: "fas fa-clock", color: "text-purple-400", description: "Efficient project planning" },
+      { name: "Agile Collaboration", icon: "fas fa-sync", color: "text-cyan-400", description: "Iterative development & teamwork" },
     ]
   }
 ];
@@ -44,30 +94,42 @@ const skills = [
         Skills & <span class="text-neon-cyan">Technologies</span>
       </h2>
       <div class="w-24 h-1 bg-neon-cyan mx-auto mb-6"></div>
-      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
-        I work with a variety of technologies to create robust and scalable applications
+      <p class="text-text-secondary text-lg max-w-3xl mx-auto">
+        A comprehensive toolkit for building modern applications, from frontend interfaces to machine learning models and cloud infrastructure
       </p>
     </div>
 
     <div class="space-y-12">
       {skills.map((category) => (
-        <div class="animate-fade-in">
-          <h3 class="text-2xl font-semibold text-text-primary mb-8 text-center">
-            {category.category}
-          </h3>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div class="skill-category">
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold text-text-primary mb-2">
+              {category.category}
+            </h3>
+            <p class="text-text-secondary text-sm max-w-xl mx-auto">
+              {category.description}
+            </p>
+            <div class="w-12 h-0.5 bg-neon-cyan mx-auto mt-3"></div>
+          </div>
+          
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {category.items.map((skill) => (
-              <div class="group relative">
-                <div class="bg-dark-card border border-dark-border rounded-lg p-6 text-center hover:border-neon-cyan transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg hover:shadow-neon-cyan/20 cursor-pointer">
-                  <div class={`text-4xl mb-3 group-hover:scale-110 transition-transform duration-300 ${skill.color}`}>
+              <div class="group">
+                <div class="bg-dark-card border border-dark-border rounded-lg p-4 hover:border-neon-cyan transition-all duration-300 hover:shadow-lg hover:shadow-neon-cyan/10 text-center">
+                  <!-- Icon -->
+                  <div class={`text-2xl ${skill.color} mb-2`}>
                     <i class={skill.icon}></i>
                   </div>
+                  
+                  <!-- Skill Name -->
                   <h4 class="text-text-primary font-medium text-sm group-hover:text-neon-cyan transition-colors duration-300">
                     {skill.name}
                   </h4>
                   
-                  <!-- Glow effect on hover -->
-                  <div class="absolute inset-0 rounded-lg bg-gradient-to-r from-neon-cyan/0 to-neon-purple/0 group-hover:from-neon-cyan/10 group-hover:to-neon-purple/10 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
+                  <!-- Tooltip with description -->
+                  <div class="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 text-white text-xs rounded px-2 py-1 -mt-8 left-1/2 transform -translate-x-1/2 pointer-events-none whitespace-nowrap z-10">
+                    {skill.description}
+                  </div>
                 </div>
               </div>
             ))}
@@ -77,35 +139,113 @@ const skills = [
     </div>
 
     <!-- Experience Level -->
-    <div class="mt-16 text-center">
-      <h3 class="text-2xl font-semibold text-text-primary mb-8">
-        Experience Level
-      </h3>
-      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-        <div class="bg-dark-card border border-dark-border rounded-lg p-6">
-          <div class="text-neon-cyan text-3xl mb-4">
+    <div class="mt-16">
+      <div class="text-center mb-8">
+        <h3 class="text-2xl font-bold text-text-primary mb-2">
+          Experience Level
+        </h3>
+        <p class="text-text-secondary text-sm max-w-xl mx-auto">
+          My proficiency levels across different technology domains
+        </p>
+        <div class="w-12 h-0.5 bg-neon-cyan mx-auto mt-3"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div class="bg-dark-card border border-dark-border rounded-lg p-4 hover:border-neon-cyan transition-all duration-300">
+          <div class="text-neon-cyan text-2xl mb-3">
             <i class="fas fa-star"></i>
           </div>
-          <h4 class="text-text-primary font-semibold mb-2">Expert</h4>
-          <p class="text-text-muted text-sm">React, TypeScript, Node.js</p>
+          <h4 class="text-text-primary font-bold mb-2 text-lg">Expert Level</h4>
+          <p class="text-text-secondary text-xs leading-relaxed mb-3">
+            Technologies I've mastered through extensive project work
+          </p>
+          <div class="space-y-1">
+            <div class="flex justify-between items-center">
+              <span class="text-text-primary text-xs">Python</span>
+              <span class="text-neon-cyan text-xs">95%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-text-primary text-xs">JavaScript</span>
+              <span class="text-neon-cyan text-xs">90%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-text-primary text-xs">React.js</span>
+              <span class="text-neon-cyan text-xs">88%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-text-primary text-xs">Machine Learning</span>
+              <span class="text-neon-cyan text-xs">85%</span>
+            </div>
+          </div>
         </div>
         
-        <div class="bg-dark-card border border-dark-border rounded-lg p-6">
-          <div class="text-neon-purple text-3xl mb-4">
+        <div class="bg-dark-card border border-dark-border rounded-lg p-4 hover:border-neon-purple transition-all duration-300">
+          <div class="text-neon-purple text-2xl mb-3">
             <i class="fas fa-star-half-alt"></i>
           </div>
-          <h4 class="text-text-primary font-semibold mb-2">Advanced</h4>
-          <p class="text-text-muted text-sm">Vue.js, Python, AWS</p>
+          <h4 class="text-text-primary font-bold mb-2 text-lg">Advanced Level</h4>
+          <p class="text-text-secondary text-xs leading-relaxed mb-3">
+            Technologies I'm proficient in and actively use
+          </p>
+          <div class="space-y-1">
+            <div class="flex justify-between items-center">
+              <span class="text-text-primary text-xs">Next.js</span>
+              <span class="text-neon-purple text-xs">80%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-text-primary text-xs">Django</span>
+              <span class="text-neon-purple text-xs">75%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-text-primary text-xs">MongoDB</span>
+              <span class="text-neon-purple text-xs">78%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-text-primary text-xs">AWS</span>
+              <span class="text-neon-purple text-xs">72%</span>
+            </div>
+          </div>
         </div>
         
-        <div class="bg-dark-card border border-dark-border rounded-lg p-6">
-          <div class="text-neon-green text-3xl mb-4">
+        <div class="bg-dark-card border border-dark-border rounded-lg p-4 hover:border-neon-green transition-all duration-300">
+          <div class="text-neon-green text-2xl mb-3">
             <i class="fas fa-star"></i>
           </div>
-          <h4 class="text-text-primary font-semibold mb-2">Intermediate</h4>
-          <p class="text-text-muted text-sm">Angular, Java, Docker</p>
+          <h4 class="text-text-primary font-bold mb-2 text-lg">Intermediate Level</h4>
+          <p class="text-text-secondary text-xs leading-relaxed mb-3">
+            Technologies I'm learning and expanding knowledge in
+          </p>
+          <div class="space-y-1">
+            <div class="flex justify-between items-center">
+              <span class="text-text-primary text-xs">Dart</span>
+              <span class="text-neon-green text-xs">65%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-text-primary text-xs">C Programming</span>
+              <span class="text-neon-green text-xs">60%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-text-primary text-xs">Google Cloud</span>
+              <span class="text-neon-green text-xs">55%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-text-primary text-xs">Prometheus</span>
+              <span class="text-neon-green text-xs">50%</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* Minimal hover effects for content-focused design */
+  .skill-category {
+    transition: all 0.3s ease;
+  }
+  
+  .group:hover {
+    transform: translateY(-2px);
+  }
+</style>

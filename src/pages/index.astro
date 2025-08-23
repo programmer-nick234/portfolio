@@ -8,6 +8,7 @@ import Experience from '../components/Experience.astro';
 import Timeline from '../components/Timeline.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+import { internalSpreadAttributes } from 'astro/runtime/server/render/util.js';
 
 // Timeline data
 const timelineData = [
@@ -15,58 +16,42 @@ const timelineData = [
     title: "Community Involvement",
     items: [
       {
-        logo: "/logos/placeholder.svg",
-        title: "TIE Mangaluru",
-        organization: "TIE Mangaluru",
-        startDate: "2024-06-01",
+        logo: "/community/DK24.png",
+        title: "DK24 Cluster",
+        organization: "DK24",
+        startDate: "2025-02-25",
         isPresent: true
       },
+
+
       {
-        logo: "/logos/placeholder.svg",
-        title: "IEEE Mangalore Subsection",
-        organization: "IEEE Mangalore Subsection",
-        startDate: "2022-01-01",
-        isPresent: true
-      },
-      {
-        logo: "/logos/placeholder.svg",
-        title: "FOSS United",
-        organization: "FOSS United",
-        startDate: "2023-06-01",
-        isPresent: true
-      },
-      {
-        logo: "/logos/placeholder.svg",
-        title: "Sahyadri Open Source Community",
-        organization: "Sahyadri Open Source Community (SOSC)",
+        logo: "/community/SSOSC.LOGO-WHITE.png",
+        title: "Srinivas Student Open Source Community",
+        organization: "Srinivas Student Open Source Community (SSOSC)",
         startDate: "2023-01-01",
-        endDate: "2024-12-01"
+		isPresent: true
+        
       },
-      {
-        logo: "/logos/placeholder.svg",
-        title: "Postman",
-        organization: "Postman",
-        startDate: "2022-06-01",
-        endDate: "2023-06-01"
-      }
+      
     ]
   },
   {
     title: "Education",
     items: [
       {
-        logo: "/logos/placeholder.svg",
-        title: "Sahyadri College of Engineering and Management",
-        organization: "Sahyadri College of Engineering and Management",
-        startDate: "2021-01-01",
-        endDate: "2025-01-01"
-      }
+        logo: "/college/college-logo.jpg",
+        title: "Srinivas Institute of Technology",
+        organization: "Srinivas Institute of Technology",
+        startDate: "2024-08-24",
+        isPresent: true
+      },
+
     ]
   }
 ];
 ---
 
-<Layout title="Deveesh Shetty - Frontend Developer">
+<Layout title="Nikhil Bajantri - Full Stack Developer">
   <Navigation />
   <main>
     <About />

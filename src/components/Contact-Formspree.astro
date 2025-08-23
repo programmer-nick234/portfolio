@@ -1,5 +1,5 @@
 ---
-// Contact section component
+// Contact section component with Formspree integration
 const socialLinks = [
   { name: "GitHub", icon: "fab fa-github", url: "https://github.com/programmer-nick234/", color: "hover:text-gray-400" },
   { name: "LinkedIn", icon: "fab fa-linkedin", url: "https://www.linkedin.com/in/nikhil-bajantri-dev", color: "hover:text-blue-400" },
@@ -21,13 +21,19 @@ const socialLinks = [
     </div>
 
     <div class="grid lg:grid-cols-2 gap-12">
-      <!-- Contact Form -->
+      <!-- Contact Form with Formspree -->
       <div class="bg-dark-bg border border-dark-border rounded-lg p-8">
         <h3 class="text-2xl font-semibold text-text-primary mb-6">
           Send me a message
         </h3>
         
-        <form class="space-y-6" id="contactForm" method="post">
+        <!-- Formspree Form - Replace YOUR_FORMSPREE_ENDPOINT with your actual endpoint -->
+        <form 
+          class="space-y-6" 
+          id="contactForm" 
+          action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT"
+          method="POST"
+        >
           <div class="grid md:grid-cols-2 gap-6">
             <div>
               <label for="email" class="block text-text-secondary text-sm font-medium mb-2">
@@ -163,7 +169,7 @@ const socialLinks = [
 </section>
 
 <script>
-  // Enhanced form submission handling with better error management
+  // Formspree form handling with enhanced UX
   const form = document.getElementById('contactForm') as HTMLFormElement;
   const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
   const submitIcon = document.getElementById('submitIcon') as HTMLElement;
@@ -241,28 +247,25 @@ const socialLinks = [
           return;
         }
         
-        // Send to API endpoint
-        const response = await fetch('/api/contact', {
+        // Submit to Formspree
+        const response = await fetch(form.action, {
           method: 'POST',
-          body: formData
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
         });
         
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const result = await response.json();
-        
-        if (result.success) {
+        if (response.ok) {
           showMessage('success', 'Received your mail, I will reply back soon ✨');
           console.log('[SUCCESS] Mail sent by:', email);
           form.reset();
         } else {
-          console.log('[ERROR] Send Mail API Response:', result);
-          showMessage('error', result.message || 'Sorry, couldn\'t send the mail');
+          console.log('[ERROR] Formspree Response:', response.status);
+          showMessage('error', 'Sorry, couldn\'t send the mail. Please try again.');
         }
       } catch (error) {
-        console.log('[ERROR] Send Mail API:', error);
+        console.log('[ERROR] Form submission:', error);
         showMessage('error', 'Sorry, couldn\'t send the mail');
       } finally {
         setLoadingState(false);
