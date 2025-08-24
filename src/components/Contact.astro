@@ -2,147 +2,125 @@
 // Contact section component with email redirect
 ---
 
-<section id="contact" class="py-24 bg-dark-bg relative overflow-hidden">
-  <!-- Background Effects -->
-  <div class="absolute inset-0">
-    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-cyan/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-purple/5 rounded-full blur-3xl"></div>
-  </div>
-
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<section id="contact" class="py-12 bg-dark-bg overflow-hidden">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
     <!-- Main Contact Card -->
-    <div class="bg-dark-card/80 backdrop-blur-sm border border-dark-border/50 rounded-3xl p-8 lg:p-12 shadow-2xl shadow-black/20">
+    <div class="bg-dark-card border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg w-full">
       <!-- Heading -->
-      <div class="text-center mb-10">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-neon-cyan/10 rounded-2xl mb-6">
-          <i class="fas fa-comments text-2xl text-neon-cyan"></i>
-        </div>
-        <h2 class="text-4xl lg:text-5xl font-bold text-text-primary mb-6 bg-gradient-to-r from-text-primary to-neon-cyan bg-clip-text text-transparent">
+      <div class="text-center mb-6">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-text-primary mb-3">
           Hey there!
         </h2>
-        <p class="text-text-secondary text-lg leading-relaxed max-w-xl mx-auto">
+        <p class="text-text-secondary text-sm sm:text-base max-w-lg mx-auto px-2">
           Got a project in mind? Want to collaborate? Or just want to say hi? Drop me a message and I'll get back to you as soon as possible!
         </p>
       </div>
 
       <!-- Social Links Row -->
-      <div class="flex flex-wrap justify-center gap-8 mb-10">
+      <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mb-6">
         <a
           href="mailto:nikhilbajantri86@gmail.com"
-          class="group flex items-center space-x-3 px-4 py-3 bg-dark-bg/50 border border-dark-border/50 rounded-xl hover:border-neon-cyan/50 hover:bg-neon-cyan/5 transition-all duration-300 transform hover:scale-105"
+          class="flex items-center justify-center sm:justify-start space-x-2 px-3 sm:px-4 py-2 sm:py-3 bg-dark-bg border border-dark-border rounded-xl hover:border-neon-cyan hover:bg-neon-cyan/5 transition-all duration-300 text-center"
         >
-          <div class="w-10 h-10 bg-neon-cyan/10 rounded-lg flex items-center justify-center group-hover:bg-neon-cyan/20 transition-colors duration-300">
-            <i class="fas fa-envelope text-neon-cyan"></i>
-          </div>
-          <div class="text-left">
-            <div class="text-text-secondary text-sm font-medium">Email</div>
-            <div class="text-text-primary text-sm">nikhilbajantri86@gmail.com</div>
-          </div>
+          <i class="fas fa-envelope text-neon-cyan text-sm"></i>
+          <span class="text-text-secondary text-xs sm:text-sm hidden sm:inline">Email</span>
+          <span class="text-text-primary text-xs sm:text-sm truncate">nikhilbajantri86@gmail.com</span>
         </a>
         
         <a
           href="https://github.com/programmer-nick234/"
-          class="group flex items-center space-x-3 px-4 py-3 bg-dark-bg/50 border border-dark-border/50 rounded-xl hover:border-neon-cyan/50 hover:bg-neon-cyan/5 transition-all duration-300 transform hover:scale-105"
+          class="flex items-center justify-center sm:justify-start space-x-2 px-3 sm:px-4 py-2 sm:py-3 bg-dark-bg border border-dark-border rounded-xl hover:border-neon-cyan hover:bg-neon-cyan/5 transition-all duration-300 text-center"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <div class="w-10 h-10 bg-neon-cyan/10 rounded-lg flex items-center justify-center group-hover:bg-neon-cyan/20 transition-colors duration-300">
-            <i class="fab fa-github text-neon-cyan"></i>
-          </div>
-          <div class="text-left">
-            <div class="text-text-secondary text-sm font-medium">GitHub</div>
-            <div class="text-text-primary text-sm">@programmer-nick234</div>
-          </div>
+          <i class="fab fa-github text-neon-cyan text-sm"></i>
+          <span class="text-text-secondary text-xs sm:text-sm hidden sm:inline">GitHub</span>
+          <span class="text-text-primary text-xs sm:text-sm truncate">@programmer-nick234</span>
         </a>
         
         <a
           href="https://www.linkedin.com/in/nikhil-bajantri-dev"
-          class="group flex items-center space-x-3 px-4 py-3 bg-dark-bg/50 border border-dark-border/50 rounded-xl hover:border-neon-cyan/50 hover:bg-neon-cyan/5 transition-all duration-300 transform hover:scale-105"
+          class="flex items-center justify-center sm:justify-start space-x-2 px-3 sm:px-4 py-2 sm:py-3 bg-dark-bg border border-dark-border rounded-xl hover:border-neon-cyan hover:bg-neon-cyan/5 transition-all duration-300 text-center"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <div class="w-10 h-10 bg-neon-cyan/10 rounded-lg flex items-center justify-center group-hover:bg-neon-cyan/20 transition-colors duration-300">
-            <i class="fab fa-linkedin text-neon-cyan"></i>
-          </div>
-          <div class="text-left">
-            <div class="text-text-secondary text-sm font-medium">LinkedIn</div>
-            <div class="text-text-primary text-sm">nikhil-bajantri-dev</div>
-          </div>
+          <i class="fab fa-linkedin text-neon-cyan text-sm"></i>
+          <span class="text-text-secondary text-xs sm:text-sm hidden sm:inline">LinkedIn</span>
+          <span class="text-text-primary text-xs sm:text-sm truncate">nikhil-bajantri-dev</span>
         </a>
       </div>
 
       <!-- Contact Form Card -->
-      <div class="bg-dark-bg/60 backdrop-blur-sm border border-dark-border/50 rounded-2xl p-8 shadow-xl">
+      <div class="bg-dark-bg border border-dark-border rounded-xl p-4 sm:p-6 shadow-md w-full">
         <form 
-          class="space-y-6" 
+          class="space-y-4 w-full" 
           id="contactForm"
         >
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <i class="fas fa-envelope text-text-muted text-sm"></i>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="relative w-full">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-envelope text-text-muted text-xs"></i>
               </div>
               <input
                 type="email"
                 id="email"
                 name="email"
-                class="w-full pl-10 pr-4 py-4 bg-dark-card/50 border border-dark-border/50 rounded-xl text-text-primary placeholder-text-muted focus:border-neon-cyan focus:bg-dark-card focus:outline-none transition-all duration-300"
+                class="w-full pl-8 pr-3 py-2 sm:py-3 bg-dark-card border border-dark-border rounded-lg text-text-primary placeholder-text-muted focus:border-neon-cyan focus:outline-none transition-colors duration-300 text-sm sm:text-base"
                 placeholder="developer@domain.com"
                 required
               />
             </div>
             
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <i class="fas fa-user text-text-muted text-sm"></i>
+            <div class="relative w-full">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-user text-text-muted text-xs"></i>
               </div>
               <input
                 type="text"
                 id="name"
                 name="name"
-                class="w-full pl-10 pr-4 py-4 bg-dark-card/50 border border-dark-border/50 rounded-xl text-text-primary placeholder-text-muted focus:border-neon-cyan focus:bg-dark-card focus:outline-none transition-all duration-300"
+                class="w-full pl-8 pr-3 py-2 sm:py-3 bg-dark-card border border-dark-border rounded-lg text-text-primary placeholder-text-muted focus:border-neon-cyan focus:outline-none transition-colors duration-300 text-sm sm:text-base"
                 placeholder="Developer X"
                 required
               />
             </div>
           </div>
           
-          <div class="relative">
-            <div class="absolute top-4 left-4 flex items-center pointer-events-none">
-              <i class="fas fa-comment text-text-muted text-sm"></i>
+          <div class="relative w-full">
+            <div class="absolute top-2 sm:top-3 left-3 flex items-center pointer-events-none">
+              <i class="fas fa-comment text-text-muted text-xs"></i>
             </div>
             <textarea
               id="message"
               name="message"
-              rows="5"
-              class="w-full pl-10 pr-4 py-4 bg-dark-card/50 border border-dark-border/50 rounded-xl text-text-primary placeholder-text-muted focus:border-neon-cyan focus:bg-dark-card focus:outline-none transition-all duration-300 resize-none"
+              rows="4"
+              class="w-full pl-8 pr-3 py-2 sm:py-3 bg-dark-card border border-dark-border rounded-lg text-text-primary placeholder-text-muted focus:border-neon-cyan focus:outline-none transition-colors duration-300 resize-none text-sm sm:text-base"
               placeholder="What's up?"
               required
             ></textarea>
           </div>
           
-          <div class="flex justify-end pt-4">
+          <div class="flex justify-end pt-2">
             <button
               type="submit"
               id="submitBtn"
-              class="group relative px-8 py-4 bg-gradient-to-r from-neon-cyan to-neon-purple text-dark-bg font-semibold rounded-xl hover:from-neon-purple hover:to-neon-cyan transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-neon-cyan/25 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
+              class="px-6 sm:px-8 py-2 sm:py-3 bg-neon-cyan text-dark-bg font-medium rounded-lg hover:bg-neon-purple transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md text-sm sm:text-base"
             >
-              <span class="relative z-10 flex items-center space-x-2">
-                <i class="fas fa-paper-plane"></i>
+              <span class="flex items-center space-x-2">
+                <i class="fas fa-paper-plane text-sm"></i>
                 <span id="submitText">Send Message</span>
               </span>
-              <div class="absolute inset-0 bg-gradient-to-r from-neon-purple to-neon-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
           </div>
         </form>
         
         <!-- Message Container -->
-        <div id="messageContainer" class="mt-6 hidden">
-          <div id="successMessage" class="hidden p-4 bg-green-900/20 border border-green-500/30 rounded-xl text-green-400 backdrop-blur-sm">
+        <div id="messageContainer" class="mt-4 hidden w-full">
+          <div id="successMessage" class="hidden p-3 bg-green-900/20 border border-green-500/30 rounded-lg text-green-400 text-sm">
             <i class="fas fa-check-circle mr-2"></i>
             <span id="successText"></span>
           </div>
-          <div id="errorMessage" class="hidden p-4 bg-red-900/20 border border-red-500/30 rounded-xl text-red-400 backdrop-blur-sm">
+          <div id="errorMessage" class="hidden p-3 bg-red-900/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
             <i class="fas fa-exclamation-circle mr-2"></i>
             <span id="errorText"></span>
           </div>
