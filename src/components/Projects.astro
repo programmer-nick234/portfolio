@@ -51,15 +51,15 @@ const statusConfig: Record<string, { color: string; text: string; animate: strin
 };
 ---
 
-<section id="projects" class="py-16 bg-dark-card">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="projects" class="py-12 sm:py-16 bg-dark-card overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
     <!-- Optimized Header -->
-    <div class="flex justify-between items-center mb-10">
-      <h2 class="text-4xl sm:text-5xl font-bold text-text-primary">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 sm:mb-10 gap-4">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary">
         <span class="text-neon-cyan">Projects</span>
       </h2>
       <button 
-        class="flex items-center text-text-secondary hover:text-neon-cyan transition-colors duration-300 group"
+        class="flex items-center text-text-secondary hover:text-neon-cyan transition-colors duration-300 group text-sm sm:text-base"
         aria-label="View more projects"
       >
         <span class="mr-2">View More</span>
@@ -68,12 +68,12 @@ const statusConfig: Record<string, { color: string; text: string; animate: strin
     </div>
 
     <!-- Optimized Projects Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       {projects.map((project) => {
         const status = statusConfig[project.status];
         return (
                      <article 
-             class="group relative bg-dark-bg border border-dark-border rounded-xl p-6 hover:border-neon-cyan transition-all duration-500 overflow-hidden will-change-transform"
+             class="group relative bg-dark-bg border border-dark-border rounded-xl p-4 sm:p-6 hover:border-neon-cyan transition-all duration-500 overflow-hidden will-change-transform w-full"
              id={project.id}
            >
             <!-- Optimized Spotlight Effect -->
@@ -82,28 +82,28 @@ const statusConfig: Record<string, { color: string; text: string; animate: strin
             <!-- Project Content -->
             <div class="relative z-10">
               <!-- Optimized Project Header -->
-              <header class="flex items-start justify-between mb-4">
-                <h3 class="text-xl font-bold text-text-primary group-hover:text-neon-cyan transition-colors duration-300">
+              <header class="flex items-start justify-between mb-3 sm:mb-4">
+                <h3 class="text-lg sm:text-xl font-bold text-text-primary group-hover:text-neon-cyan transition-colors duration-300">
                   {project.title}
                 </h3>
                 <time 
                   datetime={project.date}
-                  class="text-neon-cyan text-xs font-medium bg-neon-cyan/10 px-2 py-1 rounded-full"
+                  class="text-neon-cyan text-xs font-medium bg-neon-cyan/10 px-2 py-1 rounded-full flex-shrink-0"
                 >
                   {project.date}
                 </time>
               </header>
               
               <!-- Project Description -->
-              <p class="text-text-secondary text-sm mb-4 leading-relaxed">
+              <p class="text-text-secondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                 {project.description}
               </p>
               
                              <!-- Optimized Tech Stack -->
-               <div class="flex flex-wrap gap-2 mb-4">
+               <div class="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
                  {project.tech.map((tech) => (
                    <span 
-                     class="px-3 py-1 bg-dark-card border border-dark-border text-neon-cyan text-xs font-medium rounded-full group-hover:border-neon-cyan transition-all duration-300"
+                     class="px-2 sm:px-3 py-1 bg-dark-card border border-dark-border text-neon-cyan text-xs font-medium rounded-full group-hover:border-neon-cyan transition-all duration-300"
                    >
                      {tech}
                    </span>

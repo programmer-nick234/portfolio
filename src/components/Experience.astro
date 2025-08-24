@@ -35,28 +35,28 @@ export const education = [
 
 ---
 
-<section id="experience" class="py-16 bg-dark-bg">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="experience" class="py-12 sm:py-16 bg-dark-bg overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
     <!-- Optimized Header -->
-    <div class="text-center mb-12">
-      <h2 class="text-3xl sm:text-4xl font-bold text-text-primary mb-4">
+    <div class="text-center mb-8 sm:mb-12">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-text-primary mb-3 sm:mb-4">
         Experience & <span class="text-neon-cyan">Education</span>
       </h2>
-      <div class="w-16 h-1 bg-neon-cyan mx-auto mb-3"></div>
-      <p class="text-text-secondary text-sm max-w-2xl mx-auto">
+      <div class="w-12 sm:w-16 h-1 bg-neon-cyan mx-auto mb-2 sm:mb-3"></div>
+      <p class="text-text-secondary text-xs sm:text-sm max-w-2xl mx-auto px-4">
         My professional journey and academic achievements
       </p>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
       <!-- Optimized Work Experience -->
       <div>
-        <h3 class="text-xl font-semibold text-text-primary mb-6 flex items-center">
-          <i class="fas fa-briefcase text-neon-cyan mr-3 text-lg"></i>
+        <h3 class="text-lg sm:text-xl font-semibold text-text-primary mb-4 sm:mb-6 flex items-center">
+          <i class="fas fa-briefcase text-neon-cyan mr-2 sm:mr-3 text-base sm:text-lg"></i>
           Work Experience
         </h3>
         
-        <div class="space-y-6">
+        <div class="space-y-4 sm:space-y-6">
           {experience.map((item, index) => (
             <div class="relative" id={item.id}>
               <!-- Timeline line -->
@@ -64,28 +64,28 @@ export const education = [
                 <div class="absolute left-6 top-12 w-0.5 h-16 bg-dark-border"></div>
               )}
               
-              <div class="flex items-start space-x-4 group">
+              <div class="flex items-start space-x-3 sm:space-x-4 group">
                 <!-- Icon -->
-                <div class="flex-shrink-0 w-10 h-10 bg-dark-card border border-dark-border rounded-full flex items-center justify-center group-hover:border-neon-cyan transition-all duration-300">
-                  <i class={`${item.icon} text-neon-cyan text-sm`}></i>
+                <div class="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-dark-card border border-dark-border rounded-full flex items-center justify-center group-hover:border-neon-cyan transition-all duration-300">
+                  <i class={`${item.icon} text-neon-cyan text-xs sm:text-sm`}></i>
                 </div>
                 
                 <!-- Content -->
-                <div class="flex-1 bg-dark-card border border-dark-border rounded-xl p-4 group-hover:border-neon-cyan transition-all duration-300">
-                  <div class="flex justify-between items-start mb-2">
-                    <h4 class="text-base font-semibold text-text-primary group-hover:text-neon-cyan transition-colors duration-300">
+                <div class="flex-1 bg-dark-card border border-dark-border rounded-xl p-3 sm:p-4 group-hover:border-neon-cyan transition-all duration-300">
+                  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1 sm:gap-0">
+                    <h4 class="text-sm sm:text-base font-semibold text-text-primary group-hover:text-neon-cyan transition-colors duration-300">
                       {item.title}
                     </h4>
-                    <span class="text-xs text-neon-cyan font-medium bg-neon-cyan/10 px-2 py-1 rounded-full">
+                    <span class="text-xs text-neon-cyan font-medium bg-neon-cyan/10 px-2 py-1 rounded-full w-fit">
                       {item.period}
                     </span>
                   </div>
-                  <p class="text-neon-purple font-medium mb-2 text-sm">
+                  <p class="text-neon-purple font-medium mb-2 text-xs sm:text-sm">
                     {item.company}
                   </p>
-                                     <p class="text-text-secondary text-sm leading-relaxed">
-                     {item.description}
-                   </p>
+                  <p class="text-text-secondary text-xs sm:text-sm leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </div>
@@ -95,12 +95,12 @@ export const education = [
 
       <!-- Optimized Education -->
       <div>
-        <h3 class="text-xl font-semibold text-text-primary mb-6 flex items-center">
-          <i class="fas fa-graduation-cap text-neon-green mr-3 text-lg"></i>
+        <h3 class="text-lg sm:text-xl font-semibold text-text-primary mb-4 sm:mb-6 flex items-center">
+          <i class="fas fa-graduation-cap text-neon-green mr-2 sm:mr-3 text-base sm:text-lg"></i>
           Education
         </h3>
         
-        <div class="space-y-6">
+        <div class="space-y-4 sm:space-y-6">
           {education.map((item, index) => (
             <div class="relative" id={item.id}>
               <!-- Timeline line -->
@@ -115,21 +115,21 @@ export const education = [
                 </div>
                 
                 <!-- Content -->
-                <div class="flex-1 bg-dark-card border border-dark-border rounded-xl p-4 group-hover:border-neon-green transition-all duration-300">
-                                     <div class="flex justify-between items-start mb-2">
-                     <h4 class="text-sm font-semibold text-text-primary group-hover:text-neon-green transition-colors duration-300">
-                       {item.title}
-                     </h4>
-                     <span class="text-xs text-neon-green font-medium bg-neon-green/10 px-2 py-1 rounded-full">
-                       {item.period}
-                     </span>
-                   </div>
-                   <p class="text-neon-purple font-medium mb-2 text-sm">
-                     {item.company}
-                   </p>
-                   <p class="text-text-secondary text-sm leading-relaxed">
-                     {item.description}
-                   </p>
+                <div class="flex-1 bg-dark-card border border-dark-border rounded-xl p-3 sm:p-4 group-hover:border-neon-green transition-all duration-300">
+                  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1 sm:gap-0">
+                    <h4 class="text-sm font-semibold text-text-primary group-hover:text-neon-green transition-colors duration-300">
+                      {item.title}
+                    </h4>
+                    <span class="text-xs text-neon-green font-medium bg-neon-green/10 px-2 py-1 rounded-full w-fit">
+                      {item.period}
+                    </span>
+                  </div>
+                  <p class="text-neon-purple font-medium mb-2 text-xs sm:text-sm">
+                    {item.company}
+                  </p>
+                  <p class="text-text-secondary text-xs sm:text-sm leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </div>
