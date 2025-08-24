@@ -130,3 +130,4 @@ If credentials are accidentally committed:
 - [ ] Monthly: Check for exposed credentials in code
 - [ ] Monthly: Update dependencies for security patches
 - [ ] Quarterly: Security audit of the codebase
+

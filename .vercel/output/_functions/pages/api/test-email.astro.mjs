@@ -5,18 +5,9 @@ const prerender = false;
 const GET = async () => {
   try {
     console.log("Testing email configuration...");
-    const gmailUser = undefined                          ;
-    const gmailPassword = undefined                                  ;
-    if (!gmailPassword) {
-      return new Response(JSON.stringify({
-        success: false,
-        error: "GMAIL_APP_PASSWORD environment variable is not set",
-        timestamp: (/* @__PURE__ */ new Date()).toISOString()
-      }), {
-        status: 500,
-        headers: { "Content-Type": "application/json" }
-      });
-    }
+    const gmailUser = "nikhilbajantri86@gmail.com";
+    const gmailPassword = "ngbe pnru fzsb etdz";
+    if (!gmailPassword) ;
     const configs = [
       {
         name: "Gmail with App Password (Port 465)",

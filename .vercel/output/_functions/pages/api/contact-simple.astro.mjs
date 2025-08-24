@@ -46,32 +46,14 @@ const POST = async ({ request }) => {
     }
     console.log("Form validation passed");
     console.log("Checking environment variables...");
-    const gmailUser = undefined                          ;
-    const gmailPassword = undefined                                  ;
+    const gmailUser = "nikhilbajantri86@gmail.com";
+    const gmailPassword = "ngbe pnru fzsb etdz";
     console.log("Environment variables:", {
       gmailUser: gmailUser ? "SET" : "NOT SET",
       gmailPassword: gmailPassword ? "SET" : "NOT SET"
     });
-    if (!gmailPassword) {
-      console.error("GMAIL_APP_PASSWORD environment variable is not set");
-      return new Response(JSON.stringify({
-        success: false,
-        message: "Email service is not configured. Please contact support."
-      }), {
-        status: 500,
-        headers: { "Content-Type": "application/json" }
-      });
-    }
-    if (!gmailUser) {
-      console.error("GMAIL_USER environment variable is not set");
-      return new Response(JSON.stringify({
-        success: false,
-        message: "Email service is not configured. Please contact support."
-      }), {
-        status: 500,
-        headers: { "Content-Type": "application/json" }
-      });
-    }
+    if (!gmailPassword) ;
+    if (!gmailUser) ;
     console.log("Environment variables validated");
     console.log("Creating email transporter...");
     let transporter;

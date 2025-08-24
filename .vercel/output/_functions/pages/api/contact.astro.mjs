@@ -27,18 +27,9 @@ const POST = async ({ request }) => {
         headers: { "Content-Type": "application/json" }
       });
     }
-    const gmailUser = undefined                          ;
-    const gmailPassword = undefined                                  ;
-    if (!gmailPassword) {
-      console.error("GMAIL_APP_PASSWORD environment variable is not set");
-      return new Response(JSON.stringify({
-        success: false,
-        message: "Email service is not configured. Please contact support."
-      }), {
-        status: 500,
-        headers: { "Content-Type": "application/json" }
-      });
-    }
+    const gmailUser = "nikhilbajantri86@gmail.com";
+    const gmailPassword = "ngbe pnru fzsb etdz";
+    if (!gmailPassword) ;
     const emailConfigs = [
       // Option 1: Gmail with App Password (Port 465)
       {

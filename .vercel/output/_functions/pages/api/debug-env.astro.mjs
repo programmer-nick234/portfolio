@@ -5,8 +5,8 @@ const GET = async () => {
   try {
     console.log("Debugging environment variables...");
     const envVars = {
-      GMAIL_USER: undefined                          ,
-      GMAIL_APP_PASSWORD: undefined                                   ? "SET" : "NOT SET",
+      GMAIL_USER: "nikhilbajantri86@gmail.com",
+      GMAIL_APP_PASSWORD: "ngbe pnru fzsb etdz" ? "SET" : "NOT SET",
       NODE_ENV: process.env.NODE_ENV,
       MODE: "production",
       DEV: true,
@@ -14,8 +14,8 @@ const GET = async () => {
       SSR: true
     };
     console.log("Environment variables:", envVars);
-    const gmailUser = undefined                          ;
-    const gmailPassword = undefined                                  ;
+    const gmailUser = "nikhilbajantri86@gmail.com";
+    const gmailPassword = "ngbe pnru fzsb etdz";
     const status = {
       success: true,
       message: "Environment variables check completed",
@@ -25,12 +25,8 @@ const GET = async () => {
       timestamp: (/* @__PURE__ */ new Date()).toISOString(),
       recommendations: []
     };
-    if (!gmailUser) {
-      status.recommendations.push("GMAIL_USER environment variable is not set");
-    }
-    if (!gmailPassword) {
-      status.recommendations.push("GMAIL_APP_PASSWORD environment variable is not set");
-    }
+    if (!gmailUser) ;
+    if (!gmailPassword) ;
     if (status.recommendations.length > 0) {
       status.message = "Environment variables check completed with issues";
     }
