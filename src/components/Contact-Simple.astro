@@ -1,5 +1,5 @@
 ---
-// Contact section component with email redirect
+// Simple Contact section component with email redirect
 const socialLinks = [
   { name: "GitHub", icon: "fab fa-github", url: "https://github.com/programmer-nick234/", color: "hover:text-gray-400" },
   { name: "LinkedIn", icon: "fab fa-linkedin", url: "https://www.linkedin.com/in/nikhil-bajantri-dev", color: "hover:text-blue-400" },
@@ -30,7 +30,8 @@ const socialLinks = [
         <!-- Simple Email Redirect Form -->
         <form 
           class="space-y-6" 
-          id="contactForm"
+          id="simpleContactForm"
+          onsubmit="handleSimpleContact(event)"
         >
           <div class="grid md:grid-cols-2 gap-6">
             <div>
@@ -167,112 +168,63 @@ const socialLinks = [
 </section>
 
 <script>
-  // Contact form handling
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm') as HTMLFormElement;
-    const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
-    const submitIcon = document.getElementById('submitIcon') as HTMLElement;
-    const submitText = document.getElementById('submitText') as HTMLElement;
-    const messageContainer = document.getElementById('messageContainer') as HTMLElement;
-    const successMessage = document.getElementById('successMessage') as HTMLElement;
-    const errorMessage = document.getElementById('errorMessage') as HTMLElement;
-    const successText = document.getElementById('successText') as HTMLElement;
-    const errorText = document.getElementById('errorText') as HTMLElement;
+  // Simple contact form handling
+  function handleSimpleContact(event: Event) {
+    event.preventDefault();                                                         
     
-    function showMessage(type: 'success' | 'error', message: string) {
-      if (!messageContainer || !successMessage || !errorMessage || !successText || !errorText) return;
-      
-      // Hide all messages first
+    const form = event.target;
+    const formData = new FormData(form);
+    
+    const email = formData.get('email');
+    const name = formData.get('name');
+    const message = formData.get('message');
+    
+    // Create email body
+    const subject = `Portfolio Contact from ${name}`;
+    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+    
+    // Create mailto link
+    const mailtoLink = `mailto:nikhilbajantri86@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Show success message
+    showMessage('success', 'Opening your email client...');
+    
+    // Open email client
+    setTimeout(() => {
+      window.open(mailtoLink, '_blank');
+    }, 1000);
+    
+    // Reset form
+    form.reset();
+  }
+  
+  function showMessage(type, message) {
+    const messageContainer = document.getElementById('messageContainer');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const successText = document.getElementById('successText');
+    const errorText = document.getElementById('errorText');
+    
+    if (!messageContainer || !successMessage || !errorMessage || !successText || !errorText) return;
+    
+    // Hide all messages first
+    messageContainer.classList.add('hidden');
+    successMessage.classList.add('hidden');
+    errorMessage.classList.add('hidden');
+    
+    // Show the appropriate message
+    messageContainer.classList.remove('hidden');
+    if (type === 'success') {
+      successText.textContent = message;
+      successMessage.classList.remove('hidden');
+    } else {
+      errorText.textContent = message;
+      errorMessage.classList.remove('hidden');
+    }
+    
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
       messageContainer.classList.add('hidden');
-      successMessage.classList.add('hidden');
-      errorMessage.classList.add('hidden');
-      
-      // Show the appropriate message
-      messageContainer.classList.remove('hidden');
-      if (type === 'success') {
-        successText.textContent = message;
-        successMessage.classList.remove('hidden');
-      } else {
-        errorText.textContent = message;
-        errorMessage.classList.remove('hidden');
-      }
-      
-      // Auto-hide after 5 seconds
-      setTimeout(() => {
-        messageContainer.classList.add('hidden');
-      }, 5000);
-    }
-    
-    function setLoadingState(loading: boolean) {
-      if (!submitBtn || !submitIcon || !submitText) return;
-      
-      if (loading) {
-        submitBtn.disabled = true;
-        submitIcon.className = 'fas fa-spinner fa-spin mr-2';
-        submitText.textContent = 'Sending...';
-      } else {
-        submitBtn.disabled = false;
-        submitIcon.className = 'fas fa-paper-plane mr-2';
-        submitText.textContent = 'Send Message';
-      }
-    }
-    
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Set loading state
-        setLoadingState(true);
-        
-        try {
-          // Get form data
-          const formData = new FormData(form);
-          
-          // Get form values
-          const email = formData.get('email') as string;
-          const name = formData.get('name') as string;
-          const message = formData.get('message') as string;
-          
-          // Enhanced validation
-          if (!email?.trim() || !name?.trim() || !message?.trim()) {
-            showMessage('error', 'Please fill all the fields');
-            setLoadingState(false);
-            return;
-          }
-          
-          // Email validation
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(email)) {
-            showMessage('error', 'Please enter a valid email address');
-            setLoadingState(false);
-            return;
-          }
-          
-          // Create email body
-          const subject = `Portfolio Contact from ${name}`;
-          const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-          
-          // Create mailto link
-          const mailtoLink = `mailto:nikhilbajantri86@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-          
-          // Show success message
-          showMessage('success', 'Opening your email client...');
-          
-          // Open email client
-          setTimeout(() => {
-            window.open(mailtoLink, '_blank');
-          }, 1000);
-          
-          // Reset form
-          form.reset();
-          
-        } catch (error) {
-          console.error('Contact form error:', error);
-          showMessage('error', 'Sorry, something went wrong. Please try again.');
-        } finally {
-          setLoadingState(false);
-        }
-      });
-    }
-  });
+    }, 5000);
+  }
 </script>
