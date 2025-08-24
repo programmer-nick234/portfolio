@@ -65,8 +65,7 @@
             href="/resume.pdf"
             download="Nikhil_Bajantri_Resume.pdf"
             class="ml-8 bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
-            target="_blank"
-            rel="noopener noreferrer"
+            onclick="handleResumeDownload(event)"
           >
             <span>Resume</span>
             <i class="fas fa-download"></i>
@@ -90,3 +89,22 @@
     </div>
   </div>
 </section>
+
+<script>
+  function handleResumeDownload(event: Event) {
+    event.preventDefault();
+    
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Nikhil_Bajantri_Resume.pdf';
+    
+    // Append to body, click, and remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Optional: Show a success message
+    console.log('Resume download initiated');
+  }
+</script>
