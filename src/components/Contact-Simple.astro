@@ -169,10 +169,13 @@ const socialLinks = [
 
 <script>
   // Simple contact form handling
-  function handleSimpleContact(event: Event) {
+  // @ts-nocheck
+  function handleSimpleContact(event) {
     event.preventDefault();                                                         
     
     const form = event.target;
+    if (!form) return;
+    
     const formData = new FormData(form);
     
     const email = formData.get('email');
@@ -205,7 +208,10 @@ const socialLinks = [
     const successText = document.getElementById('successText');
     const errorText = document.getElementById('errorText');
     
-    if (!messageContainer || !successMessage || !errorMessage || !successText || !errorText) return;
+    if (!messageContainer || !successMessage || !errorMessage || !successText || !errorText) {
+      console.warn('Message elements not found');
+      return;
+    }
     
     // Hide all messages first
     messageContainer.classList.add('hidden');

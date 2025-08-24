@@ -39,7 +39,7 @@
 
 ### 4. **Testing Your Configuration**
 
-Visit `/api/test-email` in your browser to test all email configurations:
+Visit `/api/test-email` in your browser to test all email configurations:I
 - Shows which configurations work/fail
 - Provides detailed error messages
 - Helps identify the specific issue
