@@ -1,164 +1,150 @@
 ---
 // Contact section component with email redirect
-const socialLinks = [
-  { name: "GitHub", icon: "fab fa-github", url: "https://github.com/programmer-nick234/", color: "hover:text-gray-400" },
-  { name: "LinkedIn", icon: "fab fa-linkedin", url: "https://www.linkedin.com/in/nikhil-bajantri-dev", color: "hover:text-blue-400" },
-  { name: "X (Twitter)", icon: "fab fa-x-twitter", url: "https://x.com/nikkkkhil_2604", color: "hover:text-blue-500" },
-  { name: "Email", icon: "fas fa-envelope", url: "mailto:nikhilbajantri86@gmail.com", color: "hover:text-red-400" },
-];
 ---
 
-<section id="contact" class="py-20 bg-dark-card">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
-        Get In <span class="text-neon-cyan">Touch</span>
-      </h2>
-      <div class="w-24 h-1 bg-neon-cyan mx-auto mb-6"></div>
-      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
-        Let's work together on your next project. I'm always open to discussing new opportunities.
-      </p>
-    </div>
+<section id="contact" class="py-24 bg-dark-bg relative overflow-hidden">
+  <!-- Background Effects -->
+  <div class="absolute inset-0">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-cyan/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-purple/5 rounded-full blur-3xl"></div>
+  </div>
 
-    <div class="grid lg:grid-cols-2 gap-12">
-      <!-- Simple Contact Form -->
-      <div class="bg-dark-bg border border-dark-border rounded-lg p-8">
-        <h3 class="text-2xl font-semibold text-text-primary mb-6">
-          Send me a message
-        </h3>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Main Contact Card -->
+    <div class="bg-dark-card/80 backdrop-blur-sm border border-dark-border/50 rounded-3xl p-8 lg:p-12 shadow-2xl shadow-black/20">
+      <!-- Heading -->
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-neon-cyan/10 rounded-2xl mb-6">
+          <i class="fas fa-comments text-2xl text-neon-cyan"></i>
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-bold text-text-primary mb-6 bg-gradient-to-r from-text-primary to-neon-cyan bg-clip-text text-transparent">
+          Hey there!
+        </h2>
+        <p class="text-text-secondary text-lg leading-relaxed max-w-xl mx-auto">
+          Got a project in mind? Want to collaborate? Or just want to say hi? Drop me a message and I'll get back to you as soon as possible!
+        </p>
+      </div>
+
+      <!-- Social Links Row -->
+      <div class="flex flex-wrap justify-center gap-8 mb-10">
+        <a
+          href="mailto:nikhilbajantri86@gmail.com"
+          class="group flex items-center space-x-3 px-4 py-3 bg-dark-bg/50 border border-dark-border/50 rounded-xl hover:border-neon-cyan/50 hover:bg-neon-cyan/5 transition-all duration-300 transform hover:scale-105"
+        >
+          <div class="w-10 h-10 bg-neon-cyan/10 rounded-lg flex items-center justify-center group-hover:bg-neon-cyan/20 transition-colors duration-300">
+            <i class="fas fa-envelope text-neon-cyan"></i>
+          </div>
+          <div class="text-left">
+            <div class="text-text-secondary text-sm font-medium">Email</div>
+            <div class="text-text-primary text-sm">nikhilbajantri86@gmail.com</div>
+          </div>
+        </a>
         
-        <!-- Simple Email Redirect Form -->
+        <a
+          href="https://github.com/programmer-nick234/"
+          class="group flex items-center space-x-3 px-4 py-3 bg-dark-bg/50 border border-dark-border/50 rounded-xl hover:border-neon-cyan/50 hover:bg-neon-cyan/5 transition-all duration-300 transform hover:scale-105"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="w-10 h-10 bg-neon-cyan/10 rounded-lg flex items-center justify-center group-hover:bg-neon-cyan/20 transition-colors duration-300">
+            <i class="fab fa-github text-neon-cyan"></i>
+          </div>
+          <div class="text-left">
+            <div class="text-text-secondary text-sm font-medium">GitHub</div>
+            <div class="text-text-primary text-sm">@programmer-nick234</div>
+          </div>
+        </a>
+        
+        <a
+          href="https://www.linkedin.com/in/nikhil-bajantri-dev"
+          class="group flex items-center space-x-3 px-4 py-3 bg-dark-bg/50 border border-dark-border/50 rounded-xl hover:border-neon-cyan/50 hover:bg-neon-cyan/5 transition-all duration-300 transform hover:scale-105"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="w-10 h-10 bg-neon-cyan/10 rounded-lg flex items-center justify-center group-hover:bg-neon-cyan/20 transition-colors duration-300">
+            <i class="fab fa-linkedin text-neon-cyan"></i>
+          </div>
+          <div class="text-left">
+            <div class="text-text-secondary text-sm font-medium">LinkedIn</div>
+            <div class="text-text-primary text-sm">nikhil-bajantri-dev</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Contact Form Card -->
+      <div class="bg-dark-bg/60 backdrop-blur-sm border border-dark-border/50 rounded-2xl p-8 shadow-xl">
         <form 
           class="space-y-6" 
           id="contactForm"
         >
           <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <label for="email" class="block text-text-secondary text-sm font-medium mb-2">
-                Email
-              </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i class="fas fa-envelope text-text-muted text-sm"></i>
+              </div>
               <input
                 type="email"
                 id="email"
                 name="email"
-                class="w-full px-4 py-3 bg-dark-card border border-dark-border rounded-lg text-text-primary placeholder-text-muted focus:border-neon-cyan focus:outline-none transition-colors duration-300"
+                class="w-full pl-10 pr-4 py-4 bg-dark-card/50 border border-dark-border/50 rounded-xl text-text-primary placeholder-text-muted focus:border-neon-cyan focus:bg-dark-card focus:outline-none transition-all duration-300"
                 placeholder="developer@domain.com"
                 required
               />
             </div>
             
-            <div>
-              <label for="name" class="block text-text-secondary text-sm font-medium mb-2">
-                Name
-              </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i class="fas fa-user text-text-muted text-sm"></i>
+              </div>
               <input
                 type="text"
                 id="name"
                 name="name"
-                class="w-full px-4 py-3 bg-dark-card border border-dark-border rounded-lg text-text-primary placeholder-text-muted focus:border-neon-cyan focus:outline-none transition-colors duration-300"
+                class="w-full pl-10 pr-4 py-4 bg-dark-card/50 border border-dark-border/50 rounded-xl text-text-primary placeholder-text-muted focus:border-neon-cyan focus:bg-dark-card focus:outline-none transition-all duration-300"
                 placeholder="Developer X"
                 required
               />
             </div>
           </div>
           
-          <div>
-            <label for="message" class="block text-text-secondary text-sm font-medium mb-2">
-              Message
-            </label>
+          <div class="relative">
+            <div class="absolute top-4 left-4 flex items-center pointer-events-none">
+              <i class="fas fa-comment text-text-muted text-sm"></i>
+            </div>
             <textarea
               id="message"
               name="message"
-              rows="3"
-              class="w-full px-4 py-3 bg-dark-card border border-dark-border rounded-lg text-text-primary placeholder-text-muted focus:border-neon-cyan focus:outline-none transition-colors duration-300 resize-none"
+              rows="5"
+              class="w-full pl-10 pr-4 py-4 bg-dark-card/50 border border-dark-border/50 rounded-xl text-text-primary placeholder-text-muted focus:border-neon-cyan focus:bg-dark-card focus:outline-none transition-all duration-300 resize-none"
               placeholder="What's up?"
               required
             ></textarea>
           </div>
           
-          <button
-            type="submit"
-            id="submitBtn"
-            class="w-full bg-neon-cyan text-dark-bg px-8 py-4 rounded-lg font-semibold text-lg hover:bg-neon-purple transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-neon-cyan/25 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <i class="fas fa-paper-plane mr-2" id="submitIcon"></i>
-            <span id="submitText">Send Message</span>
-          </button>
+          <div class="flex justify-end pt-4">
+            <button
+              type="submit"
+              id="submitBtn"
+              class="group relative px-8 py-4 bg-gradient-to-r from-neon-cyan to-neon-purple text-dark-bg font-semibold rounded-xl hover:from-neon-purple hover:to-neon-cyan transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-neon-cyan/25 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
+            >
+              <span class="relative z-10 flex items-center space-x-2">
+                <i class="fas fa-paper-plane"></i>
+                <span id="submitText">Send Message</span>
+              </span>
+              <div class="absolute inset-0 bg-gradient-to-r from-neon-purple to-neon-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </button>
+          </div>
         </form>
         
         <!-- Message Container -->
-        <div id="messageContainer" class="mt-4 hidden">
-          <div id="successMessage" class="hidden p-4 bg-green-900/20 border border-green-500/30 rounded-lg text-green-400">
+        <div id="messageContainer" class="mt-6 hidden">
+          <div id="successMessage" class="hidden p-4 bg-green-900/20 border border-green-500/30 rounded-xl text-green-400 backdrop-blur-sm">
             <i class="fas fa-check-circle mr-2"></i>
             <span id="successText"></span>
           </div>
-          <div id="errorMessage" class="hidden p-4 bg-red-900/20 border border-red-500/30 rounded-lg text-red-400">
+          <div id="errorMessage" class="hidden p-4 bg-red-900/20 border border-red-500/30 rounded-xl text-red-400 backdrop-blur-sm">
             <i class="fas fa-exclamation-circle mr-2"></i>
             <span id="errorText"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact Info -->
-      <div class="space-y-8">
-        <div>
-          <h3 class="text-2xl font-semibold text-text-primary mb-6">
-            Let's connect
-          </h3>
-          <p class="text-text-secondary text-lg leading-relaxed mb-8">
-            I'm currently available for freelance work and full-time opportunities. 
-            If you have a project that needs some creative thinking, I'd love to hear about it.
-          </p>
-        </div>
-
-        <!-- Contact Details -->
-        <div class="space-y-6">
-          <div class="flex items-center space-x-4 group">
-            <div class="w-12 h-12 bg-dark-bg border border-dark-border rounded-full flex items-center justify-center group-hover:border-neon-cyan transition-all duration-300">
-              <i class="fas fa-envelope text-neon-cyan"></i>
-            </div>
-            <div>
-              <p class="text-text-secondary text-sm">Email</p>
-              <p class="text-text-primary font-medium">nikhilbajantri86@gmail.com</p>
-            </div>
-          </div>
-
-          <div class="flex items-center space-x-4 group">
-            <div class="w-12 h-12 bg-dark-bg border border-dark-border rounded-full flex items-center justify-center group-hover:border-neon-purple transition-all duration-300">
-              <i class="fas fa-map-marker-alt text-neon-purple"></i>
-            </div>
-            <div>
-              <p class="text-text-secondary text-sm">Location</p>
-              <p class="text-text-primary font-medium">San Francisco, CA</p>
-            </div>
-          </div>
-
-          <div class="flex items-center space-x-4 group">
-            <div class="w-12 h-12 bg-dark-bg border border-dark-border rounded-full flex items-center justify-center group-hover:border-neon-green transition-all duration-300">
-              <i class="fas fa-clock text-neon-green"></i>
-            </div>
-            <div>
-              <p class="text-text-secondary text-sm">Availability</p>
-              <p class="text-text-primary font-medium">Open to opportunities</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Social Links -->
-        <div>
-          <h4 class="text-lg font-semibold text-text-primary mb-4">
-            Follow me
-          </h4>
-          <div class="flex space-x-4">
-            {socialLinks.map((social) => (
-              <a
-                href={social.url}
-                class="w-12 h-12 bg-dark-bg border border-dark-border rounded-full flex items-center justify-center text-text-secondary hover:border-neon-cyan hover:text-neon-cyan transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-neon-cyan/25"
-                title={social.name}
-              >
-                <i class={`${social.icon} text-xl`}></i>
-              </a>
-            ))}
           </div>
         </div>
       </div>
