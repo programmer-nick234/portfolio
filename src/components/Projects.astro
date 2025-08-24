@@ -1,109 +1,129 @@
 ---
-// Projects section component
+// Projects section component - Optimized
 const projects = [
   {
-    title: "Subreddit Finder",
-    description: "Always find the best subreddit for your query",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop",
-    tech: ["Next.js", "TypeScript", "TailwindCSS", "Gemini 2.0 Flash"],
-    date: "March 2025",
-    link: "#",
-    github: "#"
+    id: "hisab-prox",
+    title: "HisabProX",
+    description: "A smart financial management and budget-tracking solution with data analytics for expense insights.",
+    tech: ["React", "Node.js", "MongoDB", "Chart.js", "Express"],
+    date: "2025",
+    status: "active"
   },
   {
-    title: "Tatva - Know your Geography",
-    description: "Explore countries interactively with real-time search and rich visuals. Built this for levels.fyi",
-    image: "https://images.unsplash.com/photo-1488746473535-4e4b3b3b3b3b?w=400&h=250&fit=crop",
-    tech: ["Next.js", "TypeScript", "TailwindCSS"],
-    date: "August 2024",
-    link: "#",
-    github: "#"
+    id: "focus-fusion",
+    title: "Focus Fusion",
+    description: "A productivity app combining music transformation and concentration tools to enhance study sessions.",
+    tech: ["React Native", "JavaScript", "Audio APIs", "Firebase"],
+    date: "2025",
+    status: "active"
   },
   {
-    title: "Sankalp",
-    description: "Event registration portal and dashboard, for all the events conducted by SOSC.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
-    tech: ["Next.js", "TypeScript", "TailwindCSS", "MERN"],
-    date: "December 2024",
-    link: "#",
-    github: "#"
+    id: "ssosc-web",
+    title: "SSOSC Web",
+    description: "A modern, secure web platform built for streamlined organizational communication and collaboration.",
+    tech: ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
+    date: "2025",
+    status: "finished"
+  },
+  {
+    id: "scatch",
+    title: "SCATCH",
+    description: "A creative project focused on integrating AI with interactive design and scalable solutions.",
+    tech: ["Python", "TensorFlow", "React", "FastAPI"],
+    date: "2025",
+    status: "finished"
+  },
+  {
+    id: "unity-2",
+    title: "Unity 2.0",
+    description: "An upgraded system/project emphasizing collaboration, next-gen features, and optimized performance for real-world use.",
+    tech: ["Vue.js", "Node.js", "PostgreSQL", "Docker"],
+    date: "2025",
+    status: "finished"
   }
 ];
+
+// Status configuration for better maintainability
+const statusConfig: Record<string, { color: string; text: string; animate: string }> = {
+  active: { color: "bg-neon-cyan", text: "Active Project", animate: "animate-pulse" },
+  finished: { color: "bg-green-500", text: "Project Finished", animate: "" },
+  ended: { color: "bg-red-500", text: "Project Ended", animate: "" }
+};
 ---
 
 <section id="projects" class="py-16 bg-dark-card">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Header with View More button -->
+    <!-- Optimized Header -->
     <div class="flex justify-between items-center mb-10">
-      <h2 class="text-3xl sm:text-4xl font-bold text-text-primary">
+      <h2 class="text-4xl sm:text-5xl font-bold text-text-primary">
         <span class="text-neon-cyan">Projects</span>
       </h2>
-      <button class="flex items-center text-text-secondary hover:text-neon-cyan transition-colors duration-300 group">
+      <button 
+        class="flex items-center text-text-secondary hover:text-neon-cyan transition-colors duration-300 group"
+        aria-label="View more projects"
+      >
         <span class="mr-2">View More</span>
-        <i class="fas fa-chevron-down group-hover:translate-y-1 transition-transform duration-300"></i>
+        <i class="fas fa-chevron-down group-hover:translate-y-1 transition-transform duration-300" aria-hidden="true"></i>
       </button>
     </div>
 
-    <!-- Projects List -->
-    <div class="space-y-6">
-      {projects.map((project) => (
-        <div class="group bg-dark-bg border border-dark-border rounded-lg p-5 hover:border-neon-cyan transition-all duration-300">
-          <div class="flex flex-col lg:flex-row gap-5">
-            <!-- Project Info -->
-            <div class="flex-1">
-              <h3 class="text-xl font-bold text-text-primary mb-2 group-hover:text-neon-cyan transition-colors duration-300">
-                {project.title}
-              </h3>
-              <p class="text-text-secondary text-base mb-3">
+    <!-- Optimized Projects Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project) => {
+        const status = statusConfig[project.status];
+        return (
+                     <article 
+             class="group relative bg-dark-bg border border-dark-border rounded-xl p-6 hover:border-neon-cyan transition-all duration-500 overflow-hidden will-change-transform"
+             id={project.id}
+           >
+            <!-- Optimized Spotlight Effect -->
+            <div class="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-neon-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+            
+            <!-- Project Content -->
+            <div class="relative z-10">
+              <!-- Optimized Project Header -->
+              <header class="flex items-start justify-between mb-4">
+                <h3 class="text-xl font-bold text-text-primary group-hover:text-neon-cyan transition-colors duration-300">
+                  {project.title}
+                </h3>
+                <time 
+                  datetime={project.date}
+                  class="text-neon-cyan text-xs font-medium bg-neon-cyan/10 px-2 py-1 rounded-full"
+                >
+                  {project.date}
+                </time>
+              </header>
+              
+              <!-- Project Description -->
+              <p class="text-text-secondary text-sm mb-4 leading-relaxed">
                 {project.description}
               </p>
               
-              <!-- Tech Stack -->
-              <div class="flex flex-wrap gap-2 mb-3">
-                {project.tech.map((tech) => (
-                  <span class="px-2 py-1 bg-gray-200 text-gray-800 rounded text-xs font-medium">
-                    {tech}
-                  </span>
-                ))}
-              </div>
+                             <!-- Optimized Tech Stack -->
+               <div class="flex flex-wrap gap-2 mb-4">
+                 {project.tech.map((tech) => (
+                   <span 
+                     class="px-3 py-1 bg-dark-card border border-dark-border text-neon-cyan text-xs font-medium rounded-full group-hover:border-neon-cyan transition-all duration-300"
+                   >
+                     {tech}
+                   </span>
+                 ))}
+               </div>
               
-              <!-- Date and Links -->
-              <div class="flex items-center justify-between">
-                <span class="text-text-muted text-xs">
-                  {project.date}
-                </span>
-                <div class="flex gap-3">
-                  <a
-                    href={project.github}
-                    class="text-text-secondary hover:text-neon-cyan transition-colors duration-300"
-                    title="View Code"
-                  >
-                    <i class="fas fa-code text-base"></i>
-                  </a>
-                  <a
-                    href={project.link}
-                    class="text-text-secondary hover:text-neon-cyan transition-colors duration-300"
-                    title="View Project"
-                  >
-                    <i class="fas fa-external-link-alt text-base"></i>
-                  </a>
-                </div>
-              </div>
+                             <!-- Optimized Project Status -->
+               <footer class="flex items-center pt-4 border-t border-dark-border">
+                 <div class="flex items-center space-x-2">
+                   <div class={`w-2 h-2 ${status.color} rounded-full ${status.animate}`}></div>
+                   <span class="text-text-muted text-xs">{status.text}</span>
+                 </div>
+               </footer>
             </div>
             
-            <!-- Project Preview Image -->
-            <div class="lg:w-64 lg:h-40 flex-shrink-0">
-              <div class="w-full h-full bg-white rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  class="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
+            <!-- Optimized Hover Glow Effect -->
+            <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-neon-cyan/20 via-transparent to-neon-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl pointer-events-none"></div>
+          </article>
+        );
+      })}
     </div>
   </div>
 </section>

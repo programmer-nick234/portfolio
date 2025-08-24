@@ -76,26 +76,26 @@ const TIMELINE_YEARS = ['2021', '2022', '2023', '2024', '2025'];
 const GRID_POSITIONS = [0, 25, 50, 75, 100];
 ---
 
-<section class="py-12 px-4 bg-dark-bg">
+<section class="py-6 px-4 bg-dark-bg">
   <div class="max-w-6xl mx-auto">
     <!-- Header Section -->
-    <header class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-text-primary mb-4">
+    <header class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-text-primary mb-3">
         <span class="text-neon-cyan">Work Experience</span>
       </h2>
-      <div class="w-20 h-1 bg-neon-cyan mx-auto mb-4"></div>
-      <p class="text-text-secondary text-base max-w-2xl mx-auto">
+              <div class="w-16 h-1 bg-neon-cyan mx-auto mb-3"></div>
+      <p class="text-text-secondary text-xs max-w-2xl mx-auto">
         My professional journey and contributions to the tech community
       </p>
     </header>
     
     <!-- Timeline Sections -->
-    <div class="space-y-12">
+    <div class="space-y-6">
       {sectionsWithTimeline.map((section, sectionIndex) => (
         <section class="timeline-section">
-          <h3 class="text-xl font-bold text-text-primary mb-8 text-center">
-            {section.title}
-          </h3>
+                  <h3 class="text-lg font-bold text-text-primary mb-4 text-center">
+          {section.title}
+        </h3>
           
           <!-- Desktop/Tablet Timeline View -->
           <div class="hidden md:block">
@@ -108,28 +108,28 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
               </div>
               
               {/* Timeline Items Container */}
-              <div class="timeline-items-container relative z-10 pb-20">
+              <div class="timeline-items-container relative z-10 pb-12">
                 {section.items.map((item, itemIndex) => (
-                  <article class="timeline-item mb-8 last:mb-0">
+                  <article class="timeline-item mb-4 last:mb-0">
                     <div class="flex items-center">
                       {/* Logo */}
-                      <div class="timeline-logo flex-shrink-0 w-16 h-16 rounded-lg bg-gray-800 flex items-center justify-center hover:scale-110 transition-transform duration-300 hover:shadow-lg hover:shadow-neon-cyan/20 border border-dark-border mr-6">
+                      <div class="timeline-logo flex-shrink-0 w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center hover:scale-110 transition-transform duration-300 hover:shadow-lg hover:shadow-neon-cyan/20 border border-dark-border mr-4">
                         <img 
                           src={item.logo} 
                           alt={`${item.organization} logo`}
-                          class="w-10 h-10 object-contain"
+                          class="w-6 h-6 object-contain"
                           loading="lazy"
                           onerror="this.src='/logos/placeholder.svg'"
                         />
                       </div>
                       
                       {/* Organization Name */}
-                      <div class="flex-shrink-0 w-56 mr-6">
-                        <h4 class="text-text-primary font-semibold text-sm mb-1">
+                      <div class="flex-shrink-0 w-40 mr-4">
+                        <h4 class="text-text-primary font-semibold text-xs mb-1">
                           {item.organization}
                         </h4>
                         {item.isPresent && (
-                          <span class="text-neon-cyan text-xs font-medium bg-neon-cyan/10 px-2 py-1 rounded-full inline-flex items-center">
+                          <span class="text-neon-cyan text-xs font-medium bg-neon-cyan/10 px-1 py-0.5 rounded-full inline-flex items-center">
                             <i class="fas fa-circle text-xs mr-1"></i>Present
                           </span>
                         )}
@@ -137,7 +137,7 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
                       
                       {/* Timeline Bar */}
                       <div class="flex-1 timeline-bar-wrapper relative">
-                        <div class="timeline-bar-container relative h-6 bg-gray-800 rounded-full overflow-hidden">
+                        <div class="timeline-bar-container relative h-4 bg-gray-800 rounded-full overflow-hidden">
                           <div 
                             class={`timeline-bar h-full bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full transition-all duration-300 ${item.isPresent ? 'present-bar' : ''}`}
                             style={`left: ${item.timelinePosition}%; width: ${item.timelineWidth}%`}
@@ -153,16 +153,16 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
               </div>
               
               {/* Year Labels - Fixed at bottom */}
-              <div class="timeline-labels absolute bottom-0 left-0 right-0 flex justify-between text-xs text-text-secondary pt-2">
+              <div class="timeline-labels absolute bottom-0 left-0 right-0 flex justify-between text-xs text-text-secondary pt-1">
                 {TIMELINE_YEARS.map(year => (
                   <span class="font-medium">{year}</span>
                 ))}
               </div>
               
               {/* Current Date Indicator - Positioned at today's date */}
-              <div class="current-date-indicator absolute bottom-0 transform -translate-y-6" style={`left: ${getCurrentDatePosition()}%`}>
+              <div class="current-date-indicator absolute bottom-0 transform -translate-y-4" style={`left: ${getCurrentDatePosition()}%`}>
                 <div class="flex flex-col items-center space-y-1">
-                  <div class="w-3 h-3 bg-neon-cyan rounded-full animate-pulse"></div>
+                  <div class="w-2 h-2 bg-neon-cyan rounded-full animate-pulse"></div>
                   <span class="text-neon-cyan text-xs font-medium">{getCurrentDateString()}</span>
                 </div>
               </div>
@@ -171,16 +171,16 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
           
           <!-- Mobile Card View -->
           <div class="md:hidden">
-            <div class="space-y-4">
+            <div class="space-y-2">
               {section.items.map((item, itemIndex) => (
-                <article class="timeline-card bg-dark-card border border-dark-border rounded-lg p-4 hover:border-neon-cyan transition-all duration-300 hover:shadow-lg hover:shadow-neon-cyan/10 group">
-                  <div class="flex flex-col sm:flex-row items-start space-y-3 sm:space-y-0 sm:space-x-4">
+                <article class="timeline-card bg-dark-card border border-dark-border rounded-lg p-2 hover:border-neon-cyan transition-all duration-300 hover:shadow-lg hover:shadow-neon-cyan/10 group">
+                  <div class="flex flex-col sm:flex-row items-start space-y-2 sm:space-y-0 sm:space-x-3">
                     {/* Logo */}
-                    <div class="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-lg bg-gray-800 flex items-center justify-center border border-dark-border">
+                    <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gray-800 flex items-center justify-center border border-dark-border">
                       <img 
                         src={item.logo} 
                         alt={`${item.organization} logo`}
-                        class="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                        class="w-6 h-6 sm:w-8 sm:h-8 object-contain"
                         loading="lazy"
                         onerror="this.src='/logos/placeholder.svg'"
                       />
@@ -188,23 +188,23 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
                     
                     {/* Content */}
                     <div class="flex-1 min-w-0">
-                      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h4 class="text-text-primary font-bold text-base mb-1 sm:mb-0 group-hover:text-neon-cyan transition-colors duration-300">
+                      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
+                        <h4 class="text-text-primary font-bold text-sm mb-1 sm:mb-0 group-hover:text-neon-cyan transition-colors duration-300">
                           {item.organization}
                         </h4>
                         {item.isPresent && (
-                          <span class="text-neon-cyan text-xs font-medium bg-neon-cyan/10 px-2 py-1 rounded-full inline-flex items-center w-fit">
+                          <span class="text-neon-cyan text-xs font-medium bg-neon-cyan/10 px-1 py-0.5 rounded-full inline-flex items-center w-fit">
                             <i class="fas fa-circle text-xs mr-1"></i>Present
                           </span>
                         )}
                       </div>
                       
-                      <h5 class="text-text-primary font-semibold text-sm mb-2">
+                      <h5 class="text-text-primary font-semibold text-xs mb-1">
                         {item.title}
                       </h5>
                       
                       {item.description && (
-                        <p class="text-text-secondary text-xs leading-relaxed mb-2">
+                        <p class="text-text-secondary text-xs leading-tight mb-1">
                           {item.description}
                         </p>
                       )}
@@ -242,8 +242,8 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
 <style>
   /* Optimized Timeline Styles - No Collapsing */
   .timeline-wrapper {
-    min-height: 300px;
-    padding-bottom: 60px;
+    min-height: 200px;
+    padding-bottom: 40px;
   }
   
   .timeline-grid-bg {
@@ -259,7 +259,7 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
   }
   
   .timeline-items-container {
-    min-height: 200px;
+    min-height: 120px;
   }
   
   .timeline-item {

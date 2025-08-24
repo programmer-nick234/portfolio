@@ -1,49 +1,35 @@
 ---
-// Experience section component
+// Experience section component - Optimized
 const experience = [
   {
-    title: "Senior Full-Stack Developer",
-    company: "TechCorp Inc.",
-    period: "2022 - Present",
-    description: "Leading development of enterprise web applications using React, Node.js, and cloud technologies. Mentoring junior developers and implementing best practices.",
-    icon: "fas fa-code",
-    type: "work"
-  },
-  {
-    title: "Full-Stack Developer",
-    company: "StartupXYZ",
-    period: "2020 - 2022",
-    description: "Built scalable web applications and APIs. Collaborated with cross-functional teams to deliver high-quality products on time.",
-    icon: "fas fa-rocket",
-    type: "work"
-  },
-  {
-    title: "Frontend Developer",
-    company: "Digital Agency",
-    period: "2018 - 2020",
-    description: "Developed responsive websites and web applications using modern JavaScript frameworks. Worked closely with designers to implement pixel-perfect designs.",
-    icon: "fas fa-palette",
+    id: "daily-dine-cto",
+    title: "Chief Technology Officer (CTO)",
+    company: "DailyDine",
+    period: "2024 - Present",
+    description: "Leading technology and product development for a scalable restaurant reservation platform. Overseeing technical strategy, team management, and innovative solutions.",
+    icon: "fas fa-crown",
     type: "work"
   }
 ];
 
 export const education = [
   {
+    id: "be-ai-ds",
     title: "Bachelor of Engineering - BE, Artificial Intelligence and Data Science",
     company: "Srinivas Institute of Technology, Mangalore",
-    period: "Aug 2024 - Aug 2028",
-    description:
-      "Skills: Python (Programming Language), Team Building, Team Management, Research Skills, Team Leadership, Startup Development, AutoCAD",
+    period: "2024 - 2028",
+    description: "Comprehensive program covering AI/ML, data science, and engineering principles with hands-on project experience.",
     icon: "fas fa-graduation-cap",
-    type: "education",
+    type: "education"
   },
   {
-    title: "High School",
+    id: "high-school",
+    title: "Higher Secondary Education (Science)",
     company: "MGSK Gujarati Highschool",
     period: "2023 - 2024",
-    description: "Completed higher secondary education with focus on science and mathematics.",
+    description: "Completed higher secondary education with distinction in science and mathematics.",
     icon: "fas fa-school",
-    type: "education",
+    type: "education"
   },
 ];
 
@@ -51,27 +37,28 @@ export const education = [
 
 <section id="experience" class="py-16 bg-dark-bg">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Optimized Header -->
     <div class="text-center mb-12">
       <h2 class="text-3xl sm:text-4xl font-bold text-text-primary mb-4">
         Experience & <span class="text-neon-cyan">Education</span>
       </h2>
-      <div class="w-24 h-1 bg-neon-cyan mx-auto mb-6"></div>
-      <p class="text-text-secondary text-base max-w-2xl mx-auto">
-        My professional journey and academic background
+      <div class="w-16 h-1 bg-neon-cyan mx-auto mb-3"></div>
+      <p class="text-text-secondary text-sm max-w-2xl mx-auto">
+        My professional journey and academic achievements
       </p>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-10">
-      <!-- Work Experience -->
+    <div class="grid lg:grid-cols-2 gap-8">
+      <!-- Optimized Work Experience -->
       <div>
         <h3 class="text-xl font-semibold text-text-primary mb-6 flex items-center">
-          <i class="fas fa-briefcase text-neon-cyan mr-3"></i>
+          <i class="fas fa-briefcase text-neon-cyan mr-3 text-lg"></i>
           Work Experience
         </h3>
         
         <div class="space-y-6">
           {experience.map((item, index) => (
-            <div class="relative">
+            <div class="relative" id={item.id}>
               <!-- Timeline line -->
               {index < experience.length - 1 && (
                 <div class="absolute left-6 top-12 w-0.5 h-16 bg-dark-border"></div>
@@ -79,26 +66,26 @@ export const education = [
               
               <div class="flex items-start space-x-4 group">
                 <!-- Icon -->
-                <div class="flex-shrink-0 w-12 h-12 bg-dark-card border border-dark-border rounded-full flex items-center justify-center group-hover:border-neon-cyan transition-all duration-300">
-                  <i class={`${item.icon} text-neon-cyan`}></i>
+                <div class="flex-shrink-0 w-10 h-10 bg-dark-card border border-dark-border rounded-full flex items-center justify-center group-hover:border-neon-cyan transition-all duration-300">
+                  <i class={`${item.icon} text-neon-cyan text-sm`}></i>
                 </div>
                 
                 <!-- Content -->
-                <div class="flex-1 bg-dark-card border border-dark-border rounded-lg p-6 group-hover:border-neon-cyan transition-all duration-300">
+                <div class="flex-1 bg-dark-card border border-dark-border rounded-xl p-4 group-hover:border-neon-cyan transition-all duration-300">
                   <div class="flex justify-between items-start mb-2">
-                    <h4 class="text-lg font-semibold text-text-primary group-hover:text-neon-cyan transition-colors duration-300">
+                    <h4 class="text-base font-semibold text-text-primary group-hover:text-neon-cyan transition-colors duration-300">
                       {item.title}
                     </h4>
-                    <span class="text-sm text-neon-cyan font-medium">
+                    <span class="text-xs text-neon-cyan font-medium bg-neon-cyan/10 px-2 py-1 rounded-full">
                       {item.period}
                     </span>
                   </div>
-                  <p class="text-neon-purple font-medium mb-3">
+                  <p class="text-neon-purple font-medium mb-2 text-sm">
                     {item.company}
                   </p>
-                  <p class="text-text-secondary text-sm leading-relaxed">
-                    {item.description}
-                  </p>
+                                     <p class="text-text-secondary text-sm leading-relaxed">
+                     {item.description}
+                   </p>
                 </div>
               </div>
             </div>
@@ -106,43 +93,43 @@ export const education = [
         </div>
       </div>
 
-      <!-- Education -->
+      <!-- Optimized Education -->
       <div>
         <h3 class="text-xl font-semibold text-text-primary mb-6 flex items-center">
-          <i class="fas fa-graduation-cap text-neon-green mr-3"></i>
+          <i class="fas fa-graduation-cap text-neon-green mr-3 text-lg"></i>
           Education
         </h3>
         
         <div class="space-y-6">
           {education.map((item, index) => (
-            <div class="relative">
+            <div class="relative" id={item.id}>
               <!-- Timeline line -->
               {index < education.length - 1 && (
-                <div class="absolute left-6 top-12 w-0.5 h-16 bg-dark-border"></div>
+                <div class="absolute left-5 top-10 w-0.5 h-12 bg-dark-border"></div>
               )}
               
-              <div class="flex items-start space-x-4 group">
+              <div class="flex items-start space-x-3 group">
                 <!-- Icon -->
-                <div class="flex-shrink-0 w-12 h-12 bg-dark-card border border-dark-border rounded-full flex items-center justify-center group-hover:border-neon-green transition-all duration-300">
-                  <i class={`${item.icon} text-neon-green`}></i>
+                <div class="flex-shrink-0 w-8 h-8 bg-dark-card border border-dark-border rounded-full flex items-center justify-center group-hover:border-neon-green transition-all duration-300">
+                  <i class={`${item.icon} text-neon-green text-xs`}></i>
                 </div>
                 
                 <!-- Content -->
-                <div class="flex-1 bg-dark-card border border-dark-border rounded-lg p-6 group-hover:border-neon-green transition-all duration-300">
-                  <div class="flex justify-between items-start mb-2">
-                    <h4 class="text-lg font-semibold text-text-primary group-hover:text-neon-green transition-colors duration-300">
-                      {item.title}
-                    </h4>
-                    <span class="text-sm text-neon-green font-medium">
-                      {item.period}
-                    </span>
-                  </div>
-                  <p class="text-neon-purple font-medium mb-3">
-                    {item.company}
-                  </p>
-                  <p class="text-text-secondary text-sm leading-relaxed">
-                    {item.description}
-                  </p>
+                <div class="flex-1 bg-dark-card border border-dark-border rounded-xl p-4 group-hover:border-neon-green transition-all duration-300">
+                                     <div class="flex justify-between items-start mb-2">
+                     <h4 class="text-sm font-semibold text-text-primary group-hover:text-neon-green transition-colors duration-300">
+                       {item.title}
+                     </h4>
+                     <span class="text-xs text-neon-green font-medium bg-neon-green/10 px-2 py-1 rounded-full">
+                       {item.period}
+                     </span>
+                   </div>
+                   <p class="text-neon-purple font-medium mb-2 text-sm">
+                     {item.company}
+                   </p>
+                   <p class="text-text-secondary text-sm leading-relaxed">
+                     {item.description}
+                   </p>
                 </div>
               </div>
             </div>
@@ -151,36 +138,36 @@ export const education = [
       </div>
     </div>
 
-    <!-- Certifications -->
-    <div class="mt-12">
-      <h3 class="text-xl font-semibold text-text-primary mb-6 text-center">
+    {/* <!-- Certifications -->
+    <div class="mt-4">
+      <h3 class="text-lg font-semibold text-text-primary mb-3 text-center">
         Certifications
       </h3>
-      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        <div class="bg-dark-card border border-dark-border rounded-lg p-6 text-center hover:border-neon-cyan transition-all duration-300">
-          <div class="text-neon-cyan text-3xl mb-4">
+      <div class="grid md:grid-cols-3 gap-2 max-w-4xl mx-auto">
+        <div class="bg-dark-card border border-dark-border rounded-lg p-2 text-center hover:border-neon-cyan transition-all duration-300">
+          <div class="text-neon-cyan text-lg mb-1">
             <i class="fab fa-aws"></i>
           </div>
-          <h4 class="text-text-primary font-semibold mb-2">AWS Certified Developer</h4>
-          <p class="text-text-muted text-sm">2023</p>
+          <h4 class="text-text-primary font-semibold mb-1 text-xs">AWS Certified Developer</h4>
+          <p class="text-text-muted text-xs">2023</p>
         </div>
         
-        <div class="bg-dark-card border border-dark-border rounded-lg p-6 text-center hover:border-neon-purple transition-all duration-300">
-          <div class="text-neon-purple text-3xl mb-4">
+        <div class="bg-dark-card border border-dark-border rounded-lg p-2 text-center hover:border-neon-purple transition-all duration-300">
+          <div class="text-neon-purple text-lg mb-1">
             <i class="fab fa-google"></i>
           </div>
-          <h4 class="text-text-primary font-semibold mb-2">Google Cloud Professional</h4>
-          <p class="text-text-muted text-sm">2022</p>
+          <h4 class="text-text-primary font-semibold mb-1 text-xs">Google Cloud Professional</h4>
+          <p class="text-text-muted text-xs">2022</p>
         </div>
         
-        <div class="bg-dark-card border border-dark-border rounded-lg p-6 text-center hover:border-neon-green transition-all duration-300">
-          <div class="text-neon-green text-3xl mb-4">
+        <div class="bg-dark-card border border-dark-border rounded-lg p-2 text-center hover:border-neon-green transition-all duration-300">
+          <div class="text-neon-green text-lg mb-1">
             <i class="fas fa-certificate"></i>
           </div>
-          <h4 class="text-text-primary font-semibold mb-2">React Advanced Certification</h4>
-          <p class="text-text-muted text-sm">2021</p>
+          <h4 class="text-text-primary font-semibold mb-1 text-xs">React Advanced Certification</h4>
+          <p class="text-text-muted text-xs">2021</p>
         </div>
       </div>
-    </div>
+    </div> --> */}
   </div>
 </section>
