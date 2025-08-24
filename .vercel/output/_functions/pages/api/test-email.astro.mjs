@@ -5,7 +5,7 @@ const prerender = false;
 const GET = async () => {
   try {
     console.log("Testing email configuration...");
-    const gmailUser = undefined                           || "nikhilbajantri86@gmail.com";
+    const gmailUser = undefined                          ;
     const gmailPassword = undefined                                  ;
     if (!gmailPassword) {
       return new Response(JSON.stringify({

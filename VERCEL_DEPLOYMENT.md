@@ -21,14 +21,15 @@ In your Vercel dashboard, add these environment variables:
 3. **Add these variables:**
 
 ```
-GMAIL_APP_PASSWORD=ivzn dgjc qfsl uyka
-GMAIL_USER=nikhilbajantri86@gmail.com
+GMAIL_APP_PASSWORD=your-actual-gmail-app-password
+GMAIL_USER=your-gmail-address@gmail.com
 ```
 
 **⚠️ Important:** 
-- Use your actual Gmail App Password (the one that was working locally)
+- Use your actual Gmail App Password (generate one in Google Account settings)
 - Make sure there are no extra spaces
 - The password should be exactly 16 characters
+- Never commit these values to your repository
 
 ## 🐛 **Debugging Serverless Function Crashes**
 
@@ -43,9 +44,8 @@ https://your-domain.vercel.app/api/debug-env
 {
   "success": true,
   "environment": {
-    "GMAIL_USER": "nikhilbajantri86@gmail.com",
-    "GMAIL_APP_PASSWORD": "SET",
-    ...
+    "GMAIL_USER": "your-email@gmail.com",
+    "GMAIL_APP_PASSWORD": "SET"
   }
 }
 ```
@@ -155,3 +155,4 @@ curl http://localhost:4321/api/test-email
 - Your Gmail password is not exposed in the code
 - Only you can see the environment variables in your dashboard
 - Debug endpoints only show if variables are set, not their values
+- Never commit credentials to your repository

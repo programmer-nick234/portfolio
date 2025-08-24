@@ -9,7 +9,7 @@ export const GET: APIRoute = async () => {
     console.log('Testing email configuration...');
     
     // Get environment variables
-    const gmailUser = import.meta.env.GMAIL_USER || 'nikhilbajantri86@gmail.com';
+    const gmailUser = import.meta.env.GMAIL_USER;
     const gmailPassword = import.meta.env.GMAIL_APP_PASSWORD;
 
     if (!gmailPassword) {

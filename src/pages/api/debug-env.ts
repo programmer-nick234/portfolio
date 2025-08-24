@@ -20,7 +20,7 @@ export const GET: APIRoute = async () => {
 
     console.log('Environment variables:', envVars);
 
-    // Test if we can access the environment variables
+    // Get environment variables
     const gmailUser = import.meta.env.GMAIL_USER;
     const gmailPassword = import.meta.env.GMAIL_APP_PASSWORD;
 
@@ -31,7 +31,7 @@ export const GET: APIRoute = async () => {
       gmailUser: gmailUser || 'NOT SET',
       gmailPasswordSet: !!gmailPassword,
       timestamp: new Date().toISOString(),
-      recommendations: []
+      recommendations: [] as string[]
     };
 
     // Add recommendations based on what's missing

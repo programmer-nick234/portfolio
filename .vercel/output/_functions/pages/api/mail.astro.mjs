@@ -27,7 +27,7 @@ const POST = async ({ request }) => {
         headers: { "Content-Type": "application/json" }
       });
     }
-    const gmailUser = undefined                           || "nikhilbajantri86@gmail.com";
+    const gmailUser = undefined                          ;
     const gmailPassword = undefined                                  ;
     if (!gmailPassword) {
       console.error("GMAIL_APP_PASSWORD environment variable is not set");
