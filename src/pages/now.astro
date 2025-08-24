@@ -1,14 +1,86 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
-import About from '../components/About.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="About Me - Nick" description="Learn more about Nick, a passionate developer and designer">
+<Layout title="What I'm up to now - Nick" description="Current activities and focus areas">
   <Navigation />
   <main class="pt-16">
-    <About />
+    <section class="py-20 bg-dark-bg">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h1 class="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
+            What I'm up to <span class="text-neon-cyan">now</span>
+          </h1>
+          <div class="w-24 h-1 bg-neon-cyan mx-auto mb-6"></div>
+          <p class="text-text-secondary text-lg">
+            Inspired by <a href="https://nownownow.com/about" class="text-neon-cyan hover:underline" target="_blank" rel="noopener noreferrer">nownownow.com</a>
+          </p>
+        </div>
+
+        <!-- Currently Working On Section -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold text-text-primary mb-6">
+            Currently Working On
+          </h2>
+          <ul class="space-y-4 text-text-secondary">
+            <li class="flex items-start">
+              <span class="text-neon-cyan mr-3 mt-1">•</span>
+              <span>
+                <strong class="text-text-primary">Work:</strong> Building DailyDine a scalable and innovative restaurant reservation platform.
+              </span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-neon-cyan mr-3 mt-1">•</span>
+              <span>
+                <strong class="text-text-primary">Side Project:</strong> Building <a href="#" class="text-neon-cyan hover:underline">HisabProx</a>, simplifying Freelancer invoice work.
+              </span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-neon-cyan mr-3 mt-1">•</span>
+              <span>
+                Hitting the gym 5 days in a week, and eating healthy.
+              </span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-neon-cyan mr-3 mt-1">•</span>
+              <span>
+                Growing <a href="#" class="text-neon-cyan hover:underline">DailyDine</a>, a restaurant reservation platform. 
+             </span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Current Focus Section -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold text-text-primary mb-6">
+            Current Focus
+          </h2>
+          <ul class="space-y-4 text-text-secondary">
+            <li class="flex items-start">
+              <span class="text-neon-cyan mr-3 mt-1">•</span>
+              <span>
+                Level up my Fullstack Development skills
+              </span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-neon-cyan mr-3 mt-1">•</span>
+              <span>
+                Be a consistent reader, and writer, and a better person
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Last Updated -->
+        <div class="text-center pt-8 border-t border-dark-border">
+          <p class="text-text-muted text-sm">
+            Last updated: 24th August 2025
+          </p>
+        </div>
+      </div>
+    </section>
   </main>
   <Footer />
 </Layout>

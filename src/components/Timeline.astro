@@ -76,24 +76,24 @@ const TIMELINE_YEARS = ['2021', '2022', '2023', '2024', '2025'];
 const GRID_POSITIONS = [0, 25, 50, 75, 100];
 ---
 
-<section class="py-16 px-4 bg-dark-bg">
-  <div class="max-w-7xl mx-auto">
+<section class="py-12 px-4 bg-dark-bg">
+  <div class="max-w-6xl mx-auto">
     <!-- Header Section -->
-    <header class="text-center mb-16">
-      <h2 class="text-4xl font-bold text-text-primary mb-6">
+    <header class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-text-primary mb-4">
         <span class="text-neon-cyan">Work Experience</span>
       </h2>
-      <div class="w-24 h-1 bg-neon-cyan mx-auto mb-6"></div>
-      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+      <div class="w-20 h-1 bg-neon-cyan mx-auto mb-4"></div>
+      <p class="text-text-secondary text-base max-w-2xl mx-auto">
         My professional journey and contributions to the tech community
       </p>
     </header>
     
     <!-- Timeline Sections -->
-    <div class="space-y-16">
+    <div class="space-y-12">
       {sectionsWithTimeline.map((section, sectionIndex) => (
         <section class="timeline-section">
-          <h3 class="text-2xl font-bold text-text-primary mb-12 text-center">
+          <h3 class="text-xl font-bold text-text-primary mb-8 text-center">
             {section.title}
           </h3>
           
@@ -110,34 +110,34 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
               {/* Timeline Items Container */}
               <div class="timeline-items-container relative z-10 pb-20">
                 {section.items.map((item, itemIndex) => (
-                  <article class="timeline-item mb-12 last:mb-0">
+                  <article class="timeline-item mb-8 last:mb-0">
                     <div class="flex items-center">
                       {/* Logo */}
-                      <div class="timeline-logo flex-shrink-0 w-20 h-20 rounded-lg bg-gray-800 flex items-center justify-center hover:scale-110 transition-transform duration-300 hover:shadow-lg hover:shadow-neon-cyan/20 border border-dark-border mr-8">
+                      <div class="timeline-logo flex-shrink-0 w-16 h-16 rounded-lg bg-gray-800 flex items-center justify-center hover:scale-110 transition-transform duration-300 hover:shadow-lg hover:shadow-neon-cyan/20 border border-dark-border mr-6">
                         <img 
                           src={item.logo} 
                           alt={`${item.organization} logo`}
-                          class="w-12 h-12 object-contain"
+                          class="w-10 h-10 object-contain"
                           loading="lazy"
                           onerror="this.src='/logos/placeholder.svg'"
                         />
                       </div>
                       
                       {/* Organization Name */}
-                      <div class="flex-shrink-0 w-64 mr-8">
-                        <h4 class="text-text-primary font-semibold text-base mb-2">
+                      <div class="flex-shrink-0 w-56 mr-6">
+                        <h4 class="text-text-primary font-semibold text-sm mb-1">
                           {item.organization}
                         </h4>
                         {item.isPresent && (
-                          <span class="text-neon-cyan text-sm font-medium bg-neon-cyan/10 px-3 py-1 rounded-full inline-flex items-center">
-                            <i class="fas fa-circle text-xs mr-2"></i>Present
+                          <span class="text-neon-cyan text-xs font-medium bg-neon-cyan/10 px-2 py-1 rounded-full inline-flex items-center">
+                            <i class="fas fa-circle text-xs mr-1"></i>Present
                           </span>
                         )}
                       </div>
                       
                       {/* Timeline Bar */}
                       <div class="flex-1 timeline-bar-wrapper relative">
-                        <div class="timeline-bar-container relative h-8 bg-gray-800 rounded-full overflow-hidden">
+                        <div class="timeline-bar-container relative h-6 bg-gray-800 rounded-full overflow-hidden">
                           <div 
                             class={`timeline-bar h-full bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full transition-all duration-300 ${item.isPresent ? 'present-bar' : ''}`}
                             style={`left: ${item.timelinePosition}%; width: ${item.timelineWidth}%`}
@@ -153,17 +153,17 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
               </div>
               
               {/* Year Labels - Fixed at bottom */}
-              <div class="timeline-labels absolute bottom-0 left-0 right-0 flex justify-between text-sm text-text-secondary pt-4">
+              <div class="timeline-labels absolute bottom-0 left-0 right-0 flex justify-between text-xs text-text-secondary pt-2">
                 {TIMELINE_YEARS.map(year => (
                   <span class="font-medium">{year}</span>
                 ))}
               </div>
               
               {/* Current Date Indicator - Positioned at today's date */}
-              <div class="current-date-indicator absolute bottom-0 transform -translate-y-8" style={`left: ${getCurrentDatePosition()}%`}>
-                <div class="flex flex-col items-center space-y-2">
-                  <div class="w-4 h-4 bg-neon-cyan rounded-full animate-pulse"></div>
-                  <span class="text-neon-cyan text-sm font-medium">{getCurrentDateString()}</span>
+              <div class="current-date-indicator absolute bottom-0 transform -translate-y-6" style={`left: ${getCurrentDatePosition()}%`}>
+                <div class="flex flex-col items-center space-y-1">
+                  <div class="w-3 h-3 bg-neon-cyan rounded-full animate-pulse"></div>
+                  <span class="text-neon-cyan text-xs font-medium">{getCurrentDateString()}</span>
                 </div>
               </div>
             </div>
@@ -171,16 +171,16 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
           
           <!-- Mobile Card View -->
           <div class="md:hidden">
-            <div class="space-y-6">
+            <div class="space-y-4">
               {section.items.map((item, itemIndex) => (
-                <article class="timeline-card bg-dark-card border border-dark-border rounded-lg p-6 hover:border-neon-cyan transition-all duration-300 hover:shadow-lg hover:shadow-neon-cyan/10 group">
-                  <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-6">
+                <article class="timeline-card bg-dark-card border border-dark-border rounded-lg p-4 hover:border-neon-cyan transition-all duration-300 hover:shadow-lg hover:shadow-neon-cyan/10 group">
+                  <div class="flex flex-col sm:flex-row items-start space-y-3 sm:space-y-0 sm:space-x-4">
                     {/* Logo */}
-                    <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg bg-gray-800 flex items-center justify-center border border-dark-border">
+                    <div class="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-lg bg-gray-800 flex items-center justify-center border border-dark-border">
                       <img 
                         src={item.logo} 
                         alt={`${item.organization} logo`}
-                        class="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+                        class="w-8 h-8 sm:w-10 sm:h-10 object-contain"
                         loading="lazy"
                         onerror="this.src='/logos/placeholder.svg'"
                       />
@@ -188,29 +188,29 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
                     
                     {/* Content */}
                     <div class="flex-1 min-w-0">
-                      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                        <h4 class="text-text-primary font-bold text-lg mb-1 sm:mb-0 group-hover:text-neon-cyan transition-colors duration-300">
+                      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h4 class="text-text-primary font-bold text-base mb-1 sm:mb-0 group-hover:text-neon-cyan transition-colors duration-300">
                           {item.organization}
                         </h4>
                         {item.isPresent && (
-                          <span class="text-neon-cyan text-sm font-medium bg-neon-cyan/10 px-3 py-1 rounded-full inline-flex items-center w-fit">
-                            <i class="fas fa-circle text-xs mr-2"></i>Present
+                          <span class="text-neon-cyan text-xs font-medium bg-neon-cyan/10 px-2 py-1 rounded-full inline-flex items-center w-fit">
+                            <i class="fas fa-circle text-xs mr-1"></i>Present
                           </span>
                         )}
                       </div>
                       
-                      <h5 class="text-text-primary font-semibold text-base mb-2">
+                      <h5 class="text-text-primary font-semibold text-sm mb-2">
                         {item.title}
                       </h5>
                       
                       {item.description && (
-                        <p class="text-text-secondary text-sm leading-relaxed mb-3">
+                        <p class="text-text-secondary text-xs leading-relaxed mb-2">
                           {item.description}
                         </p>
                       )}
                       
                       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                        <time class="text-text-secondary text-sm mb-2 sm:mb-0">
+                        <time class="text-text-secondary text-xs mb-1 sm:mb-0">
                           {item.startDate} - {item.isPresent ? 'Present' : item.endDate}
                         </time>
                         
@@ -219,7 +219,7 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
                             href={item.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-text-secondary hover:text-neon-cyan transition-colors duration-300 text-sm inline-flex items-center"
+                            class="text-text-secondary hover:text-neon-cyan transition-colors duration-300 text-xs inline-flex items-center"
                             aria-label={`Visit ${item.organization} website`}
                           >
                             Visit Website
@@ -242,8 +242,8 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
 <style>
   /* Optimized Timeline Styles - No Collapsing */
   .timeline-wrapper {
-    min-height: 400px;
-    padding-bottom: 80px;
+    min-height: 300px;
+    padding-bottom: 60px;
   }
   
   .timeline-grid-bg {
@@ -259,7 +259,7 @@ const GRID_POSITIONS = [0, 25, 50, 75, 100];
   }
   
   .timeline-items-container {
-    min-height: 300px;
+    min-height: 200px;
   }
   
   .timeline-item {
