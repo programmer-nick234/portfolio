@@ -2,26 +2,27 @@
 // Footer component
 ---
 
-<footer class="bg-dark-bg border-t border-dark-border py-6">
+<footer class="bg-dark-bg border-t border-dark-border py-8">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col sm:flex-row justify-between items-center">
       <!-- Copyright -->
-      <div class="text-text-secondary text-sm">
+      <div class="text-text-secondary text-sm mb-4 sm:mb-0">
         © {new Date().getFullYear()} Nikhil Bajantri. All rights reserved.
       </div>
 
       <!-- Tech Stack Credits -->
-      <div class="text-text-secondary text-sm flex items-center space-x-2 mt-2 sm:mt-0">
+      <div class="text-text-secondary text-sm flex items-center space-x-2">
         <span>Built with</span>
         <!-- Astro.js Logo -->
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+        <svg class="w-4 h-4 text-neon-cyan" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2L2 19h20L12 2zm0 3.84L19.5 19h-15L12 5.84z"/>
         </svg>
-        <span>and hosted on</span>
-        <!-- Vercel Logo -->
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M24 22.525H0l12-21.05 12 21.05z"/>
+        <span>and deployed on</span>
+        <!-- Netlify Logo -->
+        <svg class="w-4 h-4 text-neon-cyan" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm0 3c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7zm0 2c2.761 0 5 2.239 5 5s-2.239 5-5 5-5-2.239-5-5 2.239-5 5-5z"/>
         </svg>
+        <span class="text-neon-cyan font-medium">Netlify</span>
       </div>
     </div>
   </div>
