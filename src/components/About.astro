@@ -2,60 +2,117 @@
 // About section component
 ---
 
-<section id="about" class="min-h-screen bg-dark-bg flex items-center overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 w-full">
+<section id="about" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20">
+  <!-- Animated Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-dark-bg via-dark-card to-dark-bg">
+    <!-- Animated particles -->
+    <div class="absolute inset-0">
+      {Array.from({ length: 30 }).map((_, i) => (
+        <div
+          class="absolute w-1 h-1 bg-neon-cyan rounded-full animate-pulse-slow"
+          style={`
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation-delay: ${Math.random() * 3}s;
+            opacity: ${Math.random() * 0.5 + 0.1};
+          `}
+        ></div>
+      ))}
+    </div>
+    
+    <!-- Gradient orbs -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/20 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-cyan/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
       <!-- Content Section -->
-      <div class="space-y-4 sm:space-y-6 order-2 lg:order-1">
-        <div>
-          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-4 sm:mb-6 leading-tight">
+      <div class="space-y-6 sm:space-y-8 order-2 lg:order-1">
+        <div class="animate-fade-in">
+          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary mb-6 sm:mb-8 leading-tight">
             Nikhil Bajantri
           </h1>
-          <p class="text-text-secondary leading-relaxed text-base sm:text-lg mb-6 sm:mb-8 max-w-lg">
-            Turning concepts into code — from sleek UIs to scalable backends. A full-stack developer who loves learning, building, and pushing boundaries.
+          <p class="text-text-secondary leading-relaxed text-lg sm:text-xl mb-8 sm:mb-10 max-w-2xl">
+            Full Stack Developer and Chief Technology Officer (CTO) at DailyDine. Expert in Python, JavaScript, React, Machine Learning, and Artificial Intelligence. Specializing in building scalable web applications, mobile apps, and AI-powered solutions. Passionate about innovation, leadership, and creating impactful technology solutions.
           </p>
         </div>
         
-        <div class="space-y-3 sm:space-y-4">
+        <div class="space-y-4 sm:space-y-6">
           <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
-            <span class="text-text-primary font-medium text-base sm:text-lg">Full-Stack Developer & CTO at</span>
-            <span class="text-neon-cyan font-semibold text-base sm:text-lg">DailyDine</span>
+            <span class="text-text-primary font-medium text-lg sm:text-xl">Chief Technology Officer (CTO) at</span>
+            <span class="text-neon-cyan font-semibold text-lg sm:text-xl">DailyDine</span>
           </div>
           <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
-            <span class="text-text-primary text-base sm:text-lg">Building products & exploring tech</span>
-            <span class="text-xl sm:text-2xl">⚡</span>
+            <span class="text-text-primary text-lg sm:text-xl">Leading technology strategy and product development</span>
+            <span class="text-2xl sm:text-3xl">⚡</span>
+          </div>
+        </div>
+
+        <!-- Key Skills & Expertise -->
+        <div class="space-y-4">
+          <h2 class="text-xl sm:text-2xl font-semibold text-text-primary">Core Expertise</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-code text-neon-cyan"></i>
+              <span class="text-text-secondary">Full Stack Development</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-brain text-neon-purple"></i>
+              <span class="text-text-secondary">Machine Learning & AI</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-mobile-alt text-neon-green"></i>
+              <span class="text-text-secondary">Mobile App Development</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-cloud text-neon-cyan"></i>
+              <span class="text-text-secondary">Cloud Architecture</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-users text-neon-purple"></i>
+              <span class="text-text-secondary">Team Leadership</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-rocket text-neon-green"></i>
+              <span class="text-text-secondary">Product Strategy</span>
+            </div>
           </div>
         </div>
         
-        <!-- Social Links -->
-        <div class="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 lg:space-x-8 pt-4 sm:pt-6">
-          <div class="flex items-center space-x-6 sm:space-x-8">
+        <!-- Social Links and Resume Button -->
+        <div class="flex flex-col sm:flex-row sm:items-center space-y-6 sm:space-y-0 sm:space-x-8 pt-6 sm:pt-8">
+          <div class="flex items-center space-x-8 sm:space-x-10">
             <a
               href="https://github.com/programmer-nick234/"
-              class="text-text-secondary hover:text-text-primary transition-colors duration-300 text-2xl sm:text-3xl"
-              title="GitHub"
+              class="text-text-secondary hover:text-text-primary transition-colors duration-300 text-3xl sm:text-4xl"
+              title="GitHub Profile - Nikhil Bajantri"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit GitHub profile"
             >
               <i class="fab fa-github"></i>
             </a>
             <a
               href="https://www.linkedin.com/in/nikhil-bajantri-dev"
-              class="text-text-secondary hover:text-text-primary transition-colors duration-300 text-2xl sm:text-3xl"
-              title="LinkedIn"
+              class="text-text-secondary hover:text-text-primary transition-colors duration-300 text-3xl sm:text-4xl"
+              title="LinkedIn Profile - Nikhil Bajantri"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit LinkedIn profile"
             >
               <i class="fab fa-linkedin"></i>
             </a>
             <a
               href="https://x.com/nikkkkhil_2604"
-              class="text-text-secondary hover:text-text-primary transition-colors duration-300 text-2xl sm:text-3xl x-icon"
-              title="X (Twitter)"
+              class="text-text-secondary hover:text-text-primary transition-colors duration-300 text-3xl sm:text-4xl"
+              title="X (Twitter) Profile - Nikhil Bajantri"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit X (Twitter) profile"
             >
-              <svg width="24" height="24" class="sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="currentColor">
+              <svg width="32" height="32" class="sm:w-9 sm:h-9" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
             </a>
@@ -65,28 +122,81 @@
           <a
             href="/resume.pdf"
             download="Nikhil_Bajantri_Resume.pdf"
-            class="bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 flex items-center justify-center space-x-2 sm:space-x-3 shadow-lg hover:shadow-xl transform hover:scale-105 w-full sm:w-auto"
+            class="bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-lg font-semibold text-lg sm:text-xl transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:scale-105 w-full sm:w-auto"
             onclick="return confirm('Download resume?')"
+            aria-label="Download resume"
+            title="Download Nikhil Bajantri Resume"
           >
-            <span>Resume</span>
+            <span>Download Resume</span>
             <i class="fas fa-download"></i>
           </a>
         </div>
       </div>
 
       <!-- Photo Section -->
-      <div class="relative order-1 lg:order-2 flex justify-center">
-        <div class="relative w-full max-w-sm sm:max-w-md lg:max-w-lg mx-auto">          
-          <!-- Photo container -->
-          <div class="relative w-full aspect-square rounded-2xl sm:rounded-3xl overflow-hidden border-2 sm:border-4 border-gray-700 shadow-xl sm:shadow-2xl">
+      <div class="relative order-1 lg:order-2 flex justify-center lg:justify-end">
+        <div class="relative w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl mx-auto">          
+          <!-- Photo container with enhanced styling -->
+          <div class="relative w-full aspect-square rounded-2xl sm:rounded-3xl overflow-hidden border-2 sm:border-4 border-gray-700 shadow-2xl sm:shadow-3xl transform hover:scale-105 transition-transform duration-500">
             <img
               src="/profile-image.jpg"
-              alt="Nikhil Bajantri - Developer"
+              alt="Nikhil Bajantri - Full Stack Developer and CTO at DailyDine"
               class="w-full h-full object-cover"
+              loading="eager"
             />
+            <!-- Subtle overlay for depth -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
           </div>
+          
+          <!-- Decorative elements -->
+          <div class="absolute -top-4 -right-4 w-8 h-8 bg-neon-cyan rounded-full opacity-60 animate-pulse"></div>
+          <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-neon-purple rounded-full opacity-60 animate-pulse" style="animation-delay: -1s;"></div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <div class="w-6 h-10 border-2 border-text-secondary rounded-full flex justify-center">
+      <div class="w-1 h-3 bg-neon-cyan rounded-full mt-2 animate-pulse"></div>
+    </div>
+  </div>
 </section>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Enhanced responsive design */
+  @media (max-width: 640px) {
+    #about {
+      padding-top: 5rem;
+      padding-bottom: 2rem;
+    }
+  }
+  
+  @media (min-width: 641px) and (max-width: 1024px) {
+    #about {
+      padding-top: 6rem;
+      padding-bottom: 3rem;
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    #about {
+      padding-top: 7rem;
+      padding-bottom: 4rem;
+    }
+  }
+</style>

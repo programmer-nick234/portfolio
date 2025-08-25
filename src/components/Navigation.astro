@@ -8,59 +8,66 @@ const navItems = [
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-black/20 via-gray-900/30 to-black/20 backdrop-blur-xl border-b border-white/10 shadow-2xl">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-black/30 via-gray-900/40 to-black/30 backdrop-blur-xl border-b border-white/10 shadow-2xl">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-14 sm:h-16">
       <!-- Left Side: Panda Logo -->
       <div class="flex-shrink-0">
-        <a href="/" class="group relative">
+        <a href="/" class="group relative" aria-label="Home">
           <div class="absolute inset-0 bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <img 
             src="/navbar.png" 
             alt="Panda Logo" 
-            class="relative w-14 h-14 object-contain hover:scale-125 transition-all duration-500 hover:rotate-12 drop-shadow-lg"
+            class="relative w-10 h-10 sm:w-14 sm:h-14 object-contain hover:scale-125 transition-all duration-500 hover:rotate-12 drop-shadow-lg"
+            loading="eager"
           />
         </a>
       </div>
 
       <!-- Right Side: All Navigation Icons -->
-      <div class="hidden md:flex items-center space-x-4">
+      <div class="hidden md:flex items-center space-x-2 lg:space-x-4">
         {navItems.map((item) => (
           <a
             href={item.href}
-            class="text-text-secondary hover:text-neon-cyan p-2 rounded-lg transition-colors duration-300"
+            class="text-text-secondary hover:text-neon-cyan p-2 sm:p-3 rounded-lg sm:rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/10 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-neon-cyan focus:ring-offset-2 focus:ring-offset-transparent"
+            title={item.name}
+            aria-label={item.name}
           >
-            <i class={`${item.icon} text-xl`}></i>
+            <i class={`${item.icon} text-lg sm:text-xl`}></i>
           </a>
         ))}
       </div>
 
-             <!-- Mobile menu button -->
-       <div class="md:hidden">
-         <button
-           id="mobile-menu-button"
-           class="text-text-secondary hover:text-neon-cyan focus:outline-none focus:text-neon-cyan transition-colors duration-300 p-2"
-         >
-           <i class="fas fa-bars text-xl"></i>
-         </button>
-       </div>
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button
+          id="mobile-menu-button"
+          class="text-text-secondary hover:text-neon-cyan focus:outline-none focus:text-neon-cyan transition-colors duration-300 p-2 rounded-lg hover:bg-white/10"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <i class="fas fa-bars text-lg sm:text-xl"></i>
+        </button>
+      </div>
     </div>
   </div>
 
-                       <!-- Mobile Navigation -->
-     <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-t border-dark-border">
-       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-         {navItems.map((item) => (
-           <a
-             href={item.href}
-             class="text-text-secondary hover:text-neon-cyan block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 flex items-center space-x-3"
-           >
-             <i class={`${item.icon} text-lg`}></i>
-             <span>{item.name}</span>
-           </a>
-         ))}
-       </div>
-     </div>
+  <!-- Mobile Navigation -->
+  <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-t border-dark-border transform transition-all duration-300 ease-in-out">
+    <div class="px-4 py-3 space-y-2">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="text-text-secondary hover:text-neon-cyan block px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 flex items-center space-x-3 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-neon-cyan focus:ring-offset-2 focus:ring-offset-transparent"
+          aria-label={item.name}
+        >
+          <i class={`${item.icon} text-lg`}></i>
+          <span>{item.name}</span>
+        </a>
+      ))}
+    </div>
+  </div>
 </nav>
 
 <script>
@@ -70,15 +77,23 @@ const navItems = [
 
   if (mobileMenuButton && mobileMenu) {
     mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+      const isHidden = mobileMenu.classList.contains('hidden');
+      
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+      }
       
       // Change icon
       const icon = mobileMenuButton.querySelector('i');
       if (icon) {
-        if (mobileMenu.classList.contains('hidden')) {
-          icon.className = 'fas fa-bars text-xl';
+        if (isHidden) {
+          icon.className = 'fas fa-times text-lg sm:text-xl';
         } else {
-          icon.className = 'fas fa-times text-xl';
+          icon.className = 'fas fa-bars text-lg sm:text-xl';
         }
       }
     });
@@ -88,56 +103,87 @@ const navItems = [
   document.querySelectorAll('#mobile-menu a').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu?.classList.add('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
       const icon = mobileMenuButton?.querySelector('i');
       if (icon) {
-        icon.className = 'fas fa-bars text-xl';
+        icon.className = 'fas fa-bars text-lg sm:text-xl';
       }
     });
   });
 
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const target = e.target as Node;
+    if (mobileMenu && !mobileMenu.contains(target) && !mobileMenuButton?.contains(target)) {
+      mobileMenu.classList.add('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      const icon = mobileMenuButton?.querySelector('i');
+      if (icon) {
+        icon.className = 'fas fa-bars text-lg sm:text-xl';
+      }
+    }
+  });
+
+  // Close mobile menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      const icon = mobileMenuButton?.querySelector('i');
+      if (icon) {
+        icon.className = 'fas fa-bars text-lg sm:text-xl';
+      }
+    }
+  });
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      const icon = mobileMenuButton?.querySelector('i');
+      if (icon) {
+        icon.className = 'fas fa-bars text-lg sm:text-xl';
+      }
+    }
+  });
 </script>
 
 <style>
-  /* Disable all tooltips */
-  [title] {
-    position: relative;
+  /* Enhanced mobile menu animations */
+  #mobile-menu {
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: all 0.3s ease;
   }
-  
-  [title]:hover::after,
-  [title]:hover::before {
-    display: none !important;
+
+  #mobile-menu:not(.hidden) {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  /* Disable browser default tooltips */
-  * {
-    -webkit-tooltip: none;
-    tooltip: none;
-  }
-  
-  /* Ensure no tooltips show */
-  nav a[title]:hover::after,
-  nav a[title]:hover::before,
-  nav button[title]:hover::after,
-  nav button[title]:hover::before {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-  }
-  
-  /* Remove focus outline/box when clicking */
+
+  /* Focus styles for better accessibility */
   nav a:focus,
-  nav button:focus,
-  nav a:focus-visible,
-  nav button:focus-visible {
-    outline: none !important;
-    box-shadow: none !important;
-    border: none !important;
+  nav button:focus {
+    outline: 2px solid #00ffff;
+    outline-offset: 2px;
   }
-  
-  /* Remove any focus styles */
-  nav *:focus {
-    outline: none !important;
-    box-shadow: none !important;
-    border: none !important;
+
+  /* Smooth transitions */
+  nav * {
+    transition: all 0.3s ease;
+  }
+
+  /* Mobile menu backdrop */
+  #mobile-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: -1;
   }
 </style>

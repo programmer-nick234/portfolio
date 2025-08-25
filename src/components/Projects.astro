@@ -51,8 +51,8 @@ const statusConfig: Record<string, { color: string; text: string; animate: strin
 };
 ---
 
-<section id="projects" class="py-12 sm:py-16 bg-dark-card overflow-hidden">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+<section id="projects" class="py-6 sm:py-8 bg-dark-card overflow-hidden px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl mx-auto w-full">
     <!-- Optimized Header -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 sm:mb-10 gap-4">
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary">
@@ -68,7 +68,7 @@ const statusConfig: Record<string, { color: string; text: string; animate: strin
     </div>
 
     <!-- Optimized Projects Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
       {projects.map((project) => {
         const status = statusConfig[project.status];
         return (

@@ -55,103 +55,256 @@ const books = [
 ];
 ---
 
-<Layout title="My Reads - Nick" description="My reads and books I'm reading">
+<Layout title="My Reads - Nikhil Bajantri">
   <Navigation />
-  <main class="pt-16">
-    <section class="py-20 bg-dark-bg">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h1 class="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
-            My <span class="text-neon-cyan">Reads</span>
-          </h1>
-          <div class="w-24 h-1 bg-neon-cyan mx-auto mb-6"></div>
-          <p class="text-text-secondary text-lg max-w-2xl mx-auto">
-            A collection of my reads that have influenced my thinking and helped me grow as a developer
-          </p>
+  
+  <main class="pt-16 sm:pt-20 min-h-screen bg-dark-bg">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <!-- Header -->
+      <div class="text-center mb-8 sm:mb-12">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary mb-4">
+          My Reads
+        </h1>
+        <p class="text-text-secondary text-lg sm:text-xl max-w-2xl mx-auto">
+          A collection of books I've read and my thoughts on them. Currently at 8 books.
+        </p>
+      </div>
+
+      <!-- Legend -->
+      <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-8 mb-8 sm:mb-12">
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-star text-neon-cyan text-sm"></i>
+          <span class="text-text-secondary text-sm">Recommended</span>
         </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {books.map((book) => (
-            <div class="group bg-dark-card border border-dark-border rounded-lg overflow-hidden hover:border-neon-cyan transition-all duration-300 hover:transform hover:scale-105">
-              <!-- Book Cover -->
-              <div class="relative h-64 overflow-hidden">
-                <img
-                  src={book.image}
-                  alt={book.title}
-                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div class="absolute top-4 right-4">
-                  <span class={`px-3 py-1 rounded-full text-xs font-medium ${
-                    book.status === 'Read' ? 'bg-green-500/20 text-green-400' :
-                    book.status === 'Reading' ? 'bg-blue-500/20 text-blue-400' :
-                    'bg-yellow-500/20 text-yellow-400'
-                  }`}>
-                    {book.status}
-                  </span>
-                </div>
-              </div>
-
-              <!-- Book Info -->
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-text-primary mb-2 group-hover:text-neon-cyan transition-colors duration-300">
-                  {book.title}
-                </h3>
-                <p class="text-neon-purple font-medium mb-3">
-                  {book.author}
-                </p>
-                <p class="text-text-secondary text-sm leading-relaxed mb-4">
-                  {book.description}
-                </p>
-
-                <!-- Rating -->
-                <div class="flex items-center">
-                  <div class="flex space-x-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <i class={`fas fa-star text-sm ${
-                        i < book.rating ? 'text-yellow-400' : 'text-text-muted'
-                      }`}></i>
-                    ))}
-                  </div>
-                  <span class="text-text-muted text-sm ml-2">({book.rating}/5)</span>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-redo text-neon-purple text-sm"></i>
+          <span class="text-text-secondary text-sm">Will Re-read</span>
         </div>
+      </div>
 
-        <!-- Reading Stats -->
-        <div class="mt-16 text-center">
-          <h3 class="text-2xl font-semibold text-text-primary mb-8">
-            Reading Statistics
-          </h3>
-          <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div class="bg-dark-card border border-dark-border rounded-lg p-6">
-              <div class="text-neon-cyan text-3xl mb-4">
-                <i class="fas fa-book-open"></i>
+      <!-- Currently Reading Section -->
+      <div class="mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-3xl font-bold text-text-primary mb-6 sm:mb-8">
+          Currently Reading
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+          <div class="bg-dark-card border border-dark-border rounded-lg p-4 sm:p-6 hover:border-neon-cyan transition-all duration-300 group">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-text-primary font-semibold text-base sm:text-lg group-hover:text-neon-cyan transition-colors duration-300">
+                Deep Work
+              </h3>
+              <div class="flex space-x-1">
+                <i class="fas fa-star text-neon-cyan text-xs"></i>
+                <i class="fas fa-redo text-neon-purple text-xs"></i>
               </div>
-              <h4 class="text-text-primary font-semibold mb-2">Currently Reading</h4>
-              <p class="text-text-muted text-sm">2 reads</p>
             </div>
-            
-            <div class="bg-dark-card border border-dark-border rounded-lg p-6">
-              <div class="text-neon-purple text-3xl mb-4">
-                <i class="fas fa-check-circle"></i>
-              </div>
-              <h4 class="text-text-primary font-semibold mb-2">Completed</h4>
-              <p class="text-text-muted text-sm">3 reads</p>
-            </div>
-            
-            <div class="bg-dark-card border border-dark-border rounded-lg p-6">
-              <div class="text-neon-green text-3xl mb-4">
-                <i class="fas fa-bookmark"></i>
-              </div>
-              <h4 class="text-text-primary font-semibold mb-2">To Read</h4>
-              <p class="text-text-muted text-sm">1 read</p>
-            </div>
+            <p class="text-text-secondary text-sm mb-3">Cal Newport</p>
+            <p class="text-text-secondary text-xs leading-relaxed">
+              Rules for focused success in a distracted world. Essential for productivity and meaningful work.
+            </p>
           </div>
         </div>
       </div>
-    </section>
+
+      <!-- 2025 Section -->
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-text-primary mb-6 sm:mb-8">
+          2025
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+          <!-- Rich Dad Poor Dad -->
+          <div class="bg-dark-card border border-dark-border rounded-lg p-4 sm:p-6 hover:border-neon-cyan transition-all duration-300 group">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-text-primary font-semibold text-base sm:text-lg group-hover:text-neon-cyan transition-colors duration-300">
+                Rich Dad Poor Dad
+              </h3>
+              <div class="flex space-x-1">
+                <i class="fas fa-star text-neon-cyan text-xs"></i>
+                <i class="fas fa-redo text-neon-purple text-xs"></i>
+              </div>
+            </div>
+            <p class="text-text-secondary text-sm mb-3">Robert T. Kiyosaki</p>
+            <p class="text-text-secondary text-xs leading-relaxed">
+              Financial literacy and mindset shift from employee to investor thinking.
+            </p>
+          </div>
+
+          <!-- Atomic Habits -->
+          <div class="bg-dark-card border border-dark-border rounded-lg p-4 sm:p-6 hover:border-neon-cyan transition-all duration-300 group">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-text-primary font-semibold text-base sm:text-lg group-hover:text-neon-cyan transition-colors duration-300">
+                Atomic Habits
+              </h3>
+              <div class="flex space-x-1">
+                <i class="fas fa-star text-neon-cyan text-xs"></i>
+                <i class="fas fa-redo text-neon-purple text-xs"></i>
+              </div>
+            </div>
+            <p class="text-text-secondary text-sm mb-3">James Clear</p>
+            <p class="text-text-secondary text-xs leading-relaxed">
+              Tiny changes, remarkable results. The science of building good habits and breaking bad ones.
+            </p>
+          </div>
+
+          <!-- Steve Jobs -->
+          <div class="bg-dark-card border border-dark-border rounded-lg p-4 sm:p-6 hover:border-neon-cyan transition-all duration-300 group">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-text-primary font-semibold text-base sm:text-lg group-hover:text-neon-cyan transition-colors duration-300">
+                Steve Jobs
+              </h3>
+              <div class="flex space-x-1">
+                <i class="fas fa-star text-neon-cyan text-xs"></i>
+                <i class="fas fa-redo text-neon-purple text-xs"></i>
+              </div>
+            </div>
+            <p class="text-text-secondary text-sm mb-3">Walter Isaacson</p>
+            <p class="text-text-secondary text-xs leading-relaxed">
+              The exclusive biography of Apple's visionary founder and his revolutionary impact on technology.
+            </p>
+          </div>
+
+          <!-- Principles -->
+          <div class="bg-dark-card border border-dark-border rounded-lg p-4 sm:p-6 hover:border-neon-cyan transition-all duration-300 group">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-text-primary font-semibold text-base sm:text-lg group-hover:text-neon-cyan transition-colors duration-300">
+                Principles
+              </h3>
+              <div class="flex space-x-1">
+                <i class="fas fa-star text-neon-cyan text-xs"></i>
+                <i class="fas fa-redo text-neon-purple text-xs"></i>
+              </div>
+            </div>
+            <p class="text-text-secondary text-sm mb-3">Ray Dalio</p>
+            <p class="text-text-secondary text-xs leading-relaxed">
+              Life and work principles from Bridgewater Associates founder. Systematic approach to decision-making.
+            </p>
+          </div>
+
+          <!-- The Psychology of Money -->
+          <div class="bg-dark-card border border-dark-border rounded-lg p-4 sm:p-6 hover:border-neon-cyan transition-all duration-300 group">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-text-primary font-semibold text-base sm:text-lg group-hover:text-neon-cyan transition-colors duration-300">
+                The Psychology of Money
+              </h3>
+              <div class="flex space-x-1">
+                <i class="fas fa-star text-neon-cyan text-xs"></i>
+                <i class="fas fa-redo text-neon-purple text-xs"></i>
+              </div>
+            </div>
+            <p class="text-text-secondary text-sm mb-3">Morgan Housel</p>
+            <p class="text-text-secondary text-xs leading-relaxed">
+              Timeless lessons on wealth, greed, and happiness. How people think about money.
+            </p>
+          </div>
+
+          <!-- Zero to One -->
+          <div class="bg-dark-card border border-dark-border rounded-lg p-4 sm:p-6 hover:border-neon-cyan transition-all duration-300 group">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-text-primary font-semibold text-base sm:text-lg group-hover:text-neon-cyan transition-colors duration-300">
+                Zero to One
+              </h3>
+              <div class="flex space-x-1">
+                <i class="fas fa-star text-neon-cyan text-xs"></i>
+                <i class="fas fa-redo text-neon-purple text-xs"></i>
+              </div>
+            </div>
+            <p class="text-text-secondary text-sm mb-3">Peter Thiel</p>
+            <p class="text-text-secondary text-xs leading-relaxed">
+              Notes on startups, or how to build the future. Creating value through innovation.
+            </p>
+          </div>
+
+          <!-- Power of Subconscious Mind -->
+          <div class="bg-dark-card border border-dark-border rounded-lg p-4 sm:p-6 hover:border-neon-cyan transition-all duration-300 group">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-text-primary font-semibold text-base sm:text-lg group-hover:text-neon-cyan transition-colors duration-300">
+                Power of Subconscious Mind
+              </h3>
+              <div class="flex space-x-1">
+                <i class="fas fa-star text-neon-cyan text-xs"></i>
+                <i class="fas fa-redo text-neon-purple text-xs"></i>
+              </div>
+            </div>
+            <p class="text-text-secondary text-sm mb-3">Joseph Murphy</p>
+            <p class="text-text-secondary text-xs leading-relaxed">
+              Harnessing the power of your subconscious mind for success, health, and happiness.
+            </p>
+          </div>
+
+          <!-- Deep Work (Completed) -->
+          <div class="bg-dark-card border border-dark-border rounded-lg p-4 sm:p-6 hover:border-neon-cyan transition-all duration-300 group">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-text-primary font-semibold text-base sm:text-lg group-hover:text-neon-cyan transition-colors duration-300">
+                Deep Work
+              </h3>
+              <div class="flex space-x-1">
+                <i class="fas fa-star text-neon-cyan text-xs"></i>
+                <i class="fas fa-redo text-neon-purple text-xs"></i>
+              </div>
+            </div>
+            <p class="text-text-secondary text-sm mb-3">Cal Newport</p>
+            <p class="text-text-secondary text-xs leading-relaxed">
+              Rules for focused success in a distracted world. Essential for productivity and meaningful work.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reading Stats -->
+      <div class="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-dark-border">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-neon-cyan mb-2">8</div>
+            <div class="text-text-secondary text-sm">Books Read</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-neon-purple mb-2">3</div>
+            <div class="text-text-secondary text-sm">Categories</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-neon-green mb-2">1</div>
+            <div class="text-text-secondary text-sm">Currently Reading</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
+
   <Footer />
 </Layout>
+
+<style>
+  /* Enhanced hover effects */
+  .group:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.1);
+  }
+  
+  /* Smooth transitions */
+  * {
+    transition: all 0.3s ease;
+  }
+  
+  /* Responsive text adjustments */
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

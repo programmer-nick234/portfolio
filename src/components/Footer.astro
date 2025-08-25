@@ -2,28 +2,114 @@
 // Footer component
 ---
 
-<footer class="bg-dark-bg border-t border-dark-border py-8">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col sm:flex-row justify-between items-center">
+<footer class="bg-dark-bg border-t border-dark-border py-6 sm:py-8 px-4 sm:px-6 lg:px-8 mt-auto">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
       <!-- Copyright -->
-      <div class="text-text-secondary text-sm mb-4 sm:mb-0">
+      <div class="text-text-secondary text-sm sm:text-base text-center sm:text-left">
         © {new Date().getFullYear()} Nikhil Bajantri. All rights reserved.
       </div>
 
       <!-- Tech Stack Credits -->
-      <div class="text-text-secondary text-sm flex items-center space-x-2">
+      <div class="text-text-secondary text-sm sm:text-base flex items-center space-x-2 flex-wrap justify-center">
         <span>Built with</span>
         <!-- Astro.js Logo -->
-        <svg class="w-4 h-4 text-neon-cyan" viewBox="0 0 24 24" fill="currentColor">
+        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-neon-cyan" viewBox="0 0 24 24" fill="currentColor" aria-label="Astro.js">
           <path d="M12 2L2 19h20L12 2zm0 3.84L19.5 19h-15L12 5.84z"/>
         </svg>
         <span>and deployed on</span>
         <!-- Netlify Logo -->
-        <svg class="w-4 h-4 text-neon-cyan" viewBox="0 0 24 24" fill="currentColor">
+        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-neon-cyan" viewBox="0 0 24 24" fill="currentColor" aria-label="Netlify">
           <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm0 3c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7zm0 2c2.761 0 5 2.239 5 5s-2.239 5-5 5-5-2.239-5-5 2.239-5 5-5z"/>
         </svg>
         <span class="text-neon-cyan font-medium">Netlify</span>
       </div>
     </div>
+    
+    <!-- Additional Footer Links -->
+    <div class="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-dark-border">
+      <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+        <!-- Quick Links -->
+        <div class="flex flex-wrap justify-center sm:justify-start space-x-6 sm:space-x-8">
+          <a href="#about" class="text-text-secondary hover:text-neon-cyan transition-colors duration-300 text-sm sm:text-base">
+            About
+          </a>
+          <a href="#projects" class="text-text-secondary hover:text-neon-cyan transition-colors duration-300 text-sm sm:text-base">
+            Projects
+          </a>
+          <a href="#contact" class="text-text-secondary hover:text-neon-cyan transition-colors duration-300 text-sm sm:text-base">
+            Contact
+          </a>
+          <a href="/resume.pdf" class="text-text-secondary hover:text-neon-cyan transition-colors duration-300 text-sm sm:text-base">
+            Resume
+          </a>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="flex items-center space-x-4 sm:space-x-6">
+          <a
+            href="https://github.com/programmer-nick234/"
+            class="text-text-secondary hover:text-neon-cyan transition-colors duration-300 text-lg sm:text-xl"
+            title="GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit GitHub profile"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/nikhil-bajantri-dev"
+            class="text-text-secondary hover:text-neon-cyan transition-colors duration-300 text-lg sm:text-xl"
+            title="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit LinkedIn profile"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a
+            href="https://x.com/nikkkkhil_2604"
+            class="text-text-secondary hover:text-neon-cyan transition-colors duration-300 text-lg sm:text-xl"
+            title="X (Twitter)"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit X (Twitter) profile"
+          >
+            <svg width="20" height="20" class="sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </footer>
+
+<style>
+  /* Ensure footer stays at bottom */
+  footer {
+    margin-top: auto;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    footer {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 641px) and (max-width: 1024px) {
+    footer {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    footer {
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+  }
+</style>
