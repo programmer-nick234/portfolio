@@ -162,6 +162,8 @@ const fullTitle = `${title} | ${siteName}`;
                  'slide-up': 'slideUp 0.5s ease-out',
                  'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                  'float': 'float 6s ease-in-out infinite',
+                 'spin-slow': 'spin 3s linear infinite',
+                 'progress-bar': 'progressBar 2s ease-in-out infinite',
                },
                keyframes: {
                  fadeIn: {
@@ -175,6 +177,11 @@ const fullTitle = `${title} | ${siteName}`;
                  float: {
                    '0%, 100%': { transform: 'translateY(0px)' },
                    '50%': { transform: 'translateY(-20px)' },
+                 },
+                 progressBar: {
+                   '0%': { transform: 'translateX(-100%)' },
+                   '50%': { transform: 'translateX(0%)' },
+                   '100%': { transform: 'translateX(100%)' },
                  },
                },
              },
@@ -196,9 +203,60 @@ const fullTitle = `${title} | ${siteName}`;
       <slot />
     </div>
 
-    <!-- Loading Animation -->
+    <!-- Aesthetic Loading Animation -->
     <div class="fixed inset-0 bg-dark-bg flex items-center justify-center z-50 loading-screen">
-      <div class="text-neon-cyan text-2xl font-bold animate-pulse">Nikhil Bajantri</div>
+      <!-- Animated background elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-neon-cyan/10 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-neon-purple/10 rounded-full blur-3xl animate-float" style="animation-delay: -2s;"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-neon-green/5 rounded-full blur-2xl animate-pulse-slow"></div>
+      </div>
+      
+      <!-- Main loading content -->
+      <div class="relative z-10 flex flex-col items-center justify-center">
+        <!-- Logo container with glow effect -->
+        <div class="relative group">
+          <!-- Glow background -->
+          <div class="absolute inset-0 bg-gradient-to-r from-neon-cyan/30 to-neon-purple/30 rounded-full blur-xl scale-150 animate-pulse-slow"></div>
+          <!-- Logo with rotation and scale animation -->
+          <div class="relative bg-dark-card/50 backdrop-blur-sm rounded-full p-6 border border-neon-cyan/20 shadow-2xl">
+            <img 
+              src="/navbar.png" 
+              alt="Loading..." 
+              class="w-16 h-16 sm:w-20 sm:h-20 object-contain animate-spin-slow drop-shadow-2xl"
+              loading="eager"
+            />
+          </div>
+          <!-- Orbiting dots -->
+          <div class="absolute inset-0 animate-spin">
+            <div class="absolute top-0 left-1/2 w-2 h-2 bg-neon-cyan rounded-full transform -translate-x-1/2 -translate-y-1"></div>
+            <div class="absolute bottom-0 left-1/2 w-2 h-2 bg-neon-purple rounded-full transform -translate-x-1/2 translate-y-1"></div>
+            <div class="absolute left-0 top-1/2 w-2 h-2 bg-neon-green rounded-full transform -translate-y-1/2 -translate-x-1"></div>
+            <div class="absolute right-0 top-1/2 w-2 h-2 bg-neon-cyan rounded-full transform -translate-y-1/2 translate-x-1"></div>
+          </div>
+        </div>
+        
+        <!-- Loading text with typewriter effect -->
+        <div class="mt-8 text-center">
+          <div class="text-neon-cyan text-lg sm:text-xl font-bold mb-2">
+            <span class="inline-block animate-bounce" style="animation-delay: 0s;">L</span>
+            <span class="inline-block animate-bounce" style="animation-delay: 0.1s;">o</span>
+            <span class="inline-block animate-bounce" style="animation-delay: 0.2s;">a</span>
+            <span class="inline-block animate-bounce" style="animation-delay: 0.3s;">d</span>
+            <span class="inline-block animate-bounce" style="animation-delay: 0.4s;">i</span>
+            <span class="inline-block animate-bounce" style="animation-delay: 0.5s;">n</span>
+            <span class="inline-block animate-bounce" style="animation-delay: 0.6s;">g</span>
+            <span class="inline-block animate-bounce" style="animation-delay: 0.7s;">.</span>
+            <span class="inline-block animate-bounce" style="animation-delay: 0.8s;">.</span>
+            <span class="inline-block animate-bounce" style="animation-delay: 0.9s;">.</span>
+          </div>
+          
+          <!-- Progress bar -->
+          <div class="w-48 h-1 bg-dark-border rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-green rounded-full animate-progress-bar"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
@@ -315,6 +373,49 @@ const fullTitle = `${title} | ${siteName}`;
       
       .glow-effect {
         box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      }
+      
+      /* Enhanced loading screen animations */
+      .animate-spin-slow {
+        animation: spin 3s linear infinite;
+      }
+      
+      .animate-progress-bar {
+        animation: progressBar 2s ease-in-out infinite;
+      }
+      
+      /* Custom keyframes for loading animations */
+      @keyframes progressBar {
+        0% { transform: translateX(-100%); }
+        50% { transform: translateX(0%); }
+        100% { transform: translateX(100%); }
+      }
+      
+      /* Loading screen specific styles */
+      .loading-screen {
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+      }
+      
+      /* Orbiting dots animation */
+      .animate-spin {
+        animation: spin 2s linear infinite;
+      }
+      
+      /* Bounce animation for loading text */
+      .animate-bounce {
+        animation: bounce 1s ease-in-out infinite;
+      }
+      
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
       }
     </style>
   </body>
