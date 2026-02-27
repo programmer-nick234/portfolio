@@ -141,11 +141,7 @@ const fullTitle = `${title} | ${siteName}`;
       src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
     ></script>
 
-    <!-- Lenis Smooth Scroll -->
-    <script
-      is:inline
-      src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"
-    ></script>
+    <!-- Smooth scroll handled via CSS -->
 
     <!-- Structured Data for SEO -->
     <script
@@ -269,18 +265,17 @@ const fullTitle = `${title} | ${siteName}`;
     <!-- ═══════════════════════════════════════════════════════ -->
     <!-- CUSTOM CURSOR                                          -->
     <!-- ═══════════════════════════════════════════════════════ -->
+    <canvas id="cursor-canvas" class="fixed inset-0 pointer-events-none z-[148]" style="will-change: transform;"></canvas>
     <div
       id="cursor-dot"
-      class="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[150] mix-blend-difference"
-      style="background: #00f5ff; transform: translate(-50%, -50%);"
-    >
-    </div>
+      class="fixed pointer-events-none z-[150]"
+      style="top: 0; left: 0; width: 8px; height: 8px; border-radius: 50%; background: #00f5ff; will-change: transform; transform: translate3d(-100px, -100px, 0); box-shadow: 0 0 12px rgba(0, 245, 255, 0.8), 0 0 4px rgba(0, 245, 255, 1);"
+    ></div>
     <div
       id="cursor-ring"
-      class="fixed top-0 left-0 w-10 h-10 rounded-full pointer-events-none z-[149] border border-white/30 mix-blend-difference"
-      style="transform: translate(-50%, -50%); transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;"
-    >
-    </div>
+      class="fixed pointer-events-none z-[149]"
+      style="top: 0; left: 0; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid rgba(0, 245, 255, 0.35); will-change: transform; transform: translate3d(-100px, -100px, 0); transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, background 0.4s ease, border-radius 0.4s cubic-bezier(0.16, 1, 0.3, 1);"
+    ></div>
 
     <!-- ═══════════════════════════════════════════════════════ -->
     <!-- ANIMATED BACKGROUND                                    -->
@@ -296,20 +291,20 @@ const fullTitle = `${title} | ${siteName}`;
       >
       </div>
 
-      <!-- Gradient orbs with subtle animation -->
+      <!-- Gradient orbs with subtle animation (GPU-promoted) -->
       <div
         class="absolute top-[15%] left-[20%] w-[500px] h-[500px] rounded-full opacity-[0.04]"
-        style="background: radial-gradient(circle, #a855f7, transparent 70%); animation: float 20s ease-in-out infinite;"
+        style="background: radial-gradient(circle, #a855f7, transparent 70%); animation: float 20s ease-in-out infinite; will-change: transform; contain: layout style paint;"
       >
       </div>
       <div
         class="absolute bottom-[20%] right-[15%] w-[600px] h-[600px] rounded-full opacity-[0.03]"
-        style="background: radial-gradient(circle, #00f5ff, transparent 70%); animation: float 25s ease-in-out infinite reverse;"
+        style="background: radial-gradient(circle, #00f5ff, transparent 70%); animation: float 25s ease-in-out infinite reverse; will-change: transform; contain: layout style paint;"
       >
       </div>
       <div
         class="absolute top-[50%] left-[50%] w-[400px] h-[400px] rounded-full opacity-[0.02] -translate-x-1/2 -translate-y-1/2"
-        style="background: radial-gradient(circle, #22d3ee, transparent 70%); animation: float 18s ease-in-out infinite 5s;"
+        style="background: radial-gradient(circle, #22d3ee, transparent 70%); animation: float 18s ease-in-out infinite 5s; will-change: transform; contain: layout style paint;"
       >
       </div>
 
@@ -347,29 +342,9 @@ const fullTitle = `${title} | ${siteName}`;
     <!-- ═══════════════════════════════════════════════════════ -->
     <script is:inline>
       // ====================================================
-      // 1. LENIS SMOOTH SCROLL
+      // 1. NATIVE SMOOTH SCROLL (no JS hijacking)
       // ====================================================
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: "vertical",
-        gestureOrientation: "vertical",
-        smoothWheel: true,
-        wheelMultiplier: 1,
-        touchMultiplier: 2,
-      });
-
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
-
-      // Connect Lenis to GSAP ScrollTrigger
-      lenis.on("scroll", ScrollTrigger.update);
-      gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-      });
+      // ScrollTrigger uses native scroll — zero lag
       gsap.ticker.lagSmoothing(0);
 
       // ====================================================
@@ -529,74 +504,152 @@ const fullTitle = `${title} | ${siteName}`;
       }, 5000);
 
       // ====================================================
-      // 3. CUSTOM CURSOR
+      // 3. CUSTOM CURSOR — Spring Physics + Glow Trail
       // ====================================================
       (function initCursor() {
         // Only on desktop
         if (window.matchMedia("(pointer: coarse)").matches) {
           const dot = document.getElementById("cursor-dot");
           const ring = document.getElementById("cursor-ring");
+          const canvas = document.getElementById("cursor-canvas");
           if (dot) dot.style.display = "none";
           if (ring) ring.style.display = "none";
+          if (canvas) canvas.style.display = "none";
           return;
         }
 
         const cursorDot = document.getElementById("cursor-dot");
         const cursorRing = document.getElementById("cursor-ring");
-        if (!cursorDot || !cursorRing) return;
+        const canvas = document.getElementById("cursor-canvas");
+        if (!cursorDot || !cursorRing || !canvas) return;
 
-        let mouseX = 0,
-          mouseY = 0;
-        let ringX = 0,
-          ringY = 0;
+        const ctx = canvas.getContext("2d");
+        let w, h;
+        function resize() {
+          w = canvas.width = window.innerWidth;
+          h = canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener("resize", resize);
 
+        // ── State ──
+        let mouseX = -100, mouseY = -100;
+        let dotX = -100, dotY = -100;
+        let ringX = -100, ringY = -100;
+        let ringVX = 0, ringVY = 0;
+        let isHovering = false;
+        let isClicking = false;
+        let isVisible = false;
+        let hoverScale = 1;
+
+        // ── Trail particles ──
+        const trail = [];
+        const TRAIL_LENGTH = 18;
+
+        // ── Mouse tracking (passive for perf) ──
         document.addEventListener("mousemove", (e) => {
           mouseX = e.clientX;
           mouseY = e.clientY;
-          gsap.to(cursorDot, {
-            x: mouseX,
-            y: mouseY,
-            duration: 0.1,
-            ease: "power2.out",
-          });
-        });
+          if (!isVisible) isVisible = true;
+        }, { passive: true });
 
-        // Smooth ring follow
+        document.addEventListener("mousedown", () => { isClicking = true; }, { passive: true });
+        document.addEventListener("mouseup", () => { isClicking = false; }, { passive: true });
+
+        // ── Spring physics constants ──
+        const SPRING = 0.08;
+        const DAMPING = 0.72;
+        const DOT_LERP = 0.35;
+
+        // ── Main animation loop (synced to GSAP ticker for no jank) ──
         gsap.ticker.add(() => {
-          ringX += (mouseX - ringX) * 0.15;
-          ringY += (mouseY - ringY) * 0.15;
-          cursorRing.style.left = ringX + "px";
-          cursorRing.style.top = ringY + "px";
+          if (!isVisible) return;
+
+          // Dot: snappy lerp follow
+          dotX += (mouseX - dotX) * DOT_LERP;
+          dotY += (mouseY - dotY) * DOT_LERP;
+          cursorDot.style.transform = `translate3d(${dotX - 4}px, ${dotY - 4}px, 0) scale(${isClicking ? 0.6 : 1})`;
+
+          // Ring: spring physics for satisfying elastic follow
+          const dx = mouseX - ringX;
+          const dy = mouseY - ringY;
+          ringVX += dx * SPRING;
+          ringVY += dy * SPRING;
+          ringVX *= DAMPING;
+          ringVY *= DAMPING;
+          ringX += ringVX;
+          ringY += ringVY;
+
+          const targetScale = isHovering ? 1.6 : (isClicking ? 0.75 : 1);
+          hoverScale += (targetScale - hoverScale) * 0.12;
+          const ringSize = 40 * hoverScale;
+          cursorRing.style.transform = `translate3d(${ringX - ringSize / 2}px, ${ringY - ringSize / 2}px, 0)`;
+          cursorRing.style.width = ringSize + "px";
+          cursorRing.style.height = ringSize + "px";
+
+          // ── Trail ──
+          const speed = Math.sqrt(ringVX * ringVX + ringVY * ringVY);
+          trail.push({ x: ringX, y: ringY, alpha: Math.min(1, speed / 8), life: 1 });
+          if (trail.length > TRAIL_LENGTH) trail.shift();
+
+          // ── Draw trail on canvas ──
+          ctx.clearRect(0, 0, w, h);
+          for (let i = 0; i < trail.length; i++) {
+            const p = trail[i];
+            p.life -= 0.04;
+            if (p.life <= 0) continue;
+            const t = i / trail.length;
+            const radius = 2 + t * 3;
+            const alpha = t * p.alpha * p.life * 0.5;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0, 245, 255, ${alpha})`;
+            ctx.fill();
+          }
+          // Soft glow around dot
+          if (speed > 1) {
+            const glowAlpha = Math.min(0.15, speed / 60);
+            const grad = ctx.createRadialGradient(dotX, dotY, 0, dotX, dotY, 30);
+            grad.addColorStop(0, `rgba(0, 245, 255, ${glowAlpha})`);
+            grad.addColorStop(1, "rgba(0, 245, 255, 0)");
+            ctx.beginPath();
+            ctx.arc(dotX, dotY, 30, 0, Math.PI * 2);
+            ctx.fillStyle = grad;
+            ctx.fill();
+          }
         });
 
-        // Hover effects
+        // ── Hover effects ──
         const interactiveElements =
           'a, button, [role="button"], input, textarea, select, [data-cursor="pointer"]';
 
         document.addEventListener("mouseover", (e) => {
           if (e.target.closest(interactiveElements)) {
-            cursorRing.style.width = "50px";
-            cursorRing.style.height = "50px";
+            isHovering = true;
             cursorRing.style.borderColor = "rgba(0, 245, 255, 0.5)";
-            cursorDot.style.transform = "translate(-50%, -50%) scale(1.5)";
+            cursorRing.style.background = "rgba(0, 245, 255, 0.06)";
+            cursorDot.style.boxShadow = "0 0 20px rgba(0, 245, 255, 1), 0 0 6px rgba(0, 245, 255, 1)";
           }
         });
 
         document.addEventListener("mouseout", (e) => {
           if (e.target.closest(interactiveElements)) {
-            cursorRing.style.width = "40px";
-            cursorRing.style.height = "40px";
-            cursorRing.style.borderColor = "rgba(255, 255, 255, 0.3)";
-            cursorDot.style.transform = "translate(-50%, -50%) scale(1)";
+            isHovering = false;
+            cursorRing.style.borderColor = "rgba(0, 245, 255, 0.35)";
+            cursorRing.style.background = "transparent";
+            cursorDot.style.boxShadow = "0 0 12px rgba(0, 245, 255, 0.8), 0 0 4px rgba(0, 245, 255, 1)";
           }
         });
 
-        // Hide cursor when leaving window
+        // Hide/show on window leave/enter
         document.addEventListener("mouseleave", () => {
+          isVisible = false;
           cursorDot.style.opacity = "0";
           cursorRing.style.opacity = "0";
+          ctx.clearRect(0, 0, w, h);
         });
         document.addEventListener("mouseenter", () => {
+          isVisible = true;
           cursorDot.style.opacity = "1";
           cursorRing.style.opacity = "1";
         });
@@ -606,8 +659,10 @@ const fullTitle = `${title} | ${siteName}`;
       // 4. SCROLL-TRIGGERED ANIMATIONS (GSAP)
       // ====================================================
       function initScrollAnimations() {
-        // Refresh ScrollTrigger after DOM is ready
-        ScrollTrigger.refresh();
+        // Small delay ensures DOM paint is complete before measuring
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+        });
 
         // Animate all elements with data-animate attribute
         gsap.utils.toArray("[data-animate]").forEach((el) => {
@@ -762,10 +817,10 @@ const fullTitle = `${title} | ${siteName}`;
     <!-- ═══════════════════════════════════════════════════════ -->
     <style is:global>
       /* ── Animation Fallback ─────────────────────────────── */
-      /* Ensure elements are visible if GSAP fails to load */
+      /* Removed will-change: excess layers cause compositing lag */
       [data-animate],
       [data-stagger] > * {
-        will-change: opacity, transform;
+        /* GSAP handles promotion only when animating */
       }
 
       /* ── Font Face ─────────────────────────────────────── */
@@ -786,7 +841,7 @@ const fullTitle = `${title} | ${siteName}`;
       }
 
       html {
-        scroll-behavior: initial; /* Lenis handles smooth scroll */
+        scroll-behavior: smooth;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
@@ -797,6 +852,7 @@ const fullTitle = `${title} | ${siteName}`;
         color: #f0f0f0;
         cursor: none;
         overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
       }
 
       @media (pointer: coarse) {
