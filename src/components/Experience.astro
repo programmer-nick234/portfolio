@@ -1,173 +1,140 @@
 ---
-// Experience section component - Optimized
-const experience = [
+// Experience section — Premium animated experience cards
+const experiences = [
   {
-    id: "daily-dine-cto",
-    title: "Chief Technology Officer (CTO)",
+    role: "Chief Technology Officer (CTO)",
     company: "DailyDine",
     period: "2024 - Present",
-    description: "Leading technology and product development for a scalable restaurant reservation platform. Overseeing technical strategy, team management, and innovative solutions.",
+    description: "Leading technology strategy, product development, and engineering team. Architecting scalable systems and driving innovation across the platform.",
+    highlights: ["Technology Strategy", "Team Leadership", "Product Architecture", "AI Integration"],
     icon: "fas fa-crown",
-    type: "work"
-  }
-];
-
-export const education = [
-  {
-    id: "be-ai-ds",
-    title: "Bachelor of Engineering - BE, Artificial Intelligence and Data Science",
-    company: "Srinivas Institute of Technology, Mangaluru",
-    period: "2024 - 2028",
-    description: "Comprehensive program covering AI/ML, data science, and engineering principles with hands-on project experience.",
-    icon: "fas fa-graduation-cap",
-    type: "education"
+    color: "#00f5ff",
   },
   {
-    id: "high-school",
-    title: "Higher Secondary Education (Science)",
-    company: "MGSK Gujarati Highschool",
-    period: "2023 - 2024",
-    description: "Completed higher secondary education with distinction in science and mathematics.",
-    icon: "fas fa-school",
-    type: "education"
+    role: "Full Stack Developer",
+    company: "Freelance & Open Source",
+    period: "2023 - Present",
+    description: "Building modern web applications using React, Next.js, and Node.js. Contributing to open-source projects and developing production-grade solutions.",
+    highlights: ["React/Next.js", "Node.js/Express", "database Design", "API Development"],
+    icon: "fas fa-laptop-code",
+    color: "#a855f7",
+  },
+  {
+    role: "AI/ML Engineer",
+    company: "Personal Projects & Research",
+    period: "2024 - Present",
+    description: "Researching and implementing machine learning models for real-world applications. Exploring supervised/unsupervised learning, NLP, and computer vision.",
+    highlights: ["Python/Scikit-learn", "Data Analysis", "Model Training", "Research"],
+    icon: "fas fa-brain",
+    color: "#ec4899",
   },
 ];
-
 ---
 
-<section id="experience" class="py-6 sm:py-8 bg-dark-bg overflow-hidden px-4 sm:px-6 lg:px-8">
-  <div class="max-w-6xl mx-auto w-full">
-    <!-- Optimized Header -->
-    <div class="text-center mb-8 sm:mb-12">
-      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-text-primary mb-3 sm:mb-4">
-        Experience & <span class="text-neon-cyan">Education</span>
+<section id="experience" class="relative py-20 sm:py-28 overflow-hidden">
+  <!-- Section dividers -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00f5ff]/20 to-transparent"></div>
+  
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <!-- Section Header -->
+    <div class="text-center mb-16 sm:mb-20" data-animate="fade-up">
+      <span class="inline-block text-xs uppercase tracking-[0.3em] text-[#00f5ff] mb-4 font-medium">Career Path</span>
+      <h2 class="section-title text-[#f0f0f0] mb-4">
+        Work <span class="gradient-text">Experience</span>
       </h2>
-      <div class="w-12 sm:w-16 h-1 bg-neon-cyan mx-auto mb-2 sm:mb-3"></div>
-      <p class="text-text-secondary text-xs sm:text-sm max-w-2xl mx-auto px-4">
-        My professional journey and academic achievements
+      <p class="section-subtitle mx-auto">
+        Building products and leading teams across different domains
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-      <!-- Optimized Work Experience -->
-      <div>
-        <h3 class="text-lg sm:text-xl font-semibold text-text-primary mb-4 sm:mb-6 flex items-center">
-          <i class="fas fa-briefcase text-neon-cyan mr-2 sm:mr-3 text-base sm:text-lg"></i>
-          Work Experience
-        </h3>
-        
-        <div class="space-y-4 sm:space-y-6">
-          {experience.map((item, index) => (
-            <div class="relative" id={item.id}>
-              <!-- Timeline line -->
-              {index < experience.length - 1 && (
-                <div class="absolute left-6 top-12 w-0.5 h-16 bg-dark-border"></div>
-              )}
-              
-              <div class="flex items-start space-x-3 sm:space-x-4 group">
-                <!-- Icon -->
-                <div class="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-dark-card border border-dark-border rounded-full flex items-center justify-center group-hover:border-neon-cyan transition-all duration-300">
-                  <i class={`${item.icon} text-neon-cyan text-xs sm:text-sm`}></i>
-                </div>
-                
-                <!-- Content -->
-                <div class="flex-1 bg-dark-card border border-dark-border rounded-xl p-3 sm:p-4 group-hover:border-neon-cyan transition-all duration-300">
-                  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1 sm:gap-0">
-                    <h4 class="text-sm sm:text-base font-semibold text-text-primary group-hover:text-neon-cyan transition-colors duration-300">
-                      {item.title}
-                    </h4>
-                    <span class="text-xs text-neon-cyan font-medium bg-neon-cyan/10 px-2 py-1 rounded-full w-fit">
-                      {item.period}
-                    </span>
-                  </div>
-                  <p class="text-neon-purple font-medium mb-2 text-xs sm:text-sm">
-                    {item.company}
-                  </p>
-                  <p class="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+    <!-- Experience Timeline -->
+    <div class="relative">
+      <!-- Animated vertical line -->
+      <div class="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-white/5">
+        <div class="experience-line absolute top-0 left-0 w-full bg-gradient-to-b from-[#00f5ff] via-[#a855f7] to-[#ec4899]" style="height: 0%;"></div>
       </div>
 
-      <!-- Optimized Education -->
-      <div>
-        <h3 class="text-lg sm:text-xl font-semibold text-text-primary mb-4 sm:mb-6 flex items-center">
-          <i class="fas fa-graduation-cap text-neon-green mr-2 sm:mr-3 text-base sm:text-lg"></i>
-          Education
-        </h3>
-        
-        <div class="space-y-4 sm:space-y-6">
-          {education.map((item, index) => (
-            <div class="relative" id={item.id}>
-              <!-- Timeline line -->
-              {index < education.length - 1 && (
-                <div class="absolute left-5 top-10 w-0.5 h-12 bg-dark-border"></div>
-              )}
-              
-              <div class="flex items-start space-x-3 group">
-                <!-- Icon -->
-                <div class="flex-shrink-0 w-8 h-8 bg-dark-card border border-dark-border rounded-full flex items-center justify-center group-hover:border-neon-green transition-all duration-300">
-                  <i class={`${item.icon} text-neon-green text-xs`}></i>
+      <!-- Experience Items -->
+      <div class="space-y-8 sm:space-y-12">
+        {experiences.map((exp, index) => (
+          <div class="experience-item relative pl-16 sm:pl-20" data-animate="fade-left" data-animate-delay={(index * 0.2).toString()}>
+            <!-- Timeline dot -->
+            <div class="absolute left-4 sm:left-6 top-2 w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 bg-[#050505] z-10 transition-all duration-500" style={`border-color: ${exp.color};`}>
+              <div class="absolute inset-0 rounded-full animate-ping opacity-20" style={`background: ${exp.color};`}></div>
+            </div>
+
+            <!-- Card -->
+            <div class="glass-card rounded-2xl p-5 sm:p-7 hover:scale-[1.01] transition-all duration-500 group">
+              <!-- Header -->
+              <div class="flex flex-wrap items-start gap-3 mb-4">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center" style={`background: ${exp.color}10; border: 1px solid ${exp.color}20;`}>
+                  <i class={`${exp.icon} text-sm`} style={`color: ${exp.color};`}></i>
                 </div>
-                
-                <!-- Content -->
-                <div class="flex-1 bg-dark-card border border-dark-border rounded-xl p-3 sm:p-4 group-hover:border-neon-green transition-all duration-300">
-                  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1 sm:gap-0">
-                    <h4 class="text-sm font-semibold text-text-primary group-hover:text-neon-green transition-colors duration-300">
-                      {item.title}
-                    </h4>
-                    <span class="text-xs text-neon-green font-medium bg-neon-green/10 px-2 py-1 rounded-full w-fit">
-                      {item.period}
-                    </span>
-                  </div>
-                  <p class="text-neon-purple font-medium mb-2 text-xs sm:text-sm">
-                    {item.company}
-                  </p>
-                  <p class="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                    {item.description}
-                  </p>
+                <div class="flex-1 min-w-0">
+                  <h3 class="text-base sm:text-lg font-bold text-[#f0f0f0] group-hover:text-white transition-colors">{exp.role}</h3>
+                  <p class="text-sm text-[#8a8a8a]">{exp.company}</p>
                 </div>
+                <span class="text-[11px] font-mono px-3 py-1 rounded-full bg-white/[0.03] text-[#555] border border-white/5 flex-shrink-0">{exp.period}</span>
+              </div>
+
+              <!-- Description -->
+              <p class="text-[#8a8a8a] text-sm leading-relaxed mb-5">{exp.description}</p>
+
+              <!-- Highlights -->
+              <div class="flex flex-wrap gap-2">
+                {exp.highlights.map((highlight) => (
+                  <span class="px-3 py-1 text-[11px] font-medium rounded-lg text-[#8a8a8a] transition-all duration-300 hover:text-white" style={`background: ${exp.color}08; border: 1px solid ${exp.color}15;`}>
+                    {highlight}
+                  </span>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
-
-    {/* <!-- Certifications -->
-    <div class="mt-4">
-      <h3 class="text-lg font-semibold text-text-primary mb-3 text-center">
-        Certifications
-      </h3>
-      <div class="grid md:grid-cols-3 gap-2 max-w-4xl mx-auto">
-        <div class="bg-dark-card border border-dark-border rounded-lg p-2 text-center hover:border-neon-cyan transition-all duration-300">
-          <div class="text-neon-cyan text-lg mb-1">
-            <i class="fab fa-aws"></i>
-          </div>
-          <h4 class="text-text-primary font-semibold mb-1 text-xs">AWS Certified Developer</h4>
-          <p class="text-text-muted text-xs">2023</p>
-        </div>
-        
-        <div class="bg-dark-card border border-dark-border rounded-lg p-2 text-center hover:border-neon-purple transition-all duration-300">
-          <div class="text-neon-purple text-lg mb-1">
-            <i class="fab fa-google"></i>
-          </div>
-          <h4 class="text-text-primary font-semibold mb-1 text-xs">Google Cloud Professional</h4>
-          <p class="text-text-muted text-xs">2022</p>
-        </div>
-        
-        <div class="bg-dark-card border border-dark-border rounded-lg p-2 text-center hover:border-neon-green transition-all duration-300">
-          <div class="text-neon-green text-lg mb-1">
-            <i class="fas fa-certificate"></i>
-          </div>
-          <h4 class="text-text-primary font-semibold mb-1 text-xs">React Advanced Certification</h4>
-          <p class="text-text-muted text-xs">2021</p>
-        </div>
-      </div>
-    </div> --> */}
   </div>
 </section>
+
+<script>
+  // Animate timeline line on scroll
+  const expLine = document.querySelector('.experience-line') as HTMLElement;
+  if (expLine) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          expLine.style.transition = 'height 2s cubic-bezier(0.16, 1, 0.3, 1)';
+          expLine.style.height = '100%';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const section = document.getElementById('experience');
+    if (section) observer.observe(section);
+  }
+</script>
+
+<style>
+  .experience-item .glass-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, transparent, rgba(0, 245, 255, 0.15), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .experience-item:hover .glass-card::after {
+    opacity: 1;
+  }
+
+  .experience-item:hover .glass-card {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(0, 245, 255, 0.04);
+  }
+</style>

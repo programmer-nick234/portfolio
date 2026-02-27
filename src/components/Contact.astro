@@ -1,242 +1,251 @@
 ---
-// Contact section component with email redirect
+// Contact section — Split layout with animated form
 ---
 
-<section id="contact" class="py-12 bg-dark-bg overflow-hidden">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-    <!-- Main Contact Card -->
-    <div class="bg-dark-card border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg w-full">
-      <!-- Heading -->
-      <div class="text-center mb-6">
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-text-primary mb-3">
-          Hey there!
-        </h2>
-        <p class="text-text-secondary text-sm sm:text-base max-w-lg mx-auto px-2">
-          Got a project in mind? Want to collaborate? Or just want to say hi? Drop me a message and I'll get back to you as soon as possible!
-        </p>
-      </div>
+<section id="contact" class="relative py-20 sm:py-28 overflow-hidden">
+  <!-- Section divider -->
+  <div
+    class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#a855f7]/20 to-transparent"
+  >
+  </div>
 
-      <!-- Social Links Row -->
-      <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mb-6">
-        <a
-          href="mailto:nikhilbajantri86@gmail.com"
-          class="flex items-center justify-center sm:justify-start space-x-2 px-3 sm:px-4 py-2 sm:py-3 bg-dark-bg border border-dark-border rounded-xl hover:border-neon-cyan hover:bg-neon-cyan/5 transition-all duration-300 text-center"
-        >
-          <i class="fas fa-envelope text-neon-cyan text-sm"></i>
-          <span class="text-text-secondary text-xs sm:text-sm hidden sm:inline">Email</span>
-          <span class="text-text-primary text-xs sm:text-sm truncate">nikhilbajantri86@gmail.com</span>
-        </a>
-        
-        <a
-          href="https://github.com/programmer-nick234/"
-          class="flex items-center justify-center sm:justify-start space-x-2 px-3 sm:px-4 py-2 sm:py-3 bg-dark-bg border border-dark-border rounded-xl hover:border-neon-cyan hover:bg-neon-cyan/5 transition-all duration-300 text-center"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i class="fab fa-github text-neon-cyan text-sm"></i>
-          <span class="text-text-secondary text-xs sm:text-sm hidden sm:inline">GitHub</span>
-          <span class="text-text-primary text-xs sm:text-sm truncate">@programmer-nick234</span>
-        </a>
-        
-        <a
-          href="https://www.linkedin.com/in/nikhil-bajantri-dev"
-          class="flex items-center justify-center sm:justify-start space-x-2 px-3 sm:px-4 py-2 sm:py-3 bg-dark-bg border border-dark-border rounded-xl hover:border-neon-cyan hover:bg-neon-cyan/5 transition-all duration-300 text-center"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i class="fab fa-linkedin text-neon-cyan text-sm"></i>
-          <span class="text-text-secondary text-xs sm:text-sm hidden sm:inline">LinkedIn</span>
-          <span class="text-text-primary text-xs sm:text-sm truncate">nikhil-bajantri-dev</span>
-        </a>
-      </div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <!-- Section Header -->
+    <div class="text-center mb-16 sm:mb-20" data-animate="fade-up">
+      <span
+        class="inline-block text-xs uppercase tracking-[0.3em] text-[#a855f7] mb-4 font-medium"
+        >Get In Touch</span
+      >
+      <h2 class="section-title text-[#f0f0f0] mb-4">
+        Let's <span class="gradient-text-alt">Connect</span>
+      </h2>
+      <p class="section-subtitle mx-auto">
+        Have a project idea or just want to say hello? I'd love to hear from
+        you.
+      </p>
+    </div>
 
-      <!-- Contact Form Card -->
-      <div class="bg-dark-bg border border-dark-border rounded-xl p-2 sm:p-4 shadow-md w-full">
-        <form 
-          class="space-y-2 w-full" 
-          id="contactForm"
-        >
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div class="relative w-full">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <i class="fas fa-envelope text-text-muted text-xs"></i>
-              </div>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                class="w-full pl-8 pr-3 py-2 sm:py-3 bg-dark-card border border-dark-border rounded-lg text-text-primary placeholder-text-muted focus:border-neon-cyan focus:outline-none transition-colors duration-300 text-sm sm:text-base"
-                placeholder="developer@domain.com"
-                required
-              />
+    <!-- Split Layout -->
+    <div
+      class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 max-w-5xl mx-auto"
+    >
+      <!-- Left: Contact Info -->
+      <div class="lg:col-span-2 space-y-6" data-animate="fade-right">
+        <!-- Contact methods -->
+        <div class="space-y-4">
+          <a
+            href="mailto:nikhilbajantri2604@gmail.com"
+            class="group flex items-center gap-4 glass-card rounded-xl p-4 hover:scale-[1.02] transition-all duration-500"
+          >
+            <div
+              class="w-10 h-10 rounded-xl bg-[#00f5ff]/10 border border-[#00f5ff]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500"
+            >
+              <i class="fas fa-envelope text-[#00f5ff] text-sm"></i>
             </div>
-            
-            <div class="relative w-full">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <i class="fas fa-user text-text-muted text-xs"></i>
+            <div>
+              <div class="text-xs text-[#555] mb-0.5">Email</div>
+              <div
+                class="text-sm text-[#f0f0f0] font-medium group-hover:text-[#00f5ff] transition-colors"
+              >
+                nikhilbajantri2604@gmail.com
               </div>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                class="w-full pl-8 pr-3 py-2 sm:py-3 bg-dark-card border border-dark-border rounded-lg text-text-primary placeholder-text-muted focus:border-neon-cyan focus:outline-none transition-colors duration-300 text-sm sm:text-base"
-                placeholder="Developer X"
-                required
-              />
             </div>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/nikhil-bajantri-dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center gap-4 glass-card rounded-xl p-4 hover:scale-[1.02] transition-all duration-500"
+          >
+            <div
+              class="w-10 h-10 rounded-xl bg-[#0077b5]/10 border border-[#0077b5]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500"
+            >
+              <i class="fab fa-linkedin-in text-[#0077b5] text-sm"></i>
+            </div>
+            <div>
+              <div class="text-xs text-[#555] mb-0.5">LinkedIn</div>
+              <div
+                class="text-sm text-[#f0f0f0] font-medium group-hover:text-[#0077b5] transition-colors"
+              >
+                nikhil-bajantri-dev
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/programmer-nick234/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center gap-4 glass-card rounded-xl p-4 hover:scale-[1.02] transition-all duration-500"
+          >
+            <div
+              class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500"
+            >
+              <i class="fab fa-github text-[#f0f0f0] text-sm"></i>
+            </div>
+            <div>
+              <div class="text-xs text-[#555] mb-0.5">GitHub</div>
+              <div
+                class="text-sm text-[#f0f0f0] font-medium group-hover:text-white transition-colors"
+              >
+                programmer-nick234
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Decorative element -->
+        <div class="hidden lg:block pt-4">
+          <div class="glass-card rounded-xl p-5 text-center">
+            <div class="text-3xl mb-2">🚀</div>
+            <p class="text-xs text-[#555] leading-relaxed">
+              Currently open to freelance projects and collaboration
+              opportunities
+            </p>
           </div>
-          
-          <div class="relative w-full">
-            <div class="absolute top-2 sm:top-3 left-3 flex items-center pointer-events-none">
-              <i class="fas fa-comment text-text-muted text-xs"></i>
-            </div>
+        </div>
+      </div>
+
+      <!-- Right: Contact Form -->
+      <div class="lg:col-span-3" data-animate="fade-left">
+        <form
+          id="contact-form"
+          class="glass-card rounded-2xl p-6 sm:p-8 space-y-5"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+        >
+          <!-- Name -->
+          <div class="form-group relative">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-[#f0f0f0] placeholder-transparent focus:border-[#00f5ff]/50 focus:bg-white/[0.05] focus:outline-none focus:ring-0 transition-all duration-400 peer"
+              placeholder="Your Name"
+            />
+            <label
+              for="name"
+              class="absolute left-4 top-3.5 text-sm text-[#555] transition-all duration-300 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:top-[-8px] peer-focus:text-xs peer-focus:text-[#00f5ff] peer-focus:bg-[#0d0d0d] peer-focus:px-2 peer-[:not(:placeholder-shown)]:top-[-8px] peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-[#0d0d0d] peer-[:not(:placeholder-shown)]:px-2 cursor-text"
+            >
+              Your Name
+            </label>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group relative">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-[#f0f0f0] placeholder-transparent focus:border-[#00f5ff]/50 focus:bg-white/[0.05] focus:outline-none focus:ring-0 transition-all duration-400 peer"
+              placeholder="Email Address"
+            />
+            <label
+              for="email"
+              class="absolute left-4 top-3.5 text-sm text-[#555] transition-all duration-300 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:top-[-8px] peer-focus:text-xs peer-focus:text-[#00f5ff] peer-focus:bg-[#0d0d0d] peer-focus:px-2 peer-[:not(:placeholder-shown)]:top-[-8px] peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-[#0d0d0d] peer-[:not(:placeholder-shown)]:px-2 cursor-text"
+            >
+              Email Address
+            </label>
+          </div>
+
+          <!-- Subject -->
+          <div class="form-group relative">
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-[#f0f0f0] placeholder-transparent focus:border-[#00f5ff]/50 focus:bg-white/[0.05] focus:outline-none focus:ring-0 transition-all duration-400 peer"
+              placeholder="Subject"
+            />
+            <label
+              for="subject"
+              class="absolute left-4 top-3.5 text-sm text-[#555] transition-all duration-300 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:top-[-8px] peer-focus:text-xs peer-focus:text-[#00f5ff] peer-focus:bg-[#0d0d0d] peer-focus:px-2 peer-[:not(:placeholder-shown)]:top-[-8px] peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-[#0d0d0d] peer-[:not(:placeholder-shown)]:px-2 cursor-text"
+            >
+              Subject (Optional)
+            </label>
+          </div>
+
+          <!-- Message -->
+          <div class="form-group relative">
             <textarea
               id="message"
               name="message"
-              rows="4"
-              class="w-full pl-8 pr-3 py-2 sm:py-3 bg-dark-card border border-dark-border rounded-lg text-text-primary placeholder-text-muted focus:border-neon-cyan focus:outline-none transition-colors duration-300 resize-none text-sm sm:text-base"
-              placeholder="What's up?"
               required
-            ></textarea>
-          </div>
-          
-          <div class="flex justify-end pt-1">
-            <button
-              type="submit"
-              id="submitBtn"
-              class="px-6 sm:px-8 py-2 sm:py-3 bg-neon-cyan text-dark-bg font-medium rounded-lg hover:bg-neon-purple transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md text-sm sm:text-base"
+              rows="5"
+              class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-[#f0f0f0] placeholder-transparent focus:border-[#00f5ff]/50 focus:bg-white/[0.05] focus:outline-none focus:ring-0 transition-all duration-400 peer resize-none"
+              placeholder="Your Message"></textarea>
+            <label
+              for="message"
+              class="absolute left-4 top-3.5 text-sm text-[#555] transition-all duration-300 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:top-[-8px] peer-focus:text-xs peer-focus:text-[#00f5ff] peer-focus:bg-[#0d0d0d] peer-focus:px-2 peer-[:not(:placeholder-shown)]:top-[-8px] peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-[#0d0d0d] peer-[:not(:placeholder-shown)]:px-2 cursor-text"
             >
-              <span class="flex items-center space-x-2">
-                <i class="fas fa-paper-plane text-sm"></i>
-                <span id="submitText">Send Message</span>
-              </span>
-            </button>
+              Your Message
+            </label>
           </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="group relative w-full py-3.5 rounded-xl font-semibold text-sm overflow-hidden transition-all duration-500"
+            data-magnetic="0.15"
+            style="background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(168, 85, 247, 0.1)); border: 1px solid rgba(0, 245, 255, 0.2);"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-[#00f5ff] to-[#a855f7] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            >
+            </div>
+            <span
+              class="relative z-10 text-[#00f5ff] group-hover:text-[#050505] transition-colors duration-500 flex items-center justify-center gap-2"
+            >
+              <span>Send Message</span>
+              <i
+                class="fas fa-paper-plane text-xs group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500"
+              ></i>
+            </span>
+          </button>
         </form>
-        
-        <!-- Message Container -->
-        <div id="messageContainer" class="mt-2 hidden w-full">
-          <div id="successMessage" class="hidden p-3 bg-green-900/20 border border-green-500/30 rounded-lg text-green-400 text-sm">
-            <i class="fas fa-check-circle mr-2"></i>
-            <span id="successText"></span>
-          </div>
-          <div id="errorMessage" class="hidden p-3 bg-red-900/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
-            <i class="fas fa-exclamation-circle mr-2"></i>
-            <span id="errorText"></span>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<script>
-  // Contact form handling
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm') as HTMLFormElement;
-    const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
-    const submitIcon = document.getElementById('submitIcon') as HTMLElement;
-    const submitText = document.getElementById('submitText') as HTMLElement;
-    const messageContainer = document.getElementById('messageContainer') as HTMLElement;
-    const successMessage = document.getElementById('successMessage') as HTMLElement;
-    const errorMessage = document.getElementById('errorMessage') as HTMLElement;
-    const successText = document.getElementById('successText') as HTMLElement;
-    const errorText = document.getElementById('errorText') as HTMLElement;
-    
-    function showMessage(type: 'success' | 'error', message: string) {
-      if (!messageContainer || !successMessage || !errorMessage || !successText || !errorText) return;
-      
-      // Hide all messages first
-      messageContainer.classList.add('hidden');
-      successMessage.classList.add('hidden');
-      errorMessage.classList.add('hidden');
-      
-      // Show the appropriate message
-      messageContainer.classList.remove('hidden');
-      if (type === 'success') {
-        successText.textContent = message;
-        successMessage.classList.remove('hidden');
-      } else {
-        errorText.textContent = message;
-        errorMessage.classList.remove('hidden');
-      }
-      
-      // Auto-hide after 5 seconds
-      setTimeout(() => {
-        messageContainer.classList.add('hidden');
-      }, 5000);
-    }
-    
-    function setLoadingState(loading: boolean) {
-      if (!submitBtn || !submitIcon || !submitText) return;
-      
-      if (loading) {
-        submitBtn.disabled = true;
-        submitIcon.className = 'fas fa-spinner fa-spin mr-2';
-        submitText.textContent = 'Sending...';
-      } else {
-        submitBtn.disabled = false;
-        submitIcon.className = 'fas fa-paper-plane mr-2';
-        submitText.textContent = 'Send Message';
-      }
-    }
-    
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Set loading state
-        setLoadingState(true);
-        
-        try {
-          // Get form data
-          const formData = new FormData(form);
-          
-          // Get form values
-          const email = formData.get('email') as string;
-          const name = formData.get('name') as string;
-          const message = formData.get('message') as string;
-          
-          // Enhanced validation
-          if (!email?.trim() || !name?.trim() || !message?.trim()) {
-            showMessage('error', 'Please fill all the fields');
-            setLoadingState(false);
-            return;
-          }
-          
-          // Email validation
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(email)) {
-            showMessage('error', 'Please enter a valid email address');
-            setLoadingState(false);
-            return;
-          }
-          
-          // Create email body
-          const subject = `Portfolio Contact from ${name}`;
-          const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-          
-          // Create mailto link
-          const mailtoLink = `mailto:nikhilbajantri86@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-          
-          // Show success message
-          showMessage('success', 'Opening your email client...');
-          
-          // Open email client
-          setTimeout(() => {
-            window.open(mailtoLink, '_blank');
-          }, 1000);
-          
-          // Reset form
-          form.reset();
-          
-        } catch (error) {
-          console.error('Contact form error:', error);
-          showMessage('error', 'Sorry, something went wrong. Please try again.');
-        } finally {
-          setLoadingState(false);
-        }
-      });
-    }
-  });
-</script>
+<style>
+  #contact-form {
+    position: relative;
+  }
+
+  #contact-form::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      transparent,
+      rgba(0, 245, 255, 0.1),
+      transparent,
+      rgba(168, 85, 247, 0.1),
+      transparent
+    );
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: gradientShift 6s ease infinite;
+    pointer-events: none;
+  }
+
+  #contact-form input:focus,
+  #contact-form textarea:focus {
+    box-shadow: 0 0 0 1px rgba(0, 245, 255, 0.3),
+      0 0 15px rgba(0, 245, 255, 0.08);
+  }
+
+  .form-group {
+    position: relative;
+  }
+</style>

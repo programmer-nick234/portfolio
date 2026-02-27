@@ -1,13 +1,13 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import About from '../components/About.astro';
-import Skills from '../components/Skills.astro';
-import Projects from '../components/Projects.astro';
-import Experience from '../components/Experience.astro';
-import Timeline from '../components/Timeline.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import About from "../components/About.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import Experience from "../components/Experience.astro";
+import Timeline from "../components/Timeline.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
 
 // Timeline data
 const timelineData = [
@@ -19,16 +19,16 @@ const timelineData = [
         title: "DK24 Cluster",
         organization: "DK24",
         startDate: "2025-02-25",
-        isPresent: true
+        isPresent: true,
       },
       {
         logo: "/community/SSOSC.LOGO-WHITE.png",
         title: "Srinivas Student Open Source Community",
         organization: "Srinivas Student Open Source Community (SSOSC)",
         startDate: "2023-01-01",
-        isPresent: true
+        isPresent: true,
       },
-    ]
+    ],
   },
   {
     title: "Education",
@@ -38,23 +38,23 @@ const timelineData = [
         title: "Srinivas Institute of Technology",
         organization: "Srinivas Institute of Technology",
         startDate: "2024-08-24",
-        isPresent: true
+        isPresent: true,
       },
-    ]
-  }
+    ],
+  },
 ];
 ---
 
-<Layout 
+<Layout
   title="Nikhil Bajantri - Full Stack Developer & CTO at DailyDine"
   description="Nikhil Bajantri is a Full Stack Developer and CTO at DailyDine. Expert in modern web development, React, Node.js, and building scalable applications."
   keywords="Nikhil Bajantri, Full Stack Developer, CTO, DailyDine, React, Node.js, TypeScript, Web Development, Software Engineer, Portfolio"
 >
   <!-- Skip to content link for accessibility -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  
+
   <Navigation />
-  
+
   <main id="main-content" class="flex-1">
     <About />
     <Skills />
@@ -63,6 +63,6 @@ const timelineData = [
     <Timeline sections={timelineData} />
     <Contact />
   </main>
-  
+
   <Footer />
 </Layout>

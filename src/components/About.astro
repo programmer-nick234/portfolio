@@ -1,202 +1,573 @@
 ---
-// About section component
+// Hero / About section — jaw-dropping first impression
 ---
 
-<section id="about" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20">
-  <!-- Animated Background -->
-  <div class="absolute inset-0 bg-gradient-to-br from-dark-bg via-dark-card to-dark-bg">
-    <!-- Animated particles -->
-    <div class="absolute inset-0">
-      {Array.from({ length: 30 }).map((_, i) => (
-        <div
-          class="absolute w-1 h-1 bg-neon-cyan rounded-full animate-pulse-slow"
-          style={`
-            left: ${Math.random() * 100}%;
-            top: ${Math.random() * 100}%;
-            animation-delay: ${Math.random() * 3}s;
-            opacity: ${Math.random() * 0.5 + 0.1};
-          `}
-        ></div>
-      ))}
+<section
+  id="about"
+  class="relative min-h-screen flex items-center justify-center overflow-hidden py-20 sm:py-24 lg:py-0"
+>
+  <!-- Particle Canvas Background -->
+  <canvas
+    id="hero-particles"
+    class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <!-- Gradient accents -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div
+      class="absolute top-[10%] right-[10%] w-[500px] h-[500px] rounded-full opacity-[0.06]"
+      style="background: radial-gradient(circle, #a855f7, transparent 70%); animation: float 20s ease-in-out infinite;"
+    >
     </div>
-    
-    <!-- Gradient orbs -->
-    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/20 rounded-full blur-3xl animate-float"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-cyan/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+    <div
+      class="absolute bottom-[15%] left-[5%] w-[400px] h-[400px] rounded-full opacity-[0.04]"
+      style="background: radial-gradient(circle, #00f5ff, transparent 70%); animation: float 18s ease-in-out infinite reverse;"
+    >
+    </div>
   </div>
 
   <!-- Content -->
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-      <!-- Content Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left: Text Content -->
       <div class="space-y-6 sm:space-y-8 order-2 lg:order-1">
-        <div class="animate-fade-in">
-          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary mb-6 sm:mb-8 leading-tight">
-            Nikhil Bajantri
-          </h1>
-          <p class="text-text-secondary leading-relaxed text-lg sm:text-xl mb-8 sm:mb-10 max-w-2xl">
-            Full Stack Developer and Chief Technology Officer (CTO) at DailyDine. Expert in Python, JavaScript, React, Machine Learning, and Artificial Intelligence. Specializing in building scalable web applications, mobile apps, and AI-powered solutions. Passionate about innovation, leadership, and creating impactful technology solutions.
-          </p>
+        <!-- Greeting -->
+        <div data-animate="fade-up">
+          <span
+            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium glass border border-white/5"
+            style="color: #00f5ff;"
+          >
+            <span
+              class="w-2 h-2 rounded-full bg-[#00f5ff] animate-pulse shadow-[0_0_8px_rgba(0,245,255,0.5)]"
+            ></span>
+            Available for opportunities
+          </span>
         </div>
-        
-        <div class="space-y-4 sm:space-y-6">
-          <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
-            <span class="text-text-primary font-medium text-lg sm:text-xl">Chief Technology Officer (CTO) at</span>
-            <span class="text-neon-cyan font-semibold text-lg sm:text-xl">DailyDine</span>
-          </div>
-          <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-2">
-            <span class="text-text-primary text-lg sm:text-xl">Leading technology strategy and product development</span>
-            <span class="text-2xl sm:text-3xl">⚡</span>
+
+        <!-- Name with letter reveal -->
+        <div data-animate="fade-up" data-animate-delay="0.1">
+          <h1
+            class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]"
+          >
+            <span
+              class="block text-[#8a8a8a] text-lg sm:text-xl font-normal mb-2 tracking-wide"
+              >Hello, I'm</span
+            >
+            <span id="hero-name" class="block gradient-text"
+              >Nikhil Bajantri</span
+            >
+          </h1>
+        </div>
+
+        <!-- Typewriter subtitle -->
+        <div
+          data-animate="fade-up"
+          data-animate-delay="0.2"
+          class="h-10 sm:h-12 flex items-center"
+        >
+          <div
+            class="flex items-center gap-2 text-xl sm:text-2xl lg:text-3xl font-medium"
+          >
+            <span class="text-[#555]">&gt;</span>
+            <span id="typewriter" class="text-[#f0f0f0]"></span>
+            <span
+              id="typewriter-cursor"
+              class="inline-block w-[2px] h-6 sm:h-8 bg-[#00f5ff] ml-1"
+              style="animation: blink 1s step-end infinite;"></span>
           </div>
         </div>
 
-        <!-- Key Skills & Expertise -->
-        <div class="space-y-4">
-          <h2 class="text-xl sm:text-2xl font-semibold text-text-primary">Core Expertise</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="flex items-center space-x-2">
-              <i class="fas fa-code text-neon-cyan"></i>
-              <span class="text-text-secondary">Full Stack Development</span>
+        <!-- Bio description -->
+        <div data-animate="fade-up" data-animate-delay="0.3">
+          <p
+            class="text-base sm:text-lg text-[#8a8a8a] leading-relaxed max-w-xl"
+          >
+            CTO at <span class="text-[#00f5ff] font-medium">DailyDine</span> · Building
+            scalable applications with
+            <span class="text-[#a855f7] font-medium">AI/ML</span> and modern web
+            technologies. Passionate about creating digital experiences that make
+            a difference.
+          </p>
+        </div>
+
+        <!-- Quick stats -->
+        <div
+          data-animate="fade-up"
+          data-animate-delay="0.4"
+          class="flex flex-wrap gap-6 sm:gap-8"
+        >
+          <div class="group">
+            <div class="text-2xl sm:text-3xl font-bold gradient-text glow-text">
+              5+
             </div>
-            <div class="flex items-center space-x-2">
-              <i class="fas fa-brain text-neon-purple"></i>
-              <span class="text-text-secondary">Machine Learning & AI</span>
+            <div
+              class="text-xs sm:text-sm text-[#555] mt-1 group-hover:text-[#8a8a8a] transition-colors"
+            >
+              Projects
             </div>
-            <div class="flex items-center space-x-2">
-              <i class="fas fa-mobile-alt text-neon-green"></i>
-              <span class="text-text-secondary">Mobile App Development</span>
+          </div>
+          <div class="group">
+            <div
+              class="text-2xl sm:text-3xl font-bold gradient-text-alt glow-text"
+            >
+              CTO
             </div>
-            <div class="flex items-center space-x-2">
-              <i class="fas fa-cloud text-neon-cyan"></i>
-              <span class="text-text-secondary">Cloud Architecture</span>
+            <div
+              class="text-xs sm:text-sm text-[#555] mt-1 group-hover:text-[#8a8a8a] transition-colors"
+            >
+              DailyDine
             </div>
-            <div class="flex items-center space-x-2">
-              <i class="fas fa-users text-neon-purple"></i>
-              <span class="text-text-secondary">Team Leadership</span>
+          </div>
+          <div class="group">
+            <div
+              class="text-2xl sm:text-3xl font-bold gradient-text-teal glow-text"
+            >
+              AI/ML
             </div>
-            <div class="flex items-center space-x-2">
-              <i class="fas fa-rocket text-neon-green"></i>
-              <span class="text-text-secondary">Product Strategy</span>
+            <div
+              class="text-xs sm:text-sm text-[#555] mt-1 group-hover:text-[#8a8a8a] transition-colors"
+            >
+              Enthusiast
             </div>
           </div>
         </div>
-        
-        <!-- Social Links and Resume Button -->
-        <div class="flex flex-col sm:flex-row sm:items-center space-y-6 sm:space-y-0 sm:space-x-8 pt-6 sm:pt-8">
-          <div class="flex items-center space-x-8 sm:space-x-10">
-            <a
-              href="https://github.com/programmer-nick234/"
-              class="text-text-secondary hover:text-text-primary transition-colors duration-300 text-3xl sm:text-4xl"
-              title="GitHub Profile - Nikhil Bajantri"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit GitHub profile"
+
+        <!-- CTA Buttons -->
+        <div
+          data-animate="fade-up"
+          data-animate-delay="0.5"
+          class="flex flex-wrap gap-4 pt-2"
+        >
+          <a
+            href="#projects"
+            class="group relative inline-flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base overflow-hidden transition-all duration-500"
+            data-magnetic="0.3"
+            style="background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(168, 85, 247, 0.1)); border: 1px solid rgba(0, 245, 255, 0.2);"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-[#00f5ff] to-[#a855f7] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             >
-              <i class="fab fa-github"></i>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/nikhil-bajantri-dev"
-              class="text-text-secondary hover:text-text-primary transition-colors duration-300 text-3xl sm:text-4xl"
-              title="LinkedIn Profile - Nikhil Bajantri"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit LinkedIn profile"
+            </div>
+            <span
+              class="relative z-10 text-[#00f5ff] group-hover:text-[#050505] transition-colors duration-500"
+              >View My Work</span
             >
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a
-              href="https://x.com/nikkkkhil_2604"
-              class="text-text-secondary hover:text-text-primary transition-colors duration-300 text-3xl sm:text-4xl"
-              title="X (Twitter) Profile - Nikhil Bajantri"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit X (Twitter) profile"
-            >
-              <svg width="32" height="32" class="sm:w-9 sm:h-9" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-            </a>
-          </div>
-          
-          <!-- Resume Button -->
+            <i
+              class="relative z-10 fas fa-arrow-right text-[#00f5ff] group-hover:text-[#050505] group-hover:translate-x-1 transition-all duration-500"
+            ></i>
+          </a>
+
           <a
             href="/resume.pdf"
             download="Nikhil_Bajantri_Resume.pdf"
-            class="bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-lg font-semibold text-lg sm:text-xl transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:scale-105 w-full sm:w-auto"
-            onclick="return confirm('Download resume?')"
-            aria-label="Download resume"
-            title="Download Nikhil Bajantri Resume"
+            class="group inline-flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base text-[#8a8a8a] hover:text-[#f0f0f0] transition-all duration-500 border border-white/10 hover:border-white/20 hover:bg-white/[0.03]"
+            data-magnetic="0.2"
           >
-            <span>Download Resume</span>
-            <i class="fas fa-download"></i>
+            <span>Resume</span>
+            <i class="fas fa-download text-xs group-hover:animate-bounce"></i>
+          </a>
+        </div>
+
+        <!-- Social Links -->
+        <div
+          data-animate="fade-up"
+          data-animate-delay="0.6"
+          class="flex items-center gap-5 pt-2"
+        >
+          <a
+            href="https://github.com/programmer-nick234/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group w-10 h-10 rounded-xl flex items-center justify-center text-[#555] hover:text-[#f0f0f0] transition-all duration-400 hover:bg-white/5 hover:shadow-[0_0_15px_rgba(0,245,255,0.1)]"
+            aria-label="GitHub Profile"
+            data-magnetic="0.3"
+          >
+            <i
+              class="fab fa-github text-lg group-hover:scale-110 transition-transform duration-400"
+            ></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/nikhil-bajantri-dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group w-10 h-10 rounded-xl flex items-center justify-center text-[#555] hover:text-[#0077b5] transition-all duration-400 hover:bg-white/5 hover:shadow-[0_0_15px_rgba(0,119,181,0.1)]"
+            aria-label="LinkedIn Profile"
+            data-magnetic="0.3"
+          >
+            <i
+              class="fab fa-linkedin-in text-lg group-hover:scale-110 transition-transform duration-400"
+            ></i>
+          </a>
+          <a
+            href="https://x.com/nikkkkhil_2604"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group w-10 h-10 rounded-xl flex items-center justify-center text-[#555] hover:text-[#f0f0f0] transition-all duration-400 hover:bg-white/5 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+            aria-label="X (Twitter) Profile"
+            data-magnetic="0.3"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="group-hover:scale-110 transition-transform duration-400"
+            >
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              ></path>
+            </svg>
           </a>
         </div>
       </div>
 
-      <!-- Photo Section -->
-      <div class="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-        <div class="relative w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl mx-auto">          
-          <!-- Photo container with enhanced styling -->
-          <div class="relative w-full aspect-square rounded-2xl sm:rounded-3xl overflow-hidden border-2 sm:border-4 border-gray-700 shadow-2xl sm:shadow-3xl transform hover:scale-105 transition-transform duration-500">
+      <!-- Right: Profile Image -->
+      <div
+        class="relative order-1 lg:order-2 flex justify-center lg:justify-end"
+        data-animate="scale"
+        data-animate-delay="0.3"
+      >
+        <div
+          class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px]"
+        >
+          <!-- Orbiting ring 1 -->
+          <div
+            class="absolute inset-[-10px] rounded-full border border-[#00f5ff]/10 animate-[spin_20s_linear_infinite]"
+          >
+            <div
+              class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#00f5ff] shadow-[0_0_10px_rgba(0,245,255,0.5)]"
+            >
+            </div>
+          </div>
+
+          <!-- Orbiting ring 2 -->
+          <div
+            class="absolute inset-[-24px] rounded-full border border-[#a855f7]/8 animate-[spin_30s_linear_infinite_reverse]"
+          >
+            <div
+              class="absolute bottom-0 right-0 w-1.5 h-1.5 rounded-full bg-[#a855f7] shadow-[0_0_8px_rgba(168,85,247,0.5)]"
+            >
+            </div>
+          </div>
+
+          <!-- Morphing glow behind image -->
+          <div
+            class="absolute inset-4 rounded-full opacity-30 blur-2xl"
+            style="background: linear-gradient(135deg, #00f5ff, #a855f7); animation: morph 8s ease-in-out infinite;"
+          >
+          </div>
+
+          <!-- Profile image with tilt effect -->
+          <div
+            id="profile-tilt"
+            class="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10 shadow-[0_0_40px_rgba(0,245,255,0.1)]"
+            style="transform-style: preserve-3d;"
+          >
             <img
               src="/profile-image.jpg"
-              alt="Nikhil Bajantri - Full Stack Developer and CTO at DailyDine"
+              alt="Nikhil Bajantri - Full Stack Developer"
               class="w-full h-full object-cover"
               loading="eager"
+              width="420"
+              height="420"
             />
-            <!-- Subtle overlay for depth -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <!-- Overlay gradient -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-[#050505]/40 via-transparent to-transparent"
+            >
+            </div>
           </div>
-          
-          <!-- Decorative elements -->
-          <div class="absolute -top-4 -right-4 w-8 h-8 bg-neon-cyan rounded-full opacity-60 animate-pulse"></div>
-          <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-neon-purple rounded-full opacity-60 animate-pulse" style="animation-delay: -1s;"></div>
+
+          <!-- Floating tech badges -->
+          <div
+            class="absolute -right-2 top-[20%] px-3 py-1.5 rounded-lg glass text-xs font-medium text-[#00f5ff] shadow-lg animate-float"
+            style="animation-delay: 0s;"
+          >
+            <i class="fab fa-react mr-1"></i> React
+          </div>
+          <div
+            class="absolute -left-4 top-[60%] px-3 py-1.5 rounded-lg glass text-xs font-medium text-[#a855f7] shadow-lg animate-float"
+            style="animation-delay: -2s;"
+          >
+            <i class="fab fa-python mr-1"></i> Python
+          </div>
+          <div
+            class="absolute right-4 bottom-[5%] px-3 py-1.5 rounded-lg glass text-xs font-medium text-[#22d3ee] shadow-lg animate-float"
+            style="animation-delay: -4s;"
+          >
+            <i class="fas fa-brain mr-1"></i> AI/ML
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-    <div class="w-6 h-10 border-2 border-text-secondary rounded-full flex justify-center">
-      <div class="w-1 h-3 bg-neon-cyan rounded-full mt-2 animate-pulse"></div>
+  <div
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+    data-animate="fade"
+    data-animate-delay="1"
+  >
+    <span class="text-[10px] uppercase tracking-[0.2em] text-[#555]"
+      >Scroll</span
+    >
+    <div
+      class="w-5 h-8 border border-[#555]/50 rounded-full flex justify-center pt-1.5"
+    >
+      <div
+        class="w-1 h-2 bg-[#00f5ff] rounded-full"
+        style="animation: scrollBounce 2s ease-in-out infinite;"
+      >
+      </div>
     </div>
   </div>
 </section>
 
+<script>
+  // ── Typewriter Effect ────────────────────────────────
+  (function () {
+    const roles = [
+      "Full Stack Developer",
+      "CTO @ DailyDine",
+      "AI/ML Enthusiast",
+      "Python Developer",
+      "React Expert",
+    ];
+
+    const el = document.getElementById("typewriter");
+    if (!el) return;
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isPaused = false;
+
+    function type() {
+      const currentRole = roles[roleIndex];
+
+      if (isPaused) {
+        isPaused = false;
+        isDeleting = true;
+        setTimeout(type, 50);
+        return;
+      }
+
+      if (!isDeleting) {
+        el.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+
+        if (charIndex === currentRole.length) {
+          isPaused = true;
+          setTimeout(type, 2000); // Pause at full word
+          return;
+        }
+        setTimeout(type, 60 + Math.random() * 40); // Natural typing speed
+      } else {
+        el.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+
+        if (charIndex === 0) {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+          setTimeout(type, 300);
+          return;
+        }
+        setTimeout(type, 30); // Faster deleting
+      }
+    }
+
+    // Start after loader finishes
+    setTimeout(type, 3500);
+  })();
+
+  // ── Hero Particles Canvas ────────────────────────────
+  (function () {
+    const canvas = document.getElementById(
+      "hero-particles"
+    ) as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let particles: {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      opacity: number;
+      color: string;
+    }[] = [];
+    let mouseX = 0,
+      mouseY = 0;
+    let animationId: number;
+
+    function resize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+
+    function createParticles() {
+      const count = Math.min(
+        60,
+        Math.floor((canvas.width * canvas.height) / 15000)
+      );
+      particles = [];
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          size: Math.random() * 2 + 0.5,
+          opacity: Math.random() * 0.3 + 0.1,
+          color: Math.random() > 0.5 ? "#00f5ff" : "#a855f7",
+        });
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((p, i) => {
+        // Mouse interaction
+        const dx = mouseX - p.x;
+        const dy = mouseY - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 150) {
+          p.vx -= dx * 0.0001;
+          p.vy -= dy * 0.0001;
+        }
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Wrap around
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        // Draw particle
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.opacity;
+        ctx.fill();
+
+        // Draw connections
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const d = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
+
+          if (d < 120) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = p.color;
+            ctx.globalAlpha = (1 - d / 120) * 0.08;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      });
+
+      ctx.globalAlpha = 1;
+      animationId = requestAnimationFrame(animate);
+    }
+
+    // Mouse tracking
+    document.addEventListener("mousemove", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    });
+
+    resize();
+    createParticles();
+    animate();
+
+    window.addEventListener("resize", () => {
+      resize();
+      createParticles();
+    });
+  })();
+
+  // ── Profile Image 3D Tilt ────────────────────────────
+  (function () {
+    const el = document.getElementById("profile-tilt");
+    if (!el || window.matchMedia("(pointer: coarse)").matches) return;
+
+    el.addEventListener("mousemove", (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+      el.style.transform = `perspective(1000px) rotateY(${x * 15}deg) rotateX(${
+        -y * 15
+      }deg)`;
+    });
+
+    el.addEventListener("mouseleave", () => {
+      el.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg)";
+      el.style.transition = "transform 0.5s ease";
+      setTimeout(() => {
+        el.style.transition = "";
+      }, 500);
+    });
+  })();
+</script>
+
 <style>
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes scrollBounce {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(6px);
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes morph {
+    0%,
+    100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+  }
+
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0px);
     }
     50% {
       transform: translateY(-20px);
     }
   }
-  
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
-  
-  /* Enhanced responsive design */
-  @media (max-width: 640px) {
-    #about {
-      padding-top: 5rem;
-      padding-bottom: 2rem;
-    }
-  }
-  
-  @media (min-width: 641px) and (max-width: 1024px) {
-    #about {
-      padding-top: 6rem;
-      padding-bottom: 3rem;
-    }
-  }
-  
-  @media (min-width: 1025px) {
-    #about {
-      padding-top: 7rem;
-      padding-bottom: 4rem;
-    }
+
+  #profile-tilt {
+    transition: transform 0.1s ease;
   }
 </style>

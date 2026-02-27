@@ -5,6 +5,7 @@ export interface Props {
   image?: string;
   canonical?: string;
   type?: string;
+  keywords?: string;
 }
 
 const {
@@ -12,7 +13,8 @@ const {
   description = "Nikhil Bajantri - Full Stack Developer & CTO at DailyDine. Expert in Python, JavaScript, React, Machine Learning, and AI/ML. Building scalable applications and leading technology teams.",
   image = "https://nick-portfolio123.netlify.app/profile-image.jpg",
   canonical = Astro.url.href,
-  type = "website"
+  type = "website",
+  keywords = "Nikhil Bajantri, Full Stack Developer, CTO, DailyDine, Python Developer, JavaScript Developer, React Developer, Machine Learning Engineer, AI Developer, Web Developer, Software Engineer, Portfolio",
 } = Astro.props;
 
 const siteName = "Nikhil Bajantri - Portfolio";
@@ -24,22 +26,28 @@ const fullTitle = `${title} | ${siteName}`;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#00ffff" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    
+    <meta name="theme-color" content="#00f5ff" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+
     <!-- Google Site Verification -->
-    <meta name="google-site-verification" content="6F8WceAuAicNFX86Tsc_oMI-CKOgDdIb3x-Bm7Xkb1Y" />
-    
+    <meta
+      name="google-site-verification"
+      content="6F8WceAuAicNFX86Tsc_oMI-CKOgDdIb3x-Bm7Xkb1Y"
+    />
+
     <!-- Primary Meta Tags -->
     <title>{fullTitle}</title>
     <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
-    <meta name="keywords" content="Nikhil Bajantri, Full Stack Developer, CTO, DailyDine, Python Developer, JavaScript Developer, React Developer, Machine Learning Engineer, AI Developer, Web Developer, Software Engineer, Portfolio" />
+    <meta name="keywords" content={keywords} />
     <meta name="author" content="Nikhil Bajantri" />
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href={canonical} />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonical} />
@@ -48,7 +56,7 @@ const fullTitle = `${title} | ${siteName}`;
     <meta property="og:image" content={image} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content="en_US" />
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonical} />
@@ -57,264 +65,949 @@ const fullTitle = `${title} | ${siteName}`;
     <meta property="twitter:image" content={image} />
     <meta property="twitter:creator" content="@nikkkkhil_2604" />
     <meta property="twitter:site" content="@nikkkkhil_2604" />
-    
+
     <!-- Additional SEO Meta Tags -->
     <meta name="application-name" content="Nikhil Bajantri Portfolio" />
     <meta name="apple-mobile-web-app-title" content="Nikhil Bajantri" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
     <meta name="format-detection" content="telephone=no" />
-    
+
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json" />
-    
+
     <!-- Favicon and Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
-    
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/apple-touch-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/apple-touch-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/apple-touch-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/apple-touch-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-touch-icon-180x180.png"
+    />
+
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+
     <!-- Preload critical resources -->
-    <link rel="preload" href="/fonts/Satoshi-Variable.ttf" as="font" type="font/ttf" crossorigin />
+    <link
+      rel="preload"
+      href="/fonts/Satoshi-Variable.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
     <link rel="preload" href="/profile-image.jpg" as="image" />
-    
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- GSAP + ScrollTrigger -->
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
+    ></script>
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+    ></script>
+
+    <!-- Lenis Smooth Scroll -->
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"
+    ></script>
+
     <!-- Structured Data for SEO -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Nikhil Bajantri",
-      "url": "https://nick-portfolio123.netlify.app/",
-      "image": "https://nick-portfolio123.netlify.app/profile-image.jpg",
-      "sameAs": [
-        "https://github.com/programmer-nick234/",
-        "https://www.linkedin.com/in/nikhil-bajantri-dev",
-        "https://x.com/nikkkkhil_2604"
-      ],
-      "jobTitle": "Chief Technology Officer (CTO)",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "DailyDine"
-      },
-      "description": "Full Stack Developer & CTO at DailyDine. Expert in Python, JavaScript, React, Machine Learning, and AI/ML. Building scalable applications and leading technology teams.",
-      "knowsAbout": [
-        "Python", "JavaScript", "React.js", "Next.js", "Machine Learning", 
-        "Artificial Intelligence", "Full Stack Development", "Web Development",
-        "Mobile Development", "Cloud Computing", "DevOps", "Database Management"
-      ],
-      "alumniOf": {
-        "@type": "EducationalOrganization",
-        "name": "Srinivas Institute of Technology, Mangaluru"
-      },
-      "hasCredential": "Bachelor of Engineering - BE, Artificial Intelligence and Data Science"
-    })} />
-    
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Nikhil Bajantri",
+        url: "https://nick-portfolio123.netlify.app/",
+        image: "https://nick-portfolio123.netlify.app/profile-image.jpg",
+        sameAs: [
+          "https://github.com/programmer-nick234/",
+          "https://www.linkedin.com/in/nikhil-bajantri-dev",
+          "https://x.com/nikkkkhil_2604",
+        ],
+        jobTitle: "Chief Technology Officer (CTO)",
+        worksFor: {
+          "@type": "Organization",
+          name: "DailyDine",
+        },
+        description:
+          "Full Stack Developer & CTO at DailyDine. Expert in Python, JavaScript, React, Machine Learning, and AI/ML. Building scalable applications and leading technology teams.",
+        knowsAbout: [
+          "Python",
+          "JavaScript",
+          "React.js",
+          "Next.js",
+          "Machine Learning",
+          "Artificial Intelligence",
+          "Full Stack Development",
+          "Web Development",
+          "Mobile Development",
+          "Cloud Computing",
+          "DevOps",
+          "Database Management",
+        ],
+        alumniOf: {
+          "@type": "EducationalOrganization",
+          name: "Srinivas Institute of Technology, Mangaluru",
+        },
+        hasCredential:
+          "Bachelor of Engineering - BE, Artificial Intelligence and Data Science",
+      })}
+    ></script>
+
     <!-- Website Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Nikhil Bajantri - Portfolio",
-      "url": "https://nick-portfolio123.netlify.app/",
-      "description": "Professional portfolio of Nikhil Bajantri - Full Stack Developer & CTO at DailyDine",
-      "author": {
-        "@type": "Person",
-        "name": "Nikhil Bajantri"
-      },
-      "publisher": {
-        "@type": "Person",
-        "name": "Nikhil Bajantri"
-      }
-    })} />
-    
-         <!-- Tailwind Config -->
-     <script is:inline>
-       if (typeof tailwind !== 'undefined') {
-         tailwind.config = {
-           theme: {
-             extend: {
-               colors: {
-                 'dark-bg': '#0a0a0a',
-                 'dark-card': '#1a1a1a',
-                 'dark-border': '#2a2a2a',
-                 'text-primary': '#ffffff',
-                 'text-secondary': '#a0a0a0',
-                 'text-muted': '#666666',
-                 'neon-cyan': '#00ffff',
-                 'neon-purple': '#8b5cf6',
-                 'neon-green': '#10b981',
-               },
-               animation: {
-                 'fade-in': 'fadeIn 0.5s ease-in-out',
-                 'slide-up': 'slideUp 0.5s ease-out',
-                 'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                 'float': 'float 6s ease-in-out infinite',
-               },
-               keyframes: {
-                 fadeIn: {
-                   '0%': { opacity: '0' },
-                   '100%': { opacity: '1' },
-                 },
-                 slideUp: {
-                   '0%': { transform: 'translateY(20px)', opacity: '0' },
-                   '100%': { transform: 'translateY(0)', opacity: '1' },
-                 },
-                 float: {
-                   '0%, 100%': { transform: 'translateY(0px)' },
-                   '50%': { transform: 'translateY(-20px)' },
-                 },
-               },
-             },
-           },
-         }
-       }
-     </script>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Nikhil Bajantri - Portfolio",
+        url: "https://nick-portfolio123.netlify.app/",
+        description:
+          "Professional portfolio of Nikhil Bajantri - Full Stack Developer & CTO at DailyDine",
+        author: {
+          "@type": "Person",
+          name: "Nikhil Bajantri",
+        },
+        publisher: {
+          "@type": "Person",
+          name: "Nikhil Bajantri",
+        },
+      })}
+    ></script>
   </head>
-  <body class="bg-dark-bg text-text-primary font-sans antialiased loading">
-    <!-- Background Elements -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-dark-bg via-dark-card to-dark-bg"></div>
-      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/5 rounded-full blur-3xl animate-float"></div>
-      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-cyan/5 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+  <body
+    class="bg-[#050505] text-[#f0f0f0] font-sans antialiased overflow-x-hidden"
+  >
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- CINEMATIC LOADING SCREEN                               -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#050505]"
+    >
+      <!-- Loader background particles -->
+      <div class="absolute inset-0 overflow-hidden" id="loader-particles"></div>
+
+      <!-- Animated initials -->
+      <div class="relative z-10 flex flex-col items-center">
+        <div
+          id="loader-logo"
+          class="text-6xl sm:text-8xl font-bold tracking-tighter mb-6"
+          style="opacity: 0;"
+        >
+          <span
+            class="inline-block"
+            style="background: linear-gradient(135deg, #00f5ff, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+            >N</span
+          ><span
+            class="inline-block"
+            style="background: linear-gradient(135deg, #a855f7, #00f5ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+            >B</span
+          >
+        </div>
+
+        <!-- Loading bar -->
+        <div
+          class="w-48 sm:w-64 h-[2px] bg-white/10 rounded-full overflow-hidden"
+        >
+          <div
+            id="loader-bar"
+            class="h-full w-0 rounded-full"
+            style="background: linear-gradient(90deg, #00f5ff, #a855f7);"
+          >
+          </div>
+        </div>
+
+        <!-- Counter -->
+        <div
+          id="loader-counter"
+          class="mt-4 text-sm font-mono tracking-widest text-white/40"
+          style="opacity: 0;"
+        >
+          0%
+        </div>
+      </div>
     </div>
 
-    <!-- Content -->
-    <div class="relative z-10">
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- CUSTOM CURSOR                                          -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div
+      id="cursor-dot"
+      class="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[150] mix-blend-difference"
+      style="background: #00f5ff; transform: translate(-50%, -50%);"
+    >
+    </div>
+    <div
+      id="cursor-ring"
+      class="fixed top-0 left-0 w-10 h-10 rounded-full pointer-events-none z-[149] border border-white/30 mix-blend-difference"
+      style="transform: translate(-50%, -50%); transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;"
+    >
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- ANIMATED BACKGROUND                                    -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+      <!-- Base gradient -->
+      <div class="absolute inset-0 bg-[#050505]"></div>
+
+      <!-- Noise texture overlay -->
+      <div
+        class="absolute inset-0 opacity-[0.03]"
+        style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 256 256%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/></filter><rect width=%22256%22 height=%22256%22 filter=%22url(%23n)%22 opacity=%220.5%22/></svg>'); background-size: 128px;"
+      >
+      </div>
+
+      <!-- Gradient orbs with subtle animation -->
+      <div
+        class="absolute top-[15%] left-[20%] w-[500px] h-[500px] rounded-full opacity-[0.04]"
+        style="background: radial-gradient(circle, #a855f7, transparent 70%); animation: float 20s ease-in-out infinite;"
+      >
+      </div>
+      <div
+        class="absolute bottom-[20%] right-[15%] w-[600px] h-[600px] rounded-full opacity-[0.03]"
+        style="background: radial-gradient(circle, #00f5ff, transparent 70%); animation: float 25s ease-in-out infinite reverse;"
+      >
+      </div>
+      <div
+        class="absolute top-[50%] left-[50%] w-[400px] h-[400px] rounded-full opacity-[0.02] -translate-x-1/2 -translate-y-1/2"
+        style="background: radial-gradient(circle, #22d3ee, transparent 70%); animation: float 18s ease-in-out infinite 5s;"
+      >
+      </div>
+
+      <!-- Grid overlay -->
+      <div
+        class="absolute inset-0 opacity-[0.02]"
+        style="background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 60px 60px;"
+      >
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- MAIN CONTENT                                           -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div
+      id="main-wrapper"
+      class="relative z-10"
+      style="opacity: 0; transition: opacity 0.6s ease;"
+    >
       <slot />
     </div>
 
-    <!-- Loading Animation -->
-    <div class="fixed inset-0 bg-dark-bg flex items-center justify-center z-50 loading-screen">
-      <div class="text-neon-cyan text-2xl font-bold animate-pulse">Nikhil Bajantri</div>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SCROLL PROGRESS INDICATOR                              -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div
+      id="scroll-progress"
+      class="fixed top-0 left-0 h-[2px] z-[100]"
+      style="width: 0%; background: linear-gradient(90deg, #00f5ff, #a855f7, #00f5ff); box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);"
+    >
     </div>
 
-    <script>
-             // Loading animation
-       window.addEventListener('load', () => {
-         document.body.classList.remove('loading');
-         document.body.classList.add('loaded');
-         const loadingScreen = document.querySelector('.loading-screen') as HTMLElement;
-         if (loadingScreen) {
-           loadingScreen.style.opacity = '0';
-           setTimeout(() => {
-             loadingScreen.style.display = 'none';
-           }, 500);
-         }
-       });
-
-      // Parallax effect
-      window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.parallax') as NodeListOf<HTMLElement>;
-        
-        parallaxElements.forEach((element) => {
-          const speed = parseFloat(element.dataset.speed || '0.5');
-          element.style.transform = `translateY(${scrolled * speed}px)`;
-        });
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- GLOBAL SCRIPTS                                         -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <script is:inline>
+      // ====================================================
+      // 1. LENIS SMOOTH SCROLL
+      // ====================================================
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: "vertical",
+        gestureOrientation: "vertical",
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 2,
       });
 
-      // Intersection Observer for animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
+      // Connect Lenis to GSAP ScrollTrigger
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      // ====================================================
+      // 2. CINEMATIC LOADING ANIMATION
+      // ====================================================
+      (function initLoader() {
+        const loader = document.getElementById("loader");
+        const loaderLogo = document.getElementById("loader-logo");
+        const loaderBar = document.getElementById("loader-bar");
+        const loaderCounter = document.getElementById("loader-counter");
+        const mainWrapper = document.getElementById("main-wrapper");
+        const body = document.body;
+
+        if (
+          !loader ||
+          !loaderLogo ||
+          !loaderBar ||
+          !loaderCounter ||
+          !mainWrapper
+        )
+          return;
+
+        // Create loader particles
+        const particlesContainer = document.getElementById("loader-particles");
+        if (particlesContainer) {
+          for (let i = 0; i < 30; i++) {
+            const particle = document.createElement("div");
+            particle.style.cssText = `
+              position: absolute;
+              width: ${Math.random() * 3 + 1}px;
+              height: ${Math.random() * 3 + 1}px;
+              background: ${Math.random() > 0.5 ? "#00f5ff" : "#a855f7"};
+              border-radius: 50%;
+              left: ${Math.random() * 100}%;
+              top: ${Math.random() * 100}%;
+              opacity: ${Math.random() * 0.3 + 0.1};
+            `;
+            particlesContainer.appendChild(particle);
+
+            gsap.to(particle, {
+              y: `random(-100, 100)`,
+              x: `random(-50, 50)`,
+              duration: `random(3, 6)`,
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut",
+            });
+          }
+        }
+
+        const tl = gsap.timeline();
+
+        // Animate logo in
+        tl.to(loaderLogo, {
+          opacity: 1,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+
+        tl.to(
+          loaderCounter,
+          {
+            opacity: 1,
+            duration: 0.3,
+            ease: "power2.out",
+          },
+          "<0.2"
+        );
+
+        // Animate loading bar
+        tl.to(
+          loaderBar,
+          {
+            width: "100%",
+            duration: 1.8,
+            ease: "power2.inOut",
+            onUpdate: function () {
+              const progress = Math.round(this.progress() * 100);
+              loaderCounter.textContent = progress + "%";
+            },
+          },
+          "<0.1"
+        );
+
+        // Logo scale up + fade out
+        tl.to(loaderLogo, {
+          scale: 1.5,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power3.in",
+        });
+
+        tl.to(
+          loaderCounter,
+          {
+            opacity: 0,
+            duration: 0.3,
+          },
+          "<"
+        );
+
+        // Loader exit
+        tl.to(loader, {
+          yPercent: -100,
+          duration: 0.8,
+          ease: "power4.inOut",
+          onComplete: () => {
+            loader.style.display = "none";
+          },
+        });
+
+        // Reveal content
+        tl.to(
+          mainWrapper,
+          {
+            opacity: 1,
+            duration: 0.6,
+            ease: "power2.out",
+          },
+          "<0.3"
+        );
+
+        // Animate sections in
+        tl.add(() => {
+          initScrollAnimations();
+          initScrollProgress();
+        });
+      })();
+
+      // ====================================================
+      // SAFETY FALLBACK — ensure content is ALWAYS visible
+      // ====================================================
+      setTimeout(() => {
+        const mw = document.getElementById("main-wrapper");
+        const ld = document.getElementById("loader");
+        if (mw && parseFloat(getComputedStyle(mw).opacity) < 0.5) {
+          mw.style.opacity = "1";
+        }
+        if (ld && ld.style.display !== "none") {
+          ld.style.display = "none";
+        }
+        // Force-reveal any still-hidden animated elements
+        document.querySelectorAll("[data-animate]").forEach((el) => {
+          if (parseFloat(getComputedStyle(el).opacity) < 0.1) {
+            el.style.opacity = "1";
+            el.style.transform = "none";
           }
         });
-      }, observerOptions);
+        document.querySelectorAll("[data-stagger]").forEach((container) => {
+          Array.from(container.children).forEach((child) => {
+            if (parseFloat(getComputedStyle(child).opacity) < 0.1) {
+              child.style.opacity = "1";
+              child.style.transform = "none";
+            }
+          });
+        });
+      }, 5000);
 
-      // Observe elements for animation
-      document.addEventListener('DOMContentLoaded', () => {
-        const animateElements = document.querySelectorAll('.animate-on-scroll');
-        animateElements.forEach(el => observer.observe(el));
+      // ====================================================
+      // 3. CUSTOM CURSOR
+      // ====================================================
+      (function initCursor() {
+        // Only on desktop
+        if (window.matchMedia("(pointer: coarse)").matches) {
+          const dot = document.getElementById("cursor-dot");
+          const ring = document.getElementById("cursor-ring");
+          if (dot) dot.style.display = "none";
+          if (ring) ring.style.display = "none";
+          return;
+        }
+
+        const cursorDot = document.getElementById("cursor-dot");
+        const cursorRing = document.getElementById("cursor-ring");
+        if (!cursorDot || !cursorRing) return;
+
+        let mouseX = 0,
+          mouseY = 0;
+        let ringX = 0,
+          ringY = 0;
+
+        document.addEventListener("mousemove", (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          gsap.to(cursorDot, {
+            x: mouseX,
+            y: mouseY,
+            duration: 0.1,
+            ease: "power2.out",
+          });
+        });
+
+        // Smooth ring follow
+        gsap.ticker.add(() => {
+          ringX += (mouseX - ringX) * 0.15;
+          ringY += (mouseY - ringY) * 0.15;
+          cursorRing.style.left = ringX + "px";
+          cursorRing.style.top = ringY + "px";
+        });
+
+        // Hover effects
+        const interactiveElements =
+          'a, button, [role="button"], input, textarea, select, [data-cursor="pointer"]';
+
+        document.addEventListener("mouseover", (e) => {
+          if (e.target.closest(interactiveElements)) {
+            cursorRing.style.width = "50px";
+            cursorRing.style.height = "50px";
+            cursorRing.style.borderColor = "rgba(0, 245, 255, 0.5)";
+            cursorDot.style.transform = "translate(-50%, -50%) scale(1.5)";
+          }
+        });
+
+        document.addEventListener("mouseout", (e) => {
+          if (e.target.closest(interactiveElements)) {
+            cursorRing.style.width = "40px";
+            cursorRing.style.height = "40px";
+            cursorRing.style.borderColor = "rgba(255, 255, 255, 0.3)";
+            cursorDot.style.transform = "translate(-50%, -50%) scale(1)";
+          }
+        });
+
+        // Hide cursor when leaving window
+        document.addEventListener("mouseleave", () => {
+          cursorDot.style.opacity = "0";
+          cursorRing.style.opacity = "0";
+        });
+        document.addEventListener("mouseenter", () => {
+          cursorDot.style.opacity = "1";
+          cursorRing.style.opacity = "1";
+        });
+      })();
+
+      // ====================================================
+      // 4. SCROLL-TRIGGERED ANIMATIONS (GSAP)
+      // ====================================================
+      function initScrollAnimations() {
+        // Refresh ScrollTrigger after DOM is ready
+        ScrollTrigger.refresh();
+
+        // Animate all elements with data-animate attribute
+        gsap.utils.toArray("[data-animate]").forEach((el) => {
+          const type = el.dataset.animate || "fade-up";
+          const delay = parseFloat(el.dataset.animateDelay) || 0;
+          const duration = parseFloat(el.dataset.animateDuration) || 0.8;
+
+          let fromVars = { opacity: 0 };
+          let toVars = {
+            opacity: 1,
+            duration: duration,
+            delay: delay,
+            ease: "power3.out",
+          };
+
+          switch (type) {
+            case "fade-up":
+              fromVars.y = 50;
+              toVars.y = 0;
+              break;
+            case "fade-down":
+              fromVars.y = -50;
+              toVars.y = 0;
+              break;
+            case "fade-left":
+              fromVars.x = 50;
+              toVars.x = 0;
+              break;
+            case "fade-right":
+              fromVars.x = -50;
+              toVars.x = 0;
+              break;
+            case "scale":
+              fromVars.scale = 0.85;
+              toVars.scale = 1;
+              break;
+            case "fade":
+              break;
+          }
+
+          gsap.fromTo(el, fromVars, {
+            ...toVars,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 90%",
+              end: "bottom 20%",
+              toggleActions: "play none none none",
+            },
+            clearProps: "all",
+          });
+        });
+
+        // Staggered children animation
+        gsap.utils.toArray("[data-stagger]").forEach((container) => {
+          const children = container.children;
+          const staggerDelay = parseFloat(container.dataset.stagger) || 0.1;
+
+          gsap.fromTo(
+            children,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              stagger: staggerDelay,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: container,
+                start: "top 90%",
+                toggleActions: "play none none none",
+              },
+              clearProps: "all",
+            }
+          );
+        });
+
+        // Section headers
+        gsap.utils.toArray(".section-title").forEach((title) => {
+          gsap.fromTo(
+            title,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: title,
+                start: "top 90%",
+                toggleActions: "play none none none",
+              },
+              clearProps: "all",
+            }
+          );
+        });
+      }
+
+      // ====================================================
+      // 5. SCROLL PROGRESS BAR
+      // ====================================================
+      function initScrollProgress() {
+        const progressBar = document.getElementById("scroll-progress");
+        if (!progressBar) return;
+
+        gsap.to(progressBar, {
+          width: "100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: document.body,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.3,
+          },
+        });
+      }
+
+      // ====================================================
+      // 6. MAGNETIC BUTTONS
+      // ====================================================
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.matchMedia("(pointer: coarse)").matches) return;
+
+        document.querySelectorAll("[data-magnetic]").forEach((btn) => {
+          btn.addEventListener("mousemove", (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const strength = parseFloat(btn.dataset.magnetic) || 0.3;
+
+            gsap.to(btn, {
+              x: x * strength,
+              y: y * strength,
+              duration: 0.4,
+              ease: "power2.out",
+            });
+          });
+
+          btn.addEventListener("mouseleave", () => {
+            gsap.to(btn, {
+              x: 0,
+              y: 0,
+              duration: 0.6,
+              ease: "elastic.out(1, 0.5)",
+            });
+          });
+        });
       });
     </script>
 
-    <style>
-      /* Custom scrollbar */
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- GLOBAL STYLES                                          -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <style is:global>
+      /* ── Animation Fallback ─────────────────────────────── */
+      /* Ensure elements are visible if GSAP fails to load */
+      [data-animate],
+      [data-stagger] > * {
+        will-change: opacity, transform;
+      }
+
+      /* ── Font Face ─────────────────────────────────────── */
+      @font-face {
+        font-family: "Satoshi";
+        src: url("/fonts/Satoshi-Variable.ttf") format("truetype");
+        font-weight: 300 900;
+        font-display: swap;
+      }
+
+      /* ── Global Reset & Base ───────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: initial; /* Lenis handles smooth scroll */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        font-family: "Satoshi", "Inter", "Poppins", system-ui, sans-serif;
+        background: #050505;
+        color: #f0f0f0;
+        cursor: none;
+        overflow-x: hidden;
+      }
+
+      @media (pointer: coarse) {
+        body {
+          cursor: auto;
+        }
+      }
+
+      /* ── Custom Scrollbar ──────────────────────────────── */
       ::-webkit-scrollbar {
-        width: 8px;
+        width: 6px;
       }
-      
       ::-webkit-scrollbar-track {
-        background: #1a1a1a;
+        background: #0d0d0d;
       }
-      
       ::-webkit-scrollbar-thumb {
-        background: #00ffff;
-        border-radius: 4px;
+        background: linear-gradient(180deg, #00f5ff, #a855f7);
+        border-radius: 3px;
       }
-      
       ::-webkit-scrollbar-thumb:hover {
-        background: #00cccc;
+        background: linear-gradient(180deg, #00f5ff, #ec4899);
       }
-      
-      /* Selection styles */
+
+      /* Firefox scrollbar */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #00f5ff #0d0d0d;
+      }
+
+      /* ── Selection Styles ──────────────────────────────── */
       ::selection {
-        background: #00ffff;
-        color: #000000;
+        background: rgba(0, 245, 255, 0.25);
+        color: #ffffff;
       }
-      
-      /* Focus styles */
-      *:focus {
-        outline: 2px solid #00ffff;
-        outline-offset: 2px;
+
+      /* ── Focus Styles ──────────────────────────────────── */
+      *:focus-visible {
+        outline: 2px solid #00f5ff;
+        outline-offset: 3px;
+        border-radius: 2px;
       }
-      
-      /* Loading states */
-      .loading {
-        overflow: hidden;
+
+      /* ── Skip Link ─────────────────────────────────────── */
+      .skip-link {
+        position: fixed;
+        top: -100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #00f5ff;
+        color: #050505;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0 0 8px 8px;
+        font-weight: 600;
+        z-index: 999;
+        transition: top 0.3s ease;
       }
-      
-      .loaded {
-        overflow: auto;
+      .skip-link:focus {
+        top: 0;
       }
-      
-      .loading-screen {
-        transition: opacity 0.5s ease;
-      }
-      
-      /* Animation classes */
-      .animate-fade-in {
-        animation: fadeIn 0.5s ease-in-out;
-      }
-      
-      .animate-slide-up {
-        animation: slideUp 0.5s ease-out;
-      }
-      
-      /* Hover effects */
-      .hover-lift:hover {
-        transform: translateY(-5px);
-        transition: transform 0.3s ease;
-      }
-      
+
+      /* ── Gradient Text Utility ─────────────────────────── */
       .gradient-text {
-        background: linear-gradient(45deg, #00ffff, #8b5cf6);
+        background: linear-gradient(135deg, #00f5ff, #a855f7);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
-      
+
+      .gradient-text-alt {
+        background: linear-gradient(135deg, #a855f7, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .gradient-text-teal {
+        background: linear-gradient(135deg, #00f5ff, #22d3ee);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* ── Glass Morphism Utility ────────────────────────── */
+      .glass {
+        background: rgba(13, 13, 13, 0.6);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .glass-card {
+        background: rgba(13, 13, 13, 0.4);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .glass-card:hover {
+        border-color: rgba(0, 245, 255, 0.15);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+          0 0 20px rgba(0, 245, 255, 0.05);
+      }
+
+      /* ── Glow Effects ──────────────────────────────────── */
       .glow-effect {
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        box-shadow: 0 0 20px rgba(0, 245, 255, 0.15);
+      }
+
+      .glow-text {
+        text-shadow: 0 0 20px rgba(0, 245, 255, 0.3),
+          0 0 40px rgba(0, 245, 255, 0.1);
+      }
+
+      /* ── Hover Lift ────────────────────────────────────── */
+      .hover-lift {
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.4s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-5px);
+      }
+
+      /* ── Section Styles ────────────────────────────────── */
+      .section-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+
+      .section-subtitle {
+        font-size: clamp(0.875rem, 2vw, 1.125rem);
+        color: #8a8a8a;
+        max-width: 600px;
+        line-height: 1.6;
+      }
+
+      /* ── Animated Underline ────────────────────────────── */
+      .animated-underline {
+        position: relative;
+        display: inline-block;
+      }
+      .animated-underline::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #00f5ff, #a855f7);
+        transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .animated-underline:hover::after {
+        width: 100%;
+      }
+
+      /* ── Shimmer Effect ────────────────────────────────── */
+      .shimmer {
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 245, 255, 0.05) 50%,
+          transparent 100%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 2s linear infinite;
+      }
+
+      /* ── Tilt Card ─────────────────────────────────────── */
+      .tilt-card {
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+
+      /* ── Float animation keyframes (global) ────────────── */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      /* ── Responsive Typography Scale ───────────────────── */
+      @media (max-width: 640px) {
+        .section-title {
+          letter-spacing: -0.01em;
+        }
       }
     </style>
   </body>

@@ -1,5 +1,5 @@
 ---
-// Projects section component - Optimized
+// Projects section — macOS-style showcase with tilt cards
 const projects = [
   {
     id: "hisab-prox",
@@ -7,7 +7,9 @@ const projects = [
     description: "A smart financial management and budget-tracking solution with data analytics for expense insights.",
     tech: ["React", "Node.js", "MongoDB", "Chart.js", "Express"],
     date: "2025",
-    status: "active"
+    status: "active",
+    icon: "fas fa-chart-line",
+    gradient: "from-[#00f5ff] to-[#0ea5e9]"
   },
   {
     id: "focus-fusion",
@@ -15,7 +17,9 @@ const projects = [
     description: "A productivity app combining music transformation and concentration tools to enhance study sessions.",
     tech: ["React Native", "JavaScript", "Audio APIs", "Firebase"],
     date: "2025",
-    status: "active"
+    status: "active",
+    icon: "fas fa-headphones",
+    gradient: "from-[#a855f7] to-[#ec4899]"
   },
   {
     id: "ssosc-web",
@@ -23,7 +27,9 @@ const projects = [
     description: "A modern, secure web platform built for streamlined organizational communication and collaboration.",
     tech: ["Next.js", "TypeScript", "TailwindCSS", "Prisma"],
     date: "2025",
-    status: "finished"
+    status: "finished",
+    icon: "fas fa-users",
+    gradient: "from-[#22d3ee] to-[#00f5ff]"
   },
   {
     id: "scatch",
@@ -31,99 +37,156 @@ const projects = [
     description: "A creative project focused on integrating AI with interactive design and scalable solutions.",
     tech: ["Python", "TensorFlow", "React", "FastAPI"],
     date: "2025",
-    status: "finished"
+    status: "finished",
+    icon: "fas fa-robot",
+    gradient: "from-[#f59e0b] to-[#ef4444]"
   },
   {
     id: "unity-2",
     title: "Unity 2.0",
-    description: "An upgraded system/project emphasizing collaboration, next-gen features, and optimized performance for real-world use.",
+    description: "An upgraded system emphasizing collaboration, next-gen features, and optimized performance for real-world use.",
     tech: ["Vue.js", "Node.js", "PostgreSQL", "Docker"],
     date: "2025",
-    status: "finished"
+    status: "finished",
+    icon: "fas fa-rocket",
+    gradient: "from-[#10b981] to-[#22d3ee]"
   }
 ];
 
-// Status configuration for better maintainability
-const statusConfig: Record<string, { color: string; text: string; animate: string }> = {
-  active: { color: "bg-neon-cyan", text: "Active Project", animate: "animate-pulse" },
-  finished: { color: "bg-green-500", text: "Project Finished", animate: "" },
-  ended: { color: "bg-red-500", text: "Project Ended", animate: "" }
+const statusConfig: Record<string, { color: string; text: string; pulse: boolean }> = {
+  active: { color: "#00f5ff", text: "In Development", pulse: true },
+  finished: { color: "#10b981", text: "Completed", pulse: false },
+  ended: { color: "#ef4444", text: "Archived", pulse: false }
 };
 ---
 
-<section id="projects" class="py-6 sm:py-8 bg-dark-card overflow-hidden px-4 sm:px-6 lg:px-8">
-  <div class="max-w-6xl mx-auto w-full">
-    <!-- Optimized Header -->
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 sm:mb-10 gap-4">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary">
-        <span class="text-neon-cyan">Projects</span>
-      </h2>
-      <button 
-        class="flex items-center text-text-secondary hover:text-neon-cyan transition-colors duration-300 group text-sm sm:text-base"
-        aria-label="View more projects"
-      >
-        <span class="mr-2">View More</span>
-        <i class="fas fa-chevron-down group-hover:translate-y-1 transition-transform duration-300" aria-hidden="true"></i>
-      </button>
+<section id="projects" class="relative py-20 sm:py-28 overflow-hidden">
+  <!-- Top border accent -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#a855f7]/20 to-transparent"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <!-- Section Header -->
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 sm:mb-16 gap-4" data-animate="fade-up">
+      <div>
+        <span class="inline-block text-xs uppercase tracking-[0.3em] text-[#a855f7] mb-4 font-medium">Featured Work</span>
+        <h2 class="section-title text-[#f0f0f0]">
+          My <span class="gradient-text-alt">Projects</span>
+        </h2>
+      </div>
+      <a href="https://github.com/programmer-nick234/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 text-sm text-[#8a8a8a] hover:text-[#00f5ff] transition-colors duration-400" data-magnetic="0.2">
+        <span>View All on GitHub</span>
+        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-400"></i>
+      </a>
     </div>
 
-    <!-- Optimized Projects Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6" data-stagger="0.1">
       {projects.map((project) => {
         const status = statusConfig[project.status];
         return (
-                     <article 
-             class="group relative bg-dark-bg border border-dark-border rounded-xl p-4 sm:p-6 hover:border-neon-cyan transition-all duration-500 overflow-hidden will-change-transform w-full"
-             id={project.id}
-           >
-            <!-- Optimized Spotlight Effect -->
-            <div class="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-neon-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-            
-            <!-- Project Content -->
-            <div class="relative z-10">
-              <!-- Optimized Project Header -->
-              <header class="flex items-start justify-between mb-3 sm:mb-4">
-                <h3 class="text-lg sm:text-xl font-bold text-text-primary group-hover:text-neon-cyan transition-colors duration-300">
-                  {project.title}
-                </h3>
-                <time 
-                  datetime={project.date}
-                  class="text-neon-cyan text-xs font-medium bg-neon-cyan/10 px-2 py-1 rounded-full flex-shrink-0"
-                >
-                  {project.date}
-                </time>
-              </header>
-              
-              <!-- Project Description -->
-              <p class="text-text-secondary text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
+          <article 
+            class="project-card group glass-card rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-500"
+            id={project.id}
+          >
+            <!-- macOS-style title bar -->
+            <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-white/[0.02]">
+              <div class="flex gap-1.5">
+                <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]"></div>
+              </div>
+              <span class="text-[10px] text-[#555] font-mono ml-2">{project.title.toLowerCase()}.dev</span>
+            </div>
+
+            <!-- Card Content -->
+            <div class="p-5 sm:p-6">
+              <!-- Icon + Title row -->
+              <div class="flex items-start gap-3 mb-4">
+                <div class={`w-10 h-10 rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                  <i class={`${project.icon} text-white text-sm`}></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h3 class="text-base sm:text-lg font-bold text-[#f0f0f0] group-hover:text-white transition-colors duration-300 truncate">
+                    {project.title}
+                  </h3>
+                  <time datetime={project.date} class="text-[10px] font-mono text-[#555]">{project.date}</time>
+                </div>
+              </div>
+
+              <!-- Description -->
+              <p class="text-[#8a8a8a] text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3">
                 {project.description}
               </p>
-              
-                             <!-- Optimized Tech Stack -->
-               <div class="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
-                 {project.tech.map((tech) => (
-                   <span 
-                     class="px-2 sm:px-3 py-1 bg-dark-card border border-dark-border text-neon-cyan text-xs font-medium rounded-full group-hover:border-neon-cyan transition-all duration-300"
-                   >
-                     {tech}
-                   </span>
-                 ))}
-               </div>
-              
-                             <!-- Optimized Project Status -->
-               <footer class="flex items-center pt-4 border-t border-dark-border">
-                 <div class="flex items-center space-x-2">
-                   <div class={`w-2 h-2 ${status.color} rounded-full ${status.animate}`}></div>
-                   <span class="text-text-muted text-xs">{status.text}</span>
-                 </div>
-               </footer>
+
+              <!-- Tech Stack -->
+              <div class="flex flex-wrap gap-1.5 mb-4">
+                {project.tech.map((tech) => (
+                  <span class="px-2.5 py-1 text-[10px] font-medium rounded-md bg-white/[0.03] text-[#8a8a8a] border border-white/5 group-hover:border-white/10 transition-all duration-300">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <!-- Status -->
+              <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                <div class="flex items-center gap-2">
+                  <div class="relative">
+                    <div class="w-2 h-2 rounded-full" style={`background: ${status.color};`}></div>
+                    {status.pulse && <div class="absolute inset-0 w-2 h-2 rounded-full animate-ping" style={`background: ${status.color}; opacity: 0.4;`}></div>}
+                  </div>
+                  <span class="text-[11px] text-[#555] font-medium">{status.text}</span>
+                </div>
+                <div class="opacity-0 group-hover:opacity-100 transition-all duration-400 transform group-hover:translate-x-0 translate-x-2">
+                  <span class="text-[10px] text-[#00f5ff] font-medium flex items-center gap-1">
+                    Details <i class="fas fa-arrow-right text-[8px]"></i>
+                  </span>
+                </div>
+              </div>
             </div>
-            
-            <!-- Optimized Hover Glow Effect -->
-            <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-neon-cyan/20 via-transparent to-neon-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl pointer-events-none"></div>
+
+            <!-- Hover glow -->
+            <div class={`absolute inset-0 rounded-2xl bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none`}></div>
           </article>
         );
       })}
     </div>
   </div>
 </section>
+
+<style>
+  .project-card {
+    position: relative;
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, transparent, rgba(0, 245, 255, 0.2), transparent, rgba(168, 85, 247, 0.2), transparent);
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    animation: gradientShift 4s ease infinite;
+  }
+
+  .project-card:hover::after {
+    opacity: 1;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 245, 255, 0.05);
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

@@ -1,13 +1,11 @@
 ---
+// Timeline section — Animated timeline for community & education
 export interface TimelineItem {
   logo: string;
   title: string;
   organization: string;
   startDate: string;
-  endDate?: string;
   isPresent?: boolean;
-  description?: string;
-  website?: string;
 }
 
 export interface TimelineSection {
@@ -21,342 +19,73 @@ export interface Props {
 
 const { sections } = Astro.props;
 
-// Optimized timeline calculation functions
-function getTimelinePosition(date: string): number {
-  const startDate = new Date('2021-01-01');
-  const currentDate = new Date(date);
-  const endDate = new Date('2025-12-31'); // Fixed end date for better positioning
-  const totalDuration = endDate.getTime() - startDate.getTime();
-  const position = (currentDate.getTime() - startDate.getTime()) / totalDuration;
-  return Math.max(0, Math.min(100, position * 100));
+function formatDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 }
-
-function getTimelineWidth(startDate: string, endDate?: string): number {
-  const start = new Date(startDate);
-  const end = endDate ? new Date(endDate) : new Date();
-  const timelineEnd = new Date('2025-12-31'); // Fixed end date
-  const totalDuration = timelineEnd.getTime() - new Date('2021-01-01').getTime();
-  const duration = end.getTime() - start.getTime();
-  const width = (duration / totalDuration) * 100;
-  return Math.max(8, Math.min(100, width));
-}
-
-// Calculate current date position for today with daily precision
-function getCurrentDatePosition(): number {
-  const startDate = new Date('2021-01-01');
-  const today = new Date();
-  const endDate = new Date('2025-12-31'); // Fixed end date
-  const totalDuration = endDate.getTime() - startDate.getTime();
-  const position = (today.getTime() - startDate.getTime()) / totalDuration;
-  return Math.max(0, Math.min(100, position * 100));
-}
-
-// Get current date string for display
-function getCurrentDateString(): string {
-  const today = new Date();
-  return today.toLocaleDateString('en-US', { 
-    month: 'short', 
-    day: 'numeric',
-    year: 'numeric'
-  });
-}
-
-// Pre-calculate timeline data for better performance
-const sectionsWithTimeline = sections.map(section => ({
-  ...section,
-  items: section.items.map(item => ({
-    ...item,
-    timelinePosition: getTimelinePosition(item.startDate),
-    timelineWidth: getTimelineWidth(item.startDate, item.endDate)
-  }))
-}));
-
-// Fixed timeline constants for better positioning
-const TIMELINE_YEARS = ['2021', '2022', '2023', '2024', '2025'];
-const GRID_POSITIONS = [0, 25, 50, 75, 100];
 ---
 
-<section class="py-6 px-4 bg-dark-bg">
-  <div class="max-w-6xl mx-auto">
-    <!-- Header Section -->
-    <header class="text-center mb-8">
-      <h2 class="text-2xl sm:text-3xl font-bold text-text-primary mb-3">
-        <span class="text-neon-cyan">Work Experience</span>
+<section id="timeline" class="relative py-20 sm:py-28 overflow-hidden">
+  <!-- Divider -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00f5ff]/20 to-transparent"></div>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <!-- Section Header -->
+    <div class="text-center mb-16 sm:mb-20" data-animate="fade-up">
+      <span class="inline-block text-xs uppercase tracking-[0.3em] text-[#22d3ee] mb-4 font-medium">Background</span>
+      <h2 class="section-title text-[#f0f0f0] mb-4">
+        Community & <span class="gradient-text-teal">Education</span>
       </h2>
-              <div class="w-16 h-1 bg-neon-cyan mx-auto mb-3"></div>
-      <p class="text-text-secondary text-xs max-w-2xl mx-auto">
-        My professional journey and contributions to the tech community
-      </p>
-    </header>
-    
+    </div>
+
     <!-- Timeline Sections -->
-    <div class="space-y-6">
-      {sectionsWithTimeline.map((section, sectionIndex) => (
-        <section class="timeline-section">
-                  <h3 class="text-lg font-bold text-text-primary mb-4 text-center">
-          {section.title}
-        </h3>
-          
-          <!-- Desktop/Tablet Timeline View -->
-          <div class="hidden md:block">
-            <div class="timeline-wrapper relative">
-              {/* Timeline Grid Background */}
-              <div class="timeline-grid-bg absolute inset-0 pointer-events-none">
-                {GRID_POSITIONS.map(position => (
-                  <div class="grid-line" style={`left: ${position}%`}></div>
-                ))}
-              </div>
-              
-              {/* Timeline Items Container */}
-              <div class="timeline-items-container relative z-10 pb-12">
-                {section.items.map((item, itemIndex) => (
-                  <article class="timeline-item mb-4 last:mb-0">
-                    <div class="flex items-center">
-                      {/* Logo */}
-                      <div class="timeline-logo flex-shrink-0 w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center hover:scale-110 transition-transform duration-300 hover:shadow-lg hover:shadow-neon-cyan/20 border border-dark-border mr-4">
-                        <img 
-                          src={item.logo} 
-                          alt={`${item.organization} logo`}
-                          class="w-6 h-6 object-contain"
-                          loading="lazy"
-                          onerror="this.src='/logos/placeholder.svg'"
-                        />
-                      </div>
-                      
-                      {/* Organization Name */}
-                      <div class="flex-shrink-0 w-40 mr-4">
-                        <h4 class="text-text-primary font-semibold text-xs mb-1">
-                          {item.organization}
-                        </h4>
-                        {item.isPresent && (
-                          <span class="text-neon-cyan text-xs font-medium bg-neon-cyan/10 px-1 py-0.5 rounded-full inline-flex items-center">
-                            <i class="fas fa-circle text-xs mr-1"></i>Present
-                          </span>
-                        )}
-                      </div>
-                      
-                      {/* Timeline Bar */}
-                      <div class="flex-1 timeline-bar-wrapper relative">
-                        <div class="timeline-bar-container relative h-4 bg-gray-800 rounded-full overflow-hidden">
-                          <div 
-                            class={`timeline-bar h-full bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full transition-all duration-300 ${item.isPresent ? 'present-bar' : ''}`}
-                            style={`left: ${item.timelinePosition}%; width: ${item.timelineWidth}%`}
-                          ></div>
-                          {item.isPresent && (
-                            <div class="absolute top-0 right-0 w-4 h-full bg-neon-cyan rounded-r-full animate-pulse"></div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-              
-              {/* Year Labels - Fixed at bottom */}
-              <div class="timeline-labels absolute bottom-0 left-0 right-0 flex justify-between text-xs text-text-secondary pt-1">
-                {TIMELINE_YEARS.map(year => (
-                  <span class="font-medium">{year}</span>
-                ))}
-              </div>
-              
-              {/* Current Date Indicator - Positioned at today's date */}
-              <div class="current-date-indicator absolute bottom-0 transform -translate-y-4" style={`left: ${getCurrentDatePosition()}%`}>
-                <div class="flex flex-col items-center space-y-1">
-                  <div class="w-2 h-2 bg-neon-cyan rounded-full animate-pulse"></div>
-                  <span class="text-neon-cyan text-xs font-medium">{getCurrentDateString()}</span>
+    <div class="space-y-16">
+      {sections.map((section, sIndex) => (
+        <div data-animate="fade-up" data-animate-delay={(sIndex * 0.15).toString()}>
+          <!-- Section Label -->
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-8 h-8 rounded-lg bg-[#22d3ee]/10 border border-[#22d3ee]/20 flex items-center justify-center">
+              <i class={`fas ${section.title === 'Education' ? 'fa-graduation-cap' : 'fa-users'} text-xs text-[#22d3ee]`}></i>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-[#f0f0f0]">{section.title}</h3>
+            <div class="flex-1 h-px bg-gradient-to-r from-[#22d3ee]/15 to-transparent"></div>
+          </div>
+
+          <!-- Items -->
+          <div class="space-y-4" data-stagger="0.1">
+            {section.items.map((item) => (
+              <div class="group glass-card rounded-xl p-4 sm:p-5 flex items-center gap-4 hover:scale-[1.01] transition-all duration-500">
+                <!-- Logo -->
+                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden bg-white/5 border border-white/10 flex-shrink-0 group-hover:border-[#22d3ee]/20 transition-all duration-500">
+                  <img 
+                    src={item.logo} 
+                    alt={item.organization} 
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                
+                <!-- Info -->
+                <div class="flex-1 min-w-0">
+                  <h4 class="text-sm sm:text-base font-bold text-[#f0f0f0] group-hover:text-white transition-colors truncate">{item.title}</h4>
+                  <p class="text-xs sm:text-sm text-[#555]">{item.organization}</p>
+                </div>
+
+                <!-- Date -->
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <span class="text-[10px] font-mono text-[#555] hidden sm:inline">{formatDate(item.startDate)}</span>
+                  {item.isPresent && (
+                    <span class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#22d3ee]/10 border border-[#22d3ee]/20">
+                      <span class="w-1.5 h-1.5 rounded-full bg-[#22d3ee] animate-pulse"></span>
+                      <span class="text-[10px] font-medium text-[#22d3ee]">Active</span>
+                    </span>
+                  )}
                 </div>
               </div>
-            </div>
+            ))}
           </div>
-          
-          <!-- Mobile Card View -->
-          <div class="md:hidden">
-            <div class="space-y-2">
-              {section.items.map((item, itemIndex) => (
-                <article class="timeline-card bg-dark-card border border-dark-border rounded-lg p-2 hover:border-neon-cyan transition-all duration-300 hover:shadow-lg hover:shadow-neon-cyan/10 group">
-                  <div class="flex flex-col sm:flex-row items-start space-y-2 sm:space-y-0 sm:space-x-3">
-                    {/* Logo */}
-                    <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gray-800 flex items-center justify-center border border-dark-border">
-                      <img 
-                        src={item.logo} 
-                        alt={`${item.organization} logo`}
-                        class="w-6 h-6 sm:w-8 sm:h-8 object-contain"
-                        loading="lazy"
-                        onerror="this.src='/logos/placeholder.svg'"
-                      />
-                    </div>
-                    
-                    {/* Content */}
-                    <div class="flex-1 min-w-0">
-                      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
-                        <h4 class="text-text-primary font-bold text-sm mb-1 sm:mb-0 group-hover:text-neon-cyan transition-colors duration-300">
-                          {item.organization}
-                        </h4>
-                        {item.isPresent && (
-                          <span class="text-neon-cyan text-xs font-medium bg-neon-cyan/10 px-1 py-0.5 rounded-full inline-flex items-center w-fit">
-                            <i class="fas fa-circle text-xs mr-1"></i>Present
-                          </span>
-                        )}
-                      </div>
-                      
-                      <h5 class="text-text-primary font-semibold text-xs mb-1">
-                        {item.title}
-                      </h5>
-                      
-                      {item.description && (
-                        <p class="text-text-secondary text-xs leading-tight mb-1">
-                          {item.description}
-                        </p>
-                      )}
-                      
-                      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                        <time class="text-text-secondary text-xs mb-1 sm:mb-0">
-                          {item.startDate} - {item.isPresent ? 'Present' : item.endDate}
-                        </time>
-                        
-                        {item.website && (
-                          <a 
-                            href={item.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-text-secondary hover:text-neon-cyan transition-colors duration-300 text-xs inline-flex items-center"
-                            aria-label={`Visit ${item.organization} website`}
-                          >
-                            Visit Website
-                            <i class="fas fa-external-link-alt ml-1 text-xs"></i>
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        </div>
       ))}
     </div>
   </div>
 </section>
-
-<style>
-  /* Optimized Timeline Styles - No Collapsing */
-  .timeline-wrapper {
-    min-height: 200px;
-    padding-bottom: 40px;
-  }
-  
-  .timeline-grid-bg {
-    height: 100%;
-  }
-  
-  .grid-line {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    border-left: 1px dashed rgba(75, 85, 99, 0.5);
-  }
-  
-  .timeline-items-container {
-    min-height: 120px;
-  }
-  
-  .timeline-item {
-    position: relative;
-  }
-  
-  .timeline-bar-wrapper {
-    min-width: 200px;
-  }
-  
-  .timeline-bar-container {
-    position: relative;
-    min-height: 32px;
-  }
-  
-  .timeline-bar {
-    position: absolute;
-    top: 0;
-    box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
-  }
-  
-  .timeline-item:hover .timeline-bar {
-    opacity: 0.9;
-    transform: scaleY(1.2);
-    box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
-  }
-  
-  .present-bar {
-    box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
-    border: 1px solid rgba(34, 197, 94, 0.3);
-  }
-  
-  .present-bar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(45deg, #06b6d4, #8b5cf6);
-    border-radius: 0 4px 4px 0;
-    animation: pulse 2s infinite;
-  }
-  
-  .timeline-logo {
-    border: 1px solid rgba(75, 85, 99, 0.3);
-  }
-  
-  /* Mobile Card Styles */
-  .timeline-card {
-    transition: all 0.3s ease;
-  }
-  
-  .timeline-card:hover {
-    transform: translateY(-2px);
-  }
-  
-  /* Optimized Animations */
-  @keyframes pulse {
-    0%, 100% {
-      opacity: 1;
-      transform: scaleY(1);
-    }
-    50% {
-      opacity: 0.7;
-      transform: scaleY(1.1);
-    }
-  }
-  
-  /* Performance Optimizations */
-  .timeline-item,
-  .timeline-card {
-    will-change: transform;
-  }
-  
-  .timeline-bar {
-    will-change: transform, opacity;
-  }
-  
-  /* Responsive Optimizations */
-  @media (max-width: 640px) {
-    .timeline-card {
-      padding: 1rem;
-    }
-  }
-  
-  /* Reduced Motion Support */
-  @media (prefers-reduced-motion: reduce) {
-    .timeline-item,
-    .timeline-card,
-    .timeline-bar,
-    .timeline-logo {
-      transition: none;
-    }
-    
-    .animate-pulse {
-      animation: none;
-    }
-  }
-</style>
